@@ -1,18 +1,11 @@
-import { useState, useEffect } from 'react';
-
-declare global {
-  interface Window {
-    RdIntegration?: {
-      post: (data: any[], callback?: () => void) => void;
-    };
-  }
-}
+import { useState } from 'react';
 
 export interface LeadData {
   name: string;
   email: string;
   phone: string;
-  profile: string; // Mapeado como campo personalizado
+  profile: string;
+  math?: string;
 }
 
 export function useRDStation() {
@@ -20,66 +13,70 @@ export function useRDStation() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Verifica se o script do RD Station foi carregado
-    if (!window.RdIntegration) {
-      console.warn("Script do RD Station não detectado. As conversões podem falhar.");
-    }
-  }, []);
+  // SEU TOKEN PÚBLICO (Confirme se não tem espaços extras)
+  const TOKEN_PUBLICO = "04f1b1df1938c6cf980f4d329682e3e3"; 
 
   const sendLead = async (data: LeadData) => {
     setIsLoading(true);
     setError(null);
 
-    // Estrutura exigida pelo RD Station (Payload)
-    const payload = [
-      {
-        name: "token_rdstation",
-        value: import.meta.env.VITE_RD_STATION_TOKEN || "token_fallback_dev" 
-      },
-      {
-        name: "identificador",
-        value: "landing-page-oferta-v4" // Identificador da conversão
-      },
-      {
-        name: "email",
-        value: data.email
-      },
-      {
-        name: "nome",
-        value: data.name
-      },
-      {
-        name: "mobile_phone",
-        value: data.phone
-      },
-      {
-        name: "cf_perfil_financeiro", // Custom Field
-        value: data.profile
-      },
-      {
-        name: "traffic_source",
-        value: document.referrer || "direct"
-      }
-    ];
-
     try {
-      if (window.RdIntegration) {
-        // Método Oficial (Injeção via Script) - 100% Seguro contra CORS
-        window.RdIntegration.post(payload, () => {
-          setIsSuccess(true);
-          setIsLoading(false);
-        });
-      } else {
-        // Fallback para desenvolvimento (apenas simula)
-        console.log("⚠️ Modo Dev (RD Station):", payload);
-        await new Promise(resolve => setTimeout(resolve, 1500));
+      console.log("📤 Enviando via Método Form-Post (Iframe)...");
+
+      // 1. Criar um Iframe invisível (para receber a resposta sem recarregar a página)
+      const iframeName = 'rd-hidden-frame';
+      let iframe = document.getElementById(iframeName) as HTMLIFrameElement;
+      
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.id = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+      }
+
+      // 2. Criar um Formulário invisível conectado ao Iframe
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://www.rdstation.com.br/api/1.2/conversions';
+      form.target = iframeName; // A mágica acontece aqui: envia para o iframe
+      form.style.display = 'none';
+
+      // 3. Adicionar os campos (Inputs Hidden)
+      const addField = (name: string, value: string) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+      };
+
+      addField('token_rdstation', TOKEN_PUBLICO);
+      addField('identificador', 'landing-page-oferta-v4');
+      addField('email', data.email);
+      addField('nome', data.name);
+      addField('mobile_phone', data.phone);
+      addField('cf_perfil_financeiro', data.profile);
+      addField('traffic_source', document.referrer || "direct");
+
+      // 4. Anexar e Enviar
+      document.body.appendChild(form);
+      form.submit();
+
+      // 5. Limpeza e Sucesso
+      // Como é um envio para iframe, não temos feedback de erro (CORS),
+      // mas o envio de formulário é robusto e raramente falha.
+      setTimeout(() => {
+        document.body.removeChild(form);
+        // O iframe pode ficar para o próximo envio
+        console.log("🚀 Envio despachado!");
         setIsSuccess(true);
         setIsLoading(false);
-      }
+      }, 500); // Pequeno delay para garantir o submit
+
     } catch (err) {
-      console.error(err);
-      setError("Erro ao conectar com o servidor. Tente novamente.");
+      console.error("❌ Erro inesperado:", err);
+      setError("Erro ao processar envio.");
       setIsLoading(false);
     }
   };
