@@ -51,7 +51,7 @@ export function PricingHighlight() {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#424242] mb-3 transition-colors duration-300">
             Escolha <span className={isSmart ? "text-[#9B80FF]" : "text-[#424242]"}>inteligente</span>
           </h2>
-          <p className="text-base text-[#666666] max-w-xl mx-auto">
+          <p className="text-base text-[#666666] max-w-xxl mx-auto">
             Veja a diferença brutal de valor entre o plano mensal e a nossa oferta de pré-lançamento.
           </p>
         </div>
