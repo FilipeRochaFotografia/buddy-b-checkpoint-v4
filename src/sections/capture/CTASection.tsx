@@ -60,7 +60,7 @@ export function CTASection() {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 0.8 }}
-               src="/assets/images/23.png" 
+               src="/assets/images/68786.png" 
                alt="Buddy B App Interface" 
                className="w-full max-w-sm object-contain drop-shadow-2xl hover:rotate-1 transition-transform duration-500"
              />
