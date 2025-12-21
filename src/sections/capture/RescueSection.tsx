@@ -5,47 +5,50 @@ import { fadeInUp, staggerContainer } from '../../lib/utils';
 
 export function RescueSection() {
   
-  // Componente interno dos Badges
-  const SecurityBadges = () => (
-    <motion.div 
-      variants={fadeInUp}
-      className="flex flex-wrap justify-center lg:justify-start gap-6 opacity-80 hover:opacity-100 transition-opacity"
-    >
-      <div className="flex items-center gap-2 group cursor-default">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white group-hover:scale-110 transition-transform"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-        <span className="text-[10px] font-bold text-white uppercase tracking-wide">Pagamento Seguro</span>
+  // Badge Item Component para evitar repetição
+  const BadgeItem = ({ icon, text }: { icon: React.ReactNode, text: string }) => (
+    <div className="flex items-center gap-2 group cursor-default">
+      <div className="p-1.5 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors shrink-0">
+        {icon}
       </div>
-      <div className="flex items-center gap-2 group cursor-default">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white group-hover:scale-110 transition-transform"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        <span className="text-[10px] font-bold text-white uppercase tracking-wide">Dados Protegidos</span>
-      </div>
-      <div className="flex items-center gap-2 group cursor-default">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white group-hover:scale-110 transition-transform"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-        <span className="text-[10px] font-bold text-white uppercase tracking-wide">Acesso Imediato</span>
-      </div>
-    </motion.div>
+      <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+        {text}
+      </span>
+    </div>
+  );
+
+  // Ícones
+  const LockIcon = (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    </svg>
+  );
+
+  const ShieldIcon = (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    </svg>
+  );
+
+  const ClockIcon = (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
+    </svg>
   );
 
   return (
-    // ID "resgate" ADICIONADO PARA O SCROLL DO CTA
     <section id="resgate" className="py-20 md:py-24 bg-gradient-to-br from-[#583CE3] to-[#9B80FF] relative overflow-hidden">
       
-      {/* Elementos de Fundo Animados */}
-      <motion.div 
-        animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 mix-blend-overlay" 
-      />
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], x: [0, -20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#583CE3]/40 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/4 mix-blend-multiply" 
-      />
+      {/* Elementos de Fundo */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 mix-blend-overlay"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#583CE3]/40 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/4 mix-blend-multiply"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* LADO ESQUERDO: O FORMULÁRIO (Card) */}
+          {/* LADO ESQUERDO: O FORMULÁRIO */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -54,7 +57,6 @@ export function RescueSection() {
             className="lg:col-span-5 lg:order-1 order-2 flex flex-col items-center lg:items-start"
           >
             
-            {/* Card Branco com Efeito de Elevação */}
             <div className="relative w-full max-w-md bg-white rounded-[20px] shadow-2xl p-6 md:p-8 transform transition-transform hover:scale-[1.01] duration-500">
                 <div className="text-center mb-6">
                    <p className="text-xs font-bold text-[#9B80FF] uppercase tracking-widest mb-1 animate-pulse">Última chance</p>
@@ -63,14 +65,15 @@ export function RescueSection() {
                 <LeadForm showTitle={false} />
             </div>
 
-            {/* BADGES MOBILE */}
-            <div className="mt-8 lg:hidden">
-              <SecurityBadges />
+            {/* --- BADGES MOBILE (Apenas 2 ícones, lado a lado) --- */}
+            <div className="mt-8 lg:hidden flex flex-row justify-center items-center gap-4 opacity-90 w-full px-1">
+               <BadgeItem icon={LockIcon} text="Pagamento Seguro" />
+               <BadgeItem icon={ClockIcon} text="Acesso Imediato" />
             </div>
 
           </motion.div>
 
-          {/* LADO DIREITO: TEXTO E ARGUMENTOS */}
+          {/* LADO DIREITO: TEXTO */}
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -79,49 +82,54 @@ export function RescueSection() {
             className="lg:col-span-7 lg:order-2 order-1 text-center lg:text-left lg:pl-8 flex flex-col items-center lg:items-start"
           >
             
-            {/* LOGO */}
             <motion.div variants={fadeInUp} className="mb-6">
               <img 
                 src="/assets/Logo1.png" 
                 alt="Buddy B" 
-                className="h-16 md:h-20 w-auto brightness-0 invert drop-shadow-lg opacity-100" 
+                className="h-16 md:h-20 w-auto drop-shadow-lg" 
               />
             </motion.div>
             
             <motion.h2 variants={fadeInUp} className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
-              O risco é todo <span className="text-[#FFD400]">nosso</span>.
+              Pode experimentar <br className="md:hidden" />
+              <span className="text-[#FFD400]">sem medo.</span>
             </motion.h2>
             
-            {/* TEXTO */}
-            <motion.div variants={fadeInUp} className="text-lg md:text-xl text-white/90 font-body mb-8 leading-relaxed">
-              <p>Você não precisa decidir agora.</p>
-              <p>Garanta sua vaga com <strong className="text-white">80% de desconto</strong></p>
-              <p>E teste na prática a mágica do Buddy B.</p>
-            </motion.div>
-
-            {/* Box de Garantia */}
-            <motion.div 
-              variants={fadeInUp}
-              whileHover={{ scale: 1.03 }}
-              className="hidden md:inline-flex bg-white rounded-[20px] p-6 shadow-lg flex-col md:flex-row items-center gap-4 mb-10 text-left cursor-default"
-            >
-              <div className="w-12 h-12 bg-[#20CE66]/10 rounded-full flex items-center justify-center shrink-0 mx-auto md:mx-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#20CE66" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <motion.div variants={fadeInUp} className="text-white/90 font-body mb-8 leading-relaxed">
+              {/* Mobile Text */}
+              <div className="md:hidden text-sm px-4">
+                <p className="mb-4">
+                  O Buddy B foi criado <br/>
+                  para dar mais controle às suas finanças.
+                </p>
+                <p>
+                  Garanta sua vaga com <strong className="text-[#FFD400]">80% de desconto</strong> <br/>
+                  e tenha mais clareza financeira no dia a dia.
+                </p>
               </div>
-              <div className="text-center md:text-left">
-                <h3 className="text-lg font-bold text-[#424242] mb-0.5 font-heading">Garantia Incondicional de 7 Dias</h3>
-                <p className="text-sm text-[#666666] leading-snug">
-                  Devolvemos 100% do seu dinheiro. Sem perguntas.
+
+              {/* Desktop Text */}
+              <div className="hidden md:block text-xl max-w-xl">
+                <p>
+                  O Buddy B foi criado para dar mais controle às suas finanças.<br/>
+                  Garanta sua vaga com <strong className="text-[#FFD400]">80% de desconto</strong><br/>
+                  e tenha mais clareza financeira no dia a dia.
                 </p>
               </div>
             </motion.div>
 
-            {/* BADGES DESKTOP */}
-            <div className="hidden lg:block w-full">
-              <div className="flex justify-start">
-                 <SecurityBadges />
-              </div>
-            </div>
+            {/* --- BADGES DESKTOP (Todos os 3 ícones, inalterado) --- */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="hidden lg:flex w-full justify-start items-center gap-6 mt-4"
+            >
+               <BadgeItem icon={LockIcon} text="Pagamento Seguro" />
+               <BadgeItem icon={ShieldIcon} text="Dados Protegidos" />
+               <BadgeItem icon={ClockIcon} text="Acesso Imediato" />
+            </motion.div>
 
           </motion.div>
 

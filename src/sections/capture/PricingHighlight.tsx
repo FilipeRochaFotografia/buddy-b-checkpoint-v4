@@ -7,7 +7,8 @@ const Icons = {
   Star: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
   Shield: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
   Zap: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
-  Crown: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+  Crown: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>,
+  Gift: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
 };
 
 export function PricingHighlight() {
@@ -35,13 +36,31 @@ export function PricingHighlight() {
     iconColor: isSmart ? 'text-[#20CE66]' : 'text-[#424242]',
   };
 
+  // --- LISTAS DE BENEFÍCIOS ---
+  const annualFeatures = [
+    "Pagamento único (sem mensalidade)",
+    "Único com Fluxo de Caixa",
+    "Controle seus cartões de crédito",
+    "Integração bancária (ilimitada)",
+    "Conexão via Open Finance",
+    "Multimoeda",
+    "Categorize suas finanças"
+  ];
+
+  const monthlyFeatures = [
+    "Assinatura Mensal",
+    "Fluxo de caixa inteligente e automático",
+    "Gestão completa de cartões de crédito",
+    "Integração bancária segura via Open Finance",
+    "Suporte a múltiplas moedas",
+    "Organização e categorização financeir"
+  ];
+
   return (
-    // AJUSTE 1: Degradê Roxo Claro no fundo da seção
     <section id="pricing" className="py-20 bg-gradient-to-b from-[#F8F9FA] to-[#F0EBFF] relative overflow-hidden">
       
-      {/* Background Decorativo (Ajustado para roxo) */}
+      {/* Background Decorativo */}
       <div className="absolute top-[10%] left-[-10%] w-[60vw] h-[60vw] bg-[#9B80FF]/10 rounded-full blur-[120px] pointer-events-none" />
-      {/* Alterado de Verde para Roxo Escuro/Azulado para manter o tom */}
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[#583CE3]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -130,30 +149,30 @@ export function PricingHighlight() {
 
                 {/* Conteúdo */}
                 <div className="w-full">
-                    <p className={`font-bold text-xs uppercase tracking-[0.2em] mb-2 opacity-80 ${theme.textColor}`}>
+                    <p className={`font-heading font-bold text-xs uppercase tracking-[0.2em] mb-2 opacity-80 ${theme.textColor}`}>
                       {isSmart ? 'BUDDY B SMART' : 'BUDDY B STANDARD'}
                     </p>
                     
                     <div className="mb-6">
                       {isSmart ? (
                         <div className="flex flex-col items-center">
-                          <span className="text-sm text-purple-200 line-through decoration-white/50 font-medium mb-1">
-                            De R$ 358,80/ano
+                          <span className="text-sm text-purple-200 line-through decoration-white/50 font-medium mb-1 font-body">
+                            De R$ 399,99/ano
                           </span>
-                          <div className="flex items-baseline gap-1">
+                          <div className="flex items-baseline gap-1 font-body">
                             <span className="text-2xl font-medium text-white/90">R$</span>
-                            <span className="text-6xl font-extrabold tracking-tighter text-white drop-shadow-lg">6,90</span>
+                            <span className="text-6xl font-extrabold tracking-tighter text-white drop-shadow-lg">6,69</span>
                             <span className="text-lg font-medium text-white/90">/mês</span>
                           </div>
-                          <p className="text-[10px] text-[#424242] mt-2 font-bold bg-[#FFD400] px-3 py-1 rounded-full inline-block shadow-sm">
-                            Total de R$ 82,80/ano
+                          <p className="text-[10px] text-[#424242] mt-2 font-bold bg-[#FFD400] px-3 py-1 rounded-full inline-block shadow-sm font-heading">
+                            Total de R$ 79,99/ano
                           </p>
                         </div>
                       ) : (
                         <div className="flex flex-col items-center">
-                          <div className="flex items-baseline gap-1">
+                          <div className="flex items-baseline gap-1 font-body">
                             <span className="text-2xl font-medium text-gray-400">R$</span>
-                            <span className="text-6xl font-extrabold tracking-tighter text-[#424242]">29,90</span>
+                            <span className="text-6xl font-extrabold tracking-tighter text-[#424242]">39,99</span>
                             <span className="text-lg font-medium text-gray-400">/mês</span>
                           </div>
                         </div>
@@ -163,24 +182,12 @@ export function PricingHighlight() {
                     {/* Lista */}
                     <div className="space-y-3 w-full text-left bg-black/5 rounded-xl p-4 mb-6">
                        <ul className={`space-y-2.5 text-xs font-semibold ${theme.textColor}`}>
-                          <li className="flex gap-2 items-center">
-                             <div className={`${theme.iconColor}`}><Icons.Check /></div>
-                             <span>{isSmart ? 'Economia garantida' : 'Liberdade contratual'}</span>
-                          </li>
-                          <li className="flex gap-2 items-center">
-                             <div className={`${theme.iconColor}`}><Icons.Check /></div>
-                             <span>{isSmart ? 'Pagamento único (Sem mensalidade)' : 'Pagamento recorrente'}</span>
-                          </li>
-                          <li className="flex gap-2 items-center">
-                             <div className={`${theme.iconColor}`}><Icons.Check /></div>
-                             <span>Conteúdos exclusivos</span>
-                          </li>
-                          {isSmart && (
-                            <li className="flex gap-2 items-center">
-                               <div className="text-[#FFD400]"><Icons.Crown /></div>
-                               <span className="text-[#FFD400]">Bônus: 80% de desconto</span>
+                          {(isSmart ? annualFeatures : monthlyFeatures).map((item, index) => (
+                            <li key={index} className="flex gap-2 items-center">
+                               <div className={`${theme.iconColor} shrink-0`}><Icons.Check /></div>
+                               <span className="font-body">{item}</span>
                             </li>
-                          )}
+                          ))}
                        </ul>
                     </div>
                 </div>
@@ -189,7 +196,7 @@ export function PricingHighlight() {
                   onClick={scrollToForm}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className={`w-full py-3.5 rounded-xl font-extrabold text-base shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden ${theme.buttonBg}`}
+                  className={`w-full py-3.5 rounded-xl font-extrabold text-base shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden font-heading ${theme.buttonBg}`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {isSmart ? 'QUERO ECONOMIZAR' : 'Assinar Mensal'}
@@ -204,52 +211,67 @@ export function PricingHighlight() {
              </AnimatePresence>
           </div>
 
-          {/* CARD 2: BENEFÍCIOS GERAIS (COMPACTO & DIAGRAMADO) */}
+          {/* CARD 2: VANTAGENS PRÉ-LANÇAMENTO (AJUSTADO: Centralizado e Ícones menores) */}
           <div className="order-2 flex justify-center md:justify-start">
             <div className="relative bg-white border border-gray-100 p-6 rounded-[1.5rem] shadow-lg flex flex-col justify-center w-full max-w-[320px]">
               
-              <h3 className="text-lg font-bold text-[#424242] mb-5 leading-tight">
-                Por que escolher o <span className="text-primary">Buddy B?</span>
+              {/* Título */}
+              <h3 className="text-lg font-heading font-bold text-[#424242] mb-8 leading-tight text-center">
+                Vantagens de assinar o Buddy B no Pré lançamento
               </h3>
               
+              {/* Vantagens Ajustadas: items-center, w-8 h-8, sem margens manuais */}
               <div className="flex flex-col gap-4">
-                 <div className="flex gap-3 items-start">
-                    <div className="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center text-green-500 shrink-0 mt-0.5">
-                      <Icons.Shield />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#424242] text-sm mb-0.5">Segurança Bancária</h4>
-                      <p className="text-xs text-[#666666] leading-relaxed">Criptografia de ponta a ponta igual a dos grandes bancos.</p>
-                    </div>
-                 </div>
-
-                 <div className="flex gap-3 items-start">
-                    <div className="w-9 h-9 rounded-full bg-purple-50 flex items-center justify-center text-primary shrink-0 mt-0.5">
+                 
+                 <div className="flex gap-3 items-center">
+                    <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-500 shrink-0">
                       <Icons.Zap />
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#424242] text-sm mb-0.5">Automação Inteligente</h4>
-                      <p className="text-xs text-[#666666] leading-relaxed">Diga adeus ao trabalho manual. Tudo sincronizado.</p>
+                      <h4 className="font-normal text-[#424242] text-xs font-body">Garanta 80% de desconto</h4>
                     </div>
                  </div>
 
-                 <div className="flex gap-3 items-start">
-                    <div className="w-9 h-9 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 shrink-0 mt-0.5">
+                 <div className="flex gap-3 items-center">
+                    <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 shrink-0">
+                      <Icons.Gift />
+                    </div>
+                    <div>
+                      <h4 className="font-normal text-[#424242] text-xs font-body">Concorra a prêmios de R$1.000,00¹</h4>
+                    </div>
+                 </div>
+
+                 <div className="flex gap-3 items-center">
+                    <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-primary shrink-0">
                       <Icons.Star />
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#424242] text-sm mb-0.5">Suporte Premium</h4>
-                      <p className="text-xs text-[#666666] leading-relaxed">Atendimento prioritário via WhatsApp para assinantes.</p>
+                      <h4 className="font-normal text-[#424242] text-xs font-body">Desconto na renovação do seu planos¹</h4>
+                    </div>
+                 </div>
+
+                 <div className="flex gap-3 items-center">
+                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
+                      <Icons.Shield />
+                    </div>
+                    <div>
+                      <h4 className="font-normal text-[#424242] text-xs font-body">Upgrade de planos sem custos¹</h4>
                     </div>
                  </div>
               </div>
 
+              {/* Satisfação Garantida */}
               <div className="mt-5 p-2.5 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center gap-2">
                  <div className="flex text-[#FFD400] scale-75">
                    <Icons.Star /><Icons.Star /><Icons.Star /><Icons.Star /><Icons.Star />
                  </div>
                  <span className="text-xs font-bold text-[#424242]">Satisfação Garantida</span>
               </div>
+
+              {/* Texto Legal */}
+              <p className="text-[9px] text-gray-400 mt-4 text-center leading-tight">
+                ¹Termos e condições para os benefícios do pré-lançamento podem ser encontrados nos termos de uso do Buddy B ou em nossas redes sociais.
+              </p>
 
             </div>
           </div>

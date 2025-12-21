@@ -2,51 +2,30 @@ import React from 'react';
 
 export function AboutSection() {
   return (
-    // Fundo Escuro Sólido (#1a1b26) - Igual ao Footer
-    <section className="pt-16 pb-8 bg-[#1a1b26] text-white border-t border-gray-800">
+    // AJUSTE 1: Padding vertical equilibrado no mobile (py-12) vs original no desktop
+    <section className="py-12 md:pt-16 md:pb-8 bg-[#1a1b26] text-white border-t border-gray-800">
       <div className="container mx-auto px-4">
         
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        <div className="flex flex-col items-center text-center">
           
-          {/* LADO ESQUERDO: INSTITUCIONAL (Sem contatos) */}
-          <div className="text-center md:text-left">
-            {/* Logo Branco */}
-            <div className="flex justify-center md:justify-start">
-                <img 
-                src="/assets/Logo1.png" 
-                alt="Buddy B" 
-                className="h-10 mb-6 brightness-0 invert opacity-90" 
-                />
-            </div>
-            
-            <p className="text-gray-400 leading-relaxed text-sm max-w-md mx-auto md:mx-0 font-light">
-              O <strong>Buddy B</strong> nasceu com a missão de simplificar a gestão financeira pessoal. 
-              Nossa tecnologia bancária segura ajuda milhares de pessoas a tomarem melhores decisões todos os dias.
-            </p>
+          {/* AJUSTE 2: Margem inferior menor no mobile (mb-4 vs mb-6) */}
+          <div className="mb-4 md:mb-6">
+              <img 
+              src="/assets/Logo1.png" 
+              alt="Buddy B" 
+              // AJUSTE 3: Altura responsiva (h-8 mobile / h-10 desktop)
+              className="h-8 md:h-10 brightness-0 invert opacity-90" 
+              />
           </div>
-
-          {/* LADO DIREITO: QR CODE + APP (Igual no Mobile e Desktop) */}
-          <div className="flex justify-center md:justify-end items-center relative">
-             
-             {/* Card do QR Code */}
-             <div className="relative flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm shadow-xl">
-                <div className="text-right">
-                  <p className="text-white font-bold text-sm mb-1">Baixe Agora</p>
-                  <p className="text-gray-400 text-[10px] leading-tight">Disponível para <br/>iOS e Android</p>
-                </div>
-                {/* QR Code */}
-                <div className="bg-white p-1 rounded-lg shrink-0">
-                  <img 
-                    src="/assets/images/qrcode.png" 
-                    alt="QR Code" 
-                    className="w-16 h-16"
-                  />
-                </div>
-             </div>
-
-          </div>
+          
+          {/* AJUSTE 4: Texto um pouco menor no mobile (text-xs) e com padding lateral extra */}
+          <p className="text-gray-400 leading-relaxed text-xs md:text-sm max-w-2xl font-light px-2 md:px-0">
+            O <strong>Buddy B</strong> nasceu com a missão de simplificar a gestão financeira pessoal. 
+            Nossa tecnologia bancária segura ajuda milhares de pessoas a tomarem melhores decisões todos os dias.
+          </p>
 
         </div>
+
       </div>
     </section>
   );

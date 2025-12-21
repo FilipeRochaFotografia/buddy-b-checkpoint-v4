@@ -102,7 +102,7 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
             Como é sua gestão hoje?*
           </label>
           <div className="space-y-1 md:space-y-2">
-            {["Tenho desafios e preciso de ajuda", "Tenho uma organização básica", "Tenho um bom controle"].map((option) => (
+            {["Tenho desafios e preciso de ajuda", "Tenho uma organização básica", "Tenho um bom controle, mas quero melhorá-lo", "Tenho uma excelente relação com a gestão financeira", ].map((option) => (
               <label key={option} className="flex items-center gap-2 cursor-pointer group">
                 <input 
                   type="radio" 
