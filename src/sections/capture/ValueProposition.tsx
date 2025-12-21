@@ -5,7 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 const showcaseImages = [
   "/assets/images/23.png",
   "/assets/images/24.png",
-  "/assets/images/25.png"
+  "/assets/images/25.png",
+  "/assets/images/26.png",
+  "/assets/images/27.png",
+  "/assets/images/28.png"
 ];
 
 const features = [
@@ -119,7 +122,7 @@ export function ValueProposition() {
              <div className="relative w-full max-w-2xl h-[350px] md:h-[600px] flex items-center justify-center">
                 
                 {/* Glow atrás do celular */}
-                <div className="absolute inset-0 bg-primary/20 blur-[60px] md:blur-[80px] rounded-full scale-90 -z-10"></div>
+                <div className="absolute inset-0 bg-primary/5 blur-[60px] md:blur-[80px] rounded-full scale-90 -z-10"></div>
                 
                 <AnimatePresence mode="wait">
                   <motion.img 

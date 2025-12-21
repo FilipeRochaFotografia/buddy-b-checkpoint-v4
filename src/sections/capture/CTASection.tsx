@@ -13,24 +13,18 @@ export function CTASection() {
   return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-[#F5F3FF] to-white overflow-hidden">
       
-      <div className="container mx-auto px-4 max-w-5xl"> {/* Aumentei um pouco max-w para dar respiro */}
+      <div className="container mx-auto px-6 md:px-8 max-w-5xl">
         <div className="grid lg:grid-cols-2 gap-8 items-center justify-center">
           
           {/* LADO ESQUERDO: TEXTO E BOTÃO */}
           <div className="text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start">
             
-            {/* Título: Quebra de linha forçada em todas as telas */}
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#424242] mb-4 leading-tight">
               Repense o jeito <br />
               <span className="text-[#9B80FF]">de usar o seu dinheiro</span>
             </h2>
             
-            {/* Subtítulo: 
-                - Removi 'max-w' para evitar quebra indesejada antes do <br>
-                - Mantive os <br> manuais para o Desktop
-                - Mobile: texto flui naturalmente (text-xs para caber em ~3 linhas)
-            */}
-            <p className="text-xs sm:text-sm md:text-lg text-[#666666] font-body mb-8 leading-relaxed w-full">
+            <p className="text-xs sm:text-sm md:text-lg text-[#666666] font-body mb-8 leading-relaxed w-full px-2 md:px-0">
               O Buddy B não é sobre números, é sobre clareza. <br className="hidden md:block" />
               Experimente e descubra como é ter um companheiro <br className="hidden md:block" />
               de confiança para suas decisões financeiras.
@@ -40,7 +34,8 @@ export function CTASection() {
               <Button 
                 onClick={scrollToRescue} 
                 variant="primary" 
-                className="h-14 text-lg px-10 shadow-float hover:scale-105 transition-transform w-full sm:w-auto"
+                // AJUSTE: Altura reduzida (h-12), texto normal (text-base) e padding lateral ajustado (px-8)
+                className="h-12 text-base px-8 shadow-float hover:scale-105 transition-transform w-full sm:w-auto"
               >
                 GARANTIR MEU ACESSO
               </Button>
