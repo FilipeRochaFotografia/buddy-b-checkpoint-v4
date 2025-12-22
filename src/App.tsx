@@ -11,8 +11,18 @@ function App() {
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<ProductPage />} />
+        {/* --- ESTRATÉGIA DE LANÇAMENTO --- */}
+        
+        {/* 1. A Raiz agora abre direto a Página de Oferta/Captura */}
+        <Route path="/" element={<CapturePage />} />
+        
+        {/* 2. Mantém /oferta funcionando também */}
         <Route path="/oferta" element={<CapturePage />} />
+        
+        {/* 3. A Página do Produto fica oculta/comentada para o público não acessar agora */}
+        {/* <Route path="/produto-home" element={<ProductPage />} /> */}
+
+        {/* 4. Páginas Institucionais */}
         <Route path="/termos-de-uso" element={<TermosDeUsoPage />} />
         <Route path="/politica-privacidade" element={<PoliticaPrivacidadePage />} />
       </Routes>
