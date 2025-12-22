@@ -16,7 +16,7 @@ export function CTASection() {
       <div className="container mx-auto px-6 md:px-8 max-w-5xl">
         <div className="grid lg:grid-cols-2 gap-8 items-center justify-center">
           
-          {/* LADO ESQUERDO: TEXTO E BOTÃO */}
+          {/* TEXT & BUTTON */}
           <div className="text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start">
             
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#424242] mb-4 leading-tight">
@@ -34,7 +34,6 @@ export function CTASection() {
               <Button 
                 onClick={scrollToRescue} 
                 variant="primary" 
-                // AJUSTE: Altura reduzida (h-12), texto normal (text-base) e padding lateral ajustado (px-8)
                 className="h-12 text-base px-8 shadow-float hover:scale-105 transition-transform w-full sm:w-auto"
               >
                 GARANTIR MEU ACESSO
@@ -46,7 +45,7 @@ export function CTASection() {
             </div>
           </div>
 
-          {/* LADO DIREITO: IMAGEM */}
+          {/* IMAGE */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative">
              <div className="absolute inset-0 bg-gradient-to-tr from-[#9B80FF]/20 to-[#20CE66]/20 rounded-full blur-[60px] scale-75 -z-10"></div>
              

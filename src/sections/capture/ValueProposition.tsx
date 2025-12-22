@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Lista de imagens
 const showcaseImages = [
   "/assets/images/23.png",
   "/assets/images/24.png",
@@ -75,7 +74,7 @@ export function ValueProposition() {
 
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-  // Efeito 1: Rotação automática das Imagens (3.5s)
+  /* AUTO-PLAY IMAGES (4s) */
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImgIndex((prev) => (prev + 1) % showcaseImages.length);
@@ -83,8 +82,7 @@ export function ValueProposition() {
     return () => clearInterval(interval);
   }, []);
 
-  // Efeito 2: Rotação automática dos Cards de Texto (3s)
-  // Isso fará os cards passarem para o lado e retornarem (loop)
+  /* AUTO-PLAY CARDS (4s) */
   useEffect(() => {
     const interval = setInterval(() => {
       setPage((prev) => (prev + 1) % totalPages);
@@ -105,13 +103,13 @@ export function ValueProposition() {
   return (
     <section className="py-12 md:py-20 bg-gradient-to-b from-white to-[#F8F9FA] relative overflow-hidden">
       
-      {/* Blobs Roxos */}
+      {/* BACKGROUND ELEMENTS */}
       <div className="absolute top-[10%] right-[-10%] w-[60vw] h-[60vw] bg-[#9B80FF]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#583CE3]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* Header */}
+        {/* HEADER */}
         <div className="text-center max-w-4xl mx-auto mb-8 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-[#424242] mb-4 leading-tight">
             Cresça ao lado dos <span className="text-[#9B80FF]">melhores</span>
@@ -121,14 +119,12 @@ export function ValueProposition() {
           </p>
         </div>
 
-        {/* Grid Principal */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
-          {/* LADO ESQUERDO: MOCKUPS */}
+          {/* LEFT: MOCKUPS */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
              <div className="relative w-full max-w-2xl h-[350px] md:h-[600px] flex items-center justify-center">
                 
-                {/* Glow atrás do celular */}
                 <div className="absolute inset-0 bg-primary/5 blur-[60px] md:blur-[80px] rounded-full scale-90 -z-10"></div>
                 
                 <AnimatePresence mode="wait">
@@ -147,7 +143,7 @@ export function ValueProposition() {
              </div>
           </div>
 
-          {/* LADO DIREITO: CARDS (Com auto-play agora) */}
+          {/* RIGHT: CARDS */}
           <div className="order-1 lg:order-2 flex flex-col justify-center h-full">
             
             <div className="relative min-h-[340px] md:min-h-[420px] flex flex-col justify-center w-full max-w-[380px] mx-auto lg:mx-0">
@@ -180,7 +176,7 @@ export function ValueProposition() {
               </AnimatePresence>
             </div>
 
-            {/* Navegação Manual */}
+            {/* NAVIGATION */}
             <div className="flex items-center justify-center lg:justify-start gap-8 mt-4 md:mt-6 w-full max-w-[380px] mx-auto lg:mx-0">
               <button 
                 onClick={prevPage}

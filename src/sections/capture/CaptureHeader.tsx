@@ -11,7 +11,6 @@ export function CaptureHeader() {
       className="absolute top-0 left-0 w-full z-50 py-6"
     >
       <div className="container mx-auto px-4 flex justify-center md:justify-start">
-        {/* Link removido: Apenas visual para ancoragem de marca */}
         <div className="cursor-default select-none">
            <Logo size={32} />
         </div>

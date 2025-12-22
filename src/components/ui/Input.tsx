@@ -10,16 +10,13 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, success, helperText, className = '', ...props }, ref) => {
     
-    // Base Styles
+    /* STYLES */
     const containerClasses = "relative flex flex-col gap-1 w-full text-left";
-    
-    // AJUSTE: p-3 no mobile, p-4 no desktop (md:p-4)
-    // AJUSTE: text-sm no mobile
     let inputClasses = "w-full p-3 md:p-4 rounded-card border-[2px] outline-none transition-all duration-200 font-body text-sm md:text-base text-text-title placeholder-gray-300";
-    
     let labelClasses = "font-heading text-xs md:text-sm font-semibold mb-1 ml-1";
     let statusIcon = null;
 
+    /* STATE LOGIC */
     if (error) {
       inputClasses += " border-error bg-error-light focus:border-error text-error";
       labelClasses += " text-error";

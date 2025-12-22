@@ -5,11 +5,14 @@ import { fadeInUp } from '../../lib/utils';
 export function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // ID do vídeo (Substitua aqui)
+  const VIDEO_ID = "rKYyE0Qtdx0"; 
+
   return (
     <section className="py-20 md:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         
-        {/* CABEÇALHO */}
+        {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <motion.h2 
             variants={fadeInUp}
@@ -25,7 +28,7 @@ export function VideoSection() {
           </p>
         </div>
 
-        {/* CONTAINER DO VÍDEO */}
+        {/* VIDEO CONTAINER */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -33,36 +36,29 @@ export function VideoSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative max-w-5xl mx-auto"
         >
-          {/* Sombra Colorida (Glow) */}
+          {/* Glow Effect */}
           <div className="absolute -inset-4 bg-primary rounded-[40px] blur-3xl opacity-10 pointer-events-none"></div>
 
-          {/* Moldura */}
+          {/* Frame */}
           <div className="relative rounded-[24px] overflow-hidden shadow-2xl bg-white aspect-video border-4 border-white z-10">
             
             {!isPlaying ? (
-              /* THUMBNAIL CLEAN */
+              /* THUMBNAIL */
               <div 
                 className="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer group bg-gray-50/30"
                 onClick={() => setIsPlaying(true)}
               >
-                {/* 
-                   WRAPPER CENTRALIZADOR (Compactado no Mobile)
-                   - Mobile: gap-2 (Elementos bem juntos para caber)
-                   - Desktop: gap-8 (Mais espalhado)
-                */}
                 <div className="flex flex-col items-center justify-center gap-1 md:gap-8 w-full h-full">
                     
-                    {/* 1. LOGO: Reduzida no Mobile para h-20 (antes h-32) para dar espaço */}
+                    {/* Logo */}
                     <img 
-                      src="/assets/Logo1.png" 
+                      src="/assets/Logo2.png" 
                       alt="Buddy B" 
                       className="h-24 md:h-48 w-auto opacity-100 transition-transform duration-500 group-hover:scale-105" 
                     />
                     
-                    {/* 2. GRUPO PLAY + TEXTO */}
+                    {/* Play Button & Text */}
                     <div className="flex flex-col items-center gap-1.5 md:gap-6">
-                      
-                      {/* Botão Play */}
                       <div className="relative">
                         <span className="absolute inset-0 rounded-full bg-primary/20 scale-0 group-hover:scale-150 transition-transform duration-700"></span>
                         <div className="w-12 h-12 md:w-16 md:h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform transition-transform group-hover:scale-110 relative z-10">
@@ -72,7 +68,6 @@ export function VideoSection() {
                         </div>
                       </div>
 
-                      {/* Texto: Ajustado para ficar logo abaixo */}
                       <p className="text-[10px] md:text-xs font-bold text-primary/60 uppercase tracking-[0.2em]">
                         Assista a demonstração
                       </p>
@@ -81,11 +76,11 @@ export function VideoSection() {
                 </div>
               </div>
             ) : (
-              /* IFRAME YOUTUBE */
+              /* PLAYER */
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/rKYyE0Qtdx0?autoplay=1" 
+                src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&showinfo=0`}
                 title="Buddy B Video"
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -14,9 +14,11 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   ...props 
 }) => {
-  // Ajustado: rounded-pill (30px) conforme System B
+  
+  /* BASE STYLES */
   const baseStyles = "font-heading font-bold text-[18px] transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 rounded-pill py-3 px-8 disabled:opacity-50 disabled:cursor-not-allowed";
   
+  /* VARIANTS */
   const variants = {
     primary: "bg-primary text-white hover:bg-primary-dark hover:shadow-system border-2 border-transparent",
     white: "bg-white text-primary hover:bg-gray-50 hover:shadow-system border-2 border-transparent",

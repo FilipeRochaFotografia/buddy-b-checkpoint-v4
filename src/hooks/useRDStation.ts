@@ -13,7 +13,6 @@ export function useRDStation() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // SEU TOKEN PÚBLICO (Confirme se não tem espaços extras)
   const TOKEN_PUBLICO = "04f1b1df1938c6cf980f4d329682e3e3"; 
 
   const sendLead = async (data: LeadData) => {
@@ -21,9 +20,7 @@ export function useRDStation() {
     setError(null);
 
     try {
-      console.log("📤 Enviando via Método Form-Post (Iframe)...");
-
-      // 1. Criar um Iframe invisível (para receber a resposta sem recarregar a página)
+      /* 1. SETUP IFRAME TARGET */
       const iframeName = 'rd-hidden-frame';
       let iframe = document.getElementById(iframeName) as HTMLIFrameElement;
       
@@ -35,14 +32,14 @@ export function useRDStation() {
         document.body.appendChild(iframe);
       }
 
-      // 2. Criar um Formulário invisível conectado ao Iframe
+      /* 2. SETUP FORM */
       const form = document.createElement('form');
       form.method = 'POST';
       form.action = 'https://www.rdstation.com.br/api/1.2/conversions';
-      form.target = iframeName; // A mágica acontece aqui: envia para o iframe
+      form.target = iframeName;
       form.style.display = 'none';
 
-      // 3. Adicionar os campos (Inputs Hidden)
+      /* 3. MAPPING FIELDS */
       const addField = (name: string, value: string) => {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -59,23 +56,19 @@ export function useRDStation() {
       addField('cf_perfil_financeiro', data.profile);
       addField('traffic_source', document.referrer || "direct");
 
-      // 4. Anexar e Enviar
+      /* 4. SUBMIT */
       document.body.appendChild(form);
       form.submit();
 
-      // 5. Limpeza e Sucesso
-      // Como é um envio para iframe, não temos feedback de erro (CORS),
-      // mas o envio de formulário é robusto e raramente falha.
+      /* 5. CLEANUP & SUCCESS */
       setTimeout(() => {
         document.body.removeChild(form);
-        // O iframe pode ficar para o próximo envio
-        console.log("🚀 Envio despachado!");
         setIsSuccess(true);
         setIsLoading(false);
-      }, 500); // Pequeno delay para garantir o submit
+      }, 500);
 
     } catch (err) {
-      console.error("❌ Erro inesperado:", err);
+      console.error(err);
       setError("Erro ao processar envio.");
       setIsLoading(false);
     }

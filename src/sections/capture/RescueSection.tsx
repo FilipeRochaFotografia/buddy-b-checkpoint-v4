@@ -5,7 +5,6 @@ import { fadeInUp, staggerContainer } from '../../lib/utils';
 
 export function RescueSection() {
   
-  // Badge Item Component para evitar repetição
   const BadgeItem = ({ icon, text }: { icon: React.ReactNode, text: string }) => (
     <div className="flex items-center gap-2 group cursor-default">
       <div className="p-1.5 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors shrink-0">
@@ -17,7 +16,6 @@ export function RescueSection() {
     </div>
   );
 
-  // Ícones
   const LockIcon = (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -41,14 +39,22 @@ export function RescueSection() {
   return (
     <section id="resgate" className="py-20 md:py-24 bg-gradient-to-br from-[#583CE3] to-[#9B80FF] relative overflow-hidden">
       
-      {/* Elementos de Fundo */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 mix-blend-overlay"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#583CE3]/40 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/4 mix-blend-multiply"></div>
+      {/* BACKGROUND ANIMATION */}
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 mix-blend-overlay" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], x: [0, -20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#583CE3]/40 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/4 mix-blend-multiply" 
+      />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* LADO ESQUERDO: O FORMULÁRIO */}
+          {/* LEFT: FORM */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -56,7 +62,6 @@ export function RescueSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-5 lg:order-1 order-2 flex flex-col items-center lg:items-start"
           >
-            
             <div className="relative w-full max-w-md bg-white rounded-[20px] shadow-2xl p-6 md:p-8 transform transition-transform hover:scale-[1.01] duration-500">
                 <div className="text-center mb-6">
                    <p className="text-xs font-bold text-[#9B80FF] uppercase tracking-widest mb-1 animate-pulse">Última chance</p>
@@ -65,7 +70,7 @@ export function RescueSection() {
                 <LeadForm showTitle={false} />
             </div>
 
-            {/* --- BADGES MOBILE (Apenas 2 ícones, lado a lado) --- */}
+            {/* MOBILE BADGES (2 Items) */}
             <div className="mt-8 lg:hidden flex flex-row justify-center items-center gap-4 opacity-90 w-full px-1">
                <BadgeItem icon={LockIcon} text="Pagamento Seguro" />
                <BadgeItem icon={ClockIcon} text="Acesso Imediato" />
@@ -73,7 +78,7 @@ export function RescueSection() {
 
           </motion.div>
 
-          {/* LADO DIREITO: TEXTO */}
+          {/* RIGHT: TEXT */}
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -96,7 +101,7 @@ export function RescueSection() {
             </motion.h2>
             
             <motion.div variants={fadeInUp} className="text-white/90 font-body mb-8 leading-relaxed">
-              {/* Mobile Text */}
+              {/* MOBILE TEXT */}
               <div className="md:hidden text-sm px-4">
                 <p className="mb-4">
                   O Buddy B foi criado <br/>
@@ -108,7 +113,7 @@ export function RescueSection() {
                 </p>
               </div>
 
-              {/* Desktop Text */}
+              {/* DESKTOP TEXT */}
               <div className="hidden md:block text-xl max-w-xl">
                 <p>
                   O Buddy B foi criado para dar mais controle às suas finanças.<br/>
@@ -118,7 +123,7 @@ export function RescueSection() {
               </div>
             </motion.div>
 
-            {/* --- BADGES DESKTOP (Todos os 3 ícones, inalterado) --- */}
+            {/* DESKTOP BADGES (3 Items) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

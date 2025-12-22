@@ -7,7 +7,7 @@ export function HeroCapture() {
   return (
     <section className="relative min-h-screen flex items-center pt-8 pb-20 md:pb-32 overflow-hidden bg-[#583CE3]">
       
-      {/* 1. BACKGROUND */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/assets/images/Pessoa1.jpg" 
@@ -17,11 +17,10 @@ export function HeroCapture() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#583CE3] via-[#583CE3]/20 to-[#583CE3]/05"></div>
       </div>
 
-      {/* AJUSTE CRÍTICO: px-6 (24px) no mobile para desgrudar da borda */}
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           
-          {/* ESQUERDA: COPYWRITING */}
+          {/* COPYWRITING */}
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -48,7 +47,7 @@ export function HeroCapture() {
               suas finanças.
             </motion.h1>
 
-            {/* BLOCO DE DESCONTO */}
+            {/* DISCOUNT INFO */}
             <motion.div variants={fadeInUp} className="pt-2 md:pt-4">
               <h2 className="text-2xl md:text-4xl font-heading font-bold mb-2 text-white">
                 Assine agora com <br />
@@ -65,7 +64,7 @@ export function HeroCapture() {
             </motion.p>
           </motion.div>
 
-          {/* DIREITA: FORMULÁRIO */}
+          {/* FORM CONTAINER */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,7 +72,6 @@ export function HeroCapture() {
             className="lg:col-span-5 relative flex flex-col items-center lg:items-end justify-center"
             id="formulario"
           >
-            {/* Card do formulário agora ocupa 100% da largura disponível no grid, respeitando o px-6 do container */}
             <div className="bg-white rounded-[20px] shadow-2xl border border-white/50 p-5 md:p-8 relative z-30 w-full max-w-lg md:scale-[0.95] origin-top-right mt-6 md:mt-0">
                <LeadForm />
             </div>

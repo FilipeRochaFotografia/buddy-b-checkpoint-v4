@@ -5,7 +5,6 @@ import Button from '../../ui/Button';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Links do menu
   const menuItems = [
     { label: 'Funcionalidades', href: '#funcionalidades' },
     { label: 'Quem usa', href: '#depoimentos' },
@@ -25,7 +24,7 @@ export function Navbar() {
           />
         </Link>
 
-        {/* MENU DESKTOP */}
+        {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-8">
           {menuItems.map((item) => (
             <a 
@@ -46,10 +45,11 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* BOTÃO HAMBURGUER */}
+        {/* MOBILE TOGGLE */}
         <button 
           className="md:hidden p-2 text-text-title"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Abrir menu"
         >
           {isOpen ? (
              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -59,7 +59,7 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* MENU MOBILE */}
+      {/* MOBILE MENU */}
       {isOpen && (
         <div className="absolute top-20 left-0 w-full bg-white shadow-lg border-b border-gray-100 p-6 flex flex-col gap-6 md:hidden animate-fade-in">
           {menuItems.map((item) => (

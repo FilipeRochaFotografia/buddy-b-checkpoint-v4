@@ -43,10 +43,10 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
     );
   }
 
-  // AJUSTE: gap-3 no mobile, gap-4 no desktop
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 md:gap-4">
       
+      {/* TITLE */}
       {showTitle && (
         <div className="text-center mb-1 md:mb-2">
           <h3 className="text-lg md:text-xl font-heading font-bold text-primary">
@@ -72,7 +72,7 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
           error={errors.email?.message} 
         />
 
-        {/* Input de Celular */}
+        {/* PHONE INPUT */}
         <div className="relative flex flex-col gap-1 w-full text-left">
            <label className="font-heading text-xs md:text-sm font-semibold mb-1 ml-1 text-text-title">
              Celular*
@@ -83,7 +83,6 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
                 <span className="text-xs md:text-sm text-text-body font-semibold">+55</span>
              </div>
              
-             {/* Input manual ajustado para p-3 md:p-4 */}
              <input 
                placeholder="(DDD) 99999-9999" 
                {...register('phone')}
@@ -96,13 +95,18 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
            {errors.phone && <span className="text-[10px] md:text-xs text-error font-semibold ml-1">{errors.phone.message}</span>}
         </div>
 
-        {/* Radio Button */}
+        {/* PROFILE OPTIONS */}
         <div className="flex flex-col gap-1 md:gap-2 pt-1">
           <label className="text-xs md:text-sm font-heading font-bold text-text-title">
             Como é sua gestão hoje?*
           </label>
           <div className="space-y-1 md:space-y-2">
-            {["Tenho desafios e preciso de ajuda", "Tenho uma organização básica", "Tenho um bom controle, mas quero melhorá-lo", "Tenho uma excelente relação com a gestão financeira", ].map((option) => (
+            {[
+              "Tenho desafios e preciso de ajuda", 
+              "Tenho uma organização básica", 
+              "Tenho um bom controle, mas quero melhorá-lo", 
+              "Tenho uma excelente relação com a gestão financeira"
+            ].map((option) => (
               <label key={option} className="flex items-center gap-2 cursor-pointer group">
                 <input 
                   type="radio" 
@@ -117,7 +121,7 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
           {errors.profile && <span className="text-[10px] md:text-xs text-error font-semibold">{errors.profile.message}</span>}
         </div>
 
-        {/* Desafio Matemático */}
+        {/* MATH CHALLENGE */}
         <div className="relative flex flex-col gap-1 w-full text-left pt-1">
            <label className="font-heading text-xs md:text-sm font-semibold mb-1 ml-1 text-text-title">
              7 + 4 = ?
@@ -135,13 +139,13 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
 
       </div>
 
+      {/* SUBMIT */}
       <div className="pt-2">
         <Button 
           type="submit" 
           fullWidth 
           disabled={isLoading} 
           variant="primary" 
-          // Botão menor no mobile (h-12) e maior no desktop (h-[56px])
           className="h-12 md:h-[56px] text-base md:text-lg shadow-system hover:shadow-float transition-all hover:scale-[1.02]"
         >
           {isLoading ? "Enviando..." : "Garantir Desconto!"}

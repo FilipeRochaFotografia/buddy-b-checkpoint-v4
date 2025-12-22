@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- Ícones Inline ---
 const Icons = {
   Check: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
   Star: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
@@ -36,7 +35,6 @@ export function PricingHighlight() {
     iconColor: isSmart ? 'text-[#20CE66]' : 'text-[#424242]',
   };
 
-  // --- LISTAS DE BENEFÍCIOS ---
   const annualFeatures = [
     "Pagamento único (sem mensalidade)",
     "Único com Fluxo de Caixa",
@@ -59,13 +57,13 @@ export function PricingHighlight() {
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-[#F8F9FA] to-[#F0EBFF] relative overflow-hidden">
       
-      {/* Background Decorativo */}
+      {/* BACKGROUND ELEMENTS */}
       <div className="absolute top-[10%] left-[-10%] w-[60vw] h-[60vw] bg-[#9B80FF]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[#583CE3]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* Header */}
+        {/* HEADER */}
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#424242] mb-3 transition-colors duration-300">
             Escolha <span className={isSmart ? "text-[#9B80FF]" : "text-[#424242]"}>inteligente</span>
@@ -75,7 +73,7 @@ export function PricingHighlight() {
           </p>
         </div>
 
-        {/* --- TOGGLE --- */}
+        {/* TOGGLE */}
         <div className="flex justify-center mb-12">
           <div className="bg-white p-1 rounded-full flex items-center shadow-lg border border-gray-100 relative">
             
@@ -118,10 +116,10 @@ export function PricingHighlight() {
           </div>
         </div>
 
-        {/* GRID DE CARDS */}
+        {/* GRID */}
         <div className="grid md:grid-cols-2 gap-6 items-center justify-center max-w-4xl mx-auto perspective-[1000px]">
           
-          {/* CARD 1: O PREÇO */}
+          {/* PRICING CARD */}
           <div className="relative z-20 order-1 flex justify-center md:justify-end">
              <AnimatePresence mode="wait">
               <motion.div 
@@ -137,7 +135,7 @@ export function PricingHighlight() {
                   w-full max-w-[380px]
                 `}
               >
-                {/* Badge Flutuante */}
+                {/* Badge */}
                 <motion.div 
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -147,7 +145,7 @@ export function PricingHighlight() {
                   {isSmart ? '⚡ Oferta Especial' : 'Plano Padrão'}
                 </motion.div>
 
-                {/* Conteúdo */}
+                {/* Content */}
                 <div className="w-full">
                     <p className={`font-heading font-bold text-xs uppercase tracking-[0.2em] mb-2 opacity-80 ${theme.textColor}`}>
                       {isSmart ? 'BUDDY B SMART' : 'BUDDY B STANDARD'}
@@ -179,7 +177,6 @@ export function PricingHighlight() {
                       )}
                     </div>
 
-                    {/* Lista */}
                     <div className="space-y-3 w-full text-left bg-black/5 rounded-xl p-4 mb-6">
                        <ul className={`space-y-2.5 text-xs font-semibold ${theme.textColor}`}>
                           {(isSmart ? annualFeatures : monthlyFeatures).map((item, index) => (
@@ -211,16 +208,14 @@ export function PricingHighlight() {
              </AnimatePresence>
           </div>
 
-          {/* CARD 2: VANTAGENS PRÉ-LANÇAMENTO (AJUSTADO: Centralizado e Ícones menores) */}
+          {/* BENEFÍCIOS CARD */}
           <div className="order-2 flex justify-center md:justify-start">
             <div className="relative bg-white border border-gray-100 p-6 rounded-[1.5rem] shadow-lg flex flex-col justify-center w-full max-w-[320px]">
               
-              {/* Título */}
               <h3 className="text-lg font-heading font-bold text-[#424242] mb-8 leading-tight text-center">
                 Vantagens de assinar o Buddy B no Pré lançamento
               </h3>
               
-              {/* Vantagens Ajustadas: items-center, w-8 h-8, sem margens manuais */}
               <div className="flex flex-col gap-4">
                  
                  <div className="flex gap-3 items-center">
@@ -260,7 +255,6 @@ export function PricingHighlight() {
                  </div>
               </div>
 
-              {/* Satisfação Garantida */}
               <div className="mt-5 p-2.5 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center gap-2">
                  <div className="flex text-[#FFD400] scale-75">
                    <Icons.Star /><Icons.Star /><Icons.Star /><Icons.Star /><Icons.Star />
@@ -268,7 +262,6 @@ export function PricingHighlight() {
                  <span className="text-xs font-bold text-[#424242]">Satisfação Garantida</span>
               </div>
 
-              {/* Texto Legal */}
               <p className="text-[9px] text-gray-400 mt-4 text-center leading-tight">
                 ¹Termos e condições para os benefícios do pré-lançamento podem ser encontrados nos termos de uso do Buddy B ou em nossas redes sociais.
               </p>

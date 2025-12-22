@@ -46,8 +46,8 @@ export default {
         'tag': '15px',
       },
       boxShadow: {
-        'system': '0 4px 20px rgba(0, 0, 0, 0.08)', // Sombra mais moderna/suave
-        'float': '0 10px 30px rgba(155, 128, 255, 0.2)', // Sombra roxa para destaque
+        'system': '0 4px 20px rgba(0, 0, 0, 0.08)',
+        'float': '0 10px 30px rgba(155, 128, 255, 0.2)',
       }
     },
   },

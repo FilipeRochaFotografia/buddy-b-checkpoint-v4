@@ -1,12 +1,9 @@
-/* 1. Imports vêm PRIMEIRO */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
-/* 2. Diretivas do Tailwind vêm DEPOIS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 3. Fontes Locais */
 @font-face {
   font-family: 'Cy';
   src: url('/fonts/Cy-Bold.ttf') format('truetype');
@@ -15,7 +12,6 @@
   font-display: swap;
 }
 
-/* 4. Estilos Globais */
 body {
   @apply bg-background text-text-body font-body antialiased;
 }
