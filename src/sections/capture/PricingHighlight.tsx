@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '../../lib/utils';
 
+// --- Ícones Inline ---
 const Icons = {
   Check: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
   Star: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
@@ -64,17 +66,29 @@ export function PricingHighlight() {
       <div className="container mx-auto px-4 relative z-10">
         
         {/* HEADER */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#424242] mb-3 transition-colors duration-300">
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-heading font-bold text-[#424242] mb-3 transition-colors duration-300">
             Escolha <span className={isSmart ? "text-[#9B80FF]" : "text-[#424242]"}>inteligente</span>
-          </h2>
-          <p className="text-base text-[#666666] max-w-xxl mx-auto">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-base text-[#666666] max-w-xxl mx-auto">
             Veja a diferença brutal de valor entre o plano mensal e a nossa oferta de pré-lançamento.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* TOGGLE */}
-        <div className="flex justify-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="flex justify-center mb-12"
+        >
           <div className="bg-white p-1 rounded-full flex items-center shadow-lg border border-gray-100 relative">
             
             <button 
@@ -114,13 +128,19 @@ export function PricingHighlight() {
               </span>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* GRID */}
         <div className="grid md:grid-cols-2 gap-6 items-center justify-center max-w-4xl mx-auto perspective-[1000px]">
           
           {/* PRICING CARD */}
-          <div className="relative z-20 order-1 flex justify-center md:justify-end">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative z-20 order-1 flex justify-center md:justify-end"
+          >
              <AnimatePresence mode="wait">
               <motion.div 
                 key={plan}
@@ -177,6 +197,7 @@ export function PricingHighlight() {
                       )}
                     </div>
 
+                    {/* List */}
                     <div className="space-y-3 w-full text-left bg-black/5 rounded-xl p-4 mb-6">
                        <ul className={`space-y-2.5 text-xs font-semibold ${theme.textColor}`}>
                           {(isSmart ? annualFeatures : monthlyFeatures).map((item, index) => (
@@ -206,10 +227,16 @@ export function PricingHighlight() {
 
               </motion.div>
              </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* BENEFÍCIOS CARD */}
-          <div className="order-2 flex justify-center md:justify-start">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            className="order-2 flex justify-center md:justify-start"
+          >
             <div className="relative bg-white border border-gray-100 p-6 rounded-[1.5rem] shadow-lg flex flex-col justify-center w-full max-w-[320px]">
               
               <h3 className="text-lg font-heading font-bold text-[#424242] mb-8 leading-tight text-center">
@@ -256,7 +283,7 @@ export function PricingHighlight() {
               </div>
 
               <div className="mt-5 p-2.5 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center gap-2">
-                 <div className="flex text-[#FFD400] scale-75">
+                 <div className="flex text-[#FFD400]">
                    <Icons.Star /><Icons.Star /><Icons.Star /><Icons.Star /><Icons.Star />
                  </div>
                  <span className="text-xs font-bold text-[#424242]">Satisfação Garantida</span>
@@ -267,7 +294,7 @@ export function PricingHighlight() {
               </p>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
