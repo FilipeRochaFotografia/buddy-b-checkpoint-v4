@@ -145,7 +145,7 @@ export function PricingHighlight() {
         </motion.div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-6 items-center justify-center max-w-4xl mx-auto perspective-[1000px]">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center justify-center max-w-6xl mx-auto px-4 perspective-[1000px]">
           
           {/* PRICING CARD */}
           <motion.div 
