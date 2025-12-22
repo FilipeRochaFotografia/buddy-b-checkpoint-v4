@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+// AJUSTE: O caminho correto para o Button (saindo de layout para ui)
 import Button from '../../ui/Button';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { label: 'Funcionalidades', href: '#funcionalidades' },
-    { label: 'Quem usa', href: '#depoimentos' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'Funcionalidades', href: '/#funcionalidades' }, // Adicionei / para funcionar de outras páginas
+    { label: 'Quem usa', href: '/#depoimentos' },
+    { label: 'Blog', href: '/#blog' },
   ];
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -27,26 +27,19 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
     resolver: zodResolver(leadSchema)
   });
 
+  useEffect(() => {
+    if (isSuccess) {
+      window.location.href = "https://app.buddybapp.com/";
+    }
+  }, [isSuccess]);
+
   const onSubmit = (data: LeadFormData) => {
     sendLead(data);
   };
 
-  if (isSuccess) {
-    return (
-      <div className="bg-white p-8 rounded-card text-center h-full flex flex-col justify-center items-center">
-        <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mb-4">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#20CE66" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </div>
-        <h3 className="text-2xl font-heading text-primary mb-2">Sucesso!</h3>
-        <p className="text-text-body">Verifique seu email para acessar o desconto.</p>
-      </div>
-    );
-  }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 md:gap-4">
       
-      {/* TITLE */}
       {showTitle && (
         <div className="text-center mb-1 md:mb-2">
           <h3 className="text-lg md:text-xl font-heading font-bold text-primary">
@@ -72,7 +65,7 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
           error={errors.email?.message} 
         />
 
-        {/* PHONE INPUT */}
+        {/* Input de Celular */}
         <div className="relative flex flex-col gap-1 w-full text-left">
            <label className="font-heading text-xs md:text-sm font-semibold mb-1 ml-1 text-text-title">
              Celular*
@@ -95,18 +88,13 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
            {errors.phone && <span className="text-[10px] md:text-xs text-error font-semibold ml-1">{errors.phone.message}</span>}
         </div>
 
-        {/* PROFILE OPTIONS */}
+        {/* Radio Button */}
         <div className="flex flex-col gap-1 md:gap-2 pt-1">
           <label className="text-xs md:text-sm font-heading font-bold text-text-title">
             Como é sua gestão hoje?*
           </label>
           <div className="space-y-1 md:space-y-2">
-            {[
-              "Tenho desafios e preciso de ajuda", 
-              "Tenho uma organização básica", 
-              "Tenho um bom controle, mas quero melhorá-lo", 
-              "Tenho uma excelente relação com a gestão financeira"
-            ].map((option) => (
+            {["Tenho desafios e preciso de ajuda", "Tenho uma organização básica", "Tenho um bom controle"].map((option) => (
               <label key={option} className="flex items-center gap-2 cursor-pointer group">
                 <input 
                   type="radio" 
@@ -121,7 +109,7 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
           {errors.profile && <span className="text-[10px] md:text-xs text-error font-semibold">{errors.profile.message}</span>}
         </div>
 
-        {/* MATH CHALLENGE */}
+        {/* Desafio Matemático */}
         <div className="relative flex flex-col gap-1 w-full text-left pt-1">
            <label className="font-heading text-xs md:text-sm font-semibold mb-1 ml-1 text-text-title">
              7 + 4 = ?
@@ -139,16 +127,15 @@ export default function LeadForm({ showTitle = true }: LeadFormProps) {
 
       </div>
 
-      {/* SUBMIT */}
       <div className="pt-2">
         <Button 
           type="submit" 
           fullWidth 
-          disabled={isLoading} 
+          disabled={isLoading || isSuccess} 
           variant="primary" 
           className="h-12 md:h-[56px] text-base md:text-lg shadow-system hover:shadow-float transition-all hover:scale-[1.02]"
         >
-          {isLoading ? "Enviando..." : "Garantir Desconto!"}
+          {isLoading || isSuccess ? "Processando..." : "Garantir Desconto!"}
         </Button>
       </div>
       

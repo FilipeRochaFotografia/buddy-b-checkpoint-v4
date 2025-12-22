@@ -112,10 +112,10 @@ export function ValueProposition() {
         {/* HEADER */}
         <div className="text-center max-w-4xl mx-auto mb-8 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-[#424242] mb-4 leading-tight">
-            Cresça ao lado dos <span className="text-[#9B80FF]">melhores</span>
+            O que você vai <span className="text-[#9B80FF]">encontrar</span>
           </h2>
           <p className="text-base md:text-lg text-[#666666] font-body font-light">
-            Junte-se a milhares de brasileiros que já assumiram o controle financeiro com a tecnologia do Buddy B.
+            Um jeito simples e fácil de organizar seu dinheiro, controlar gastos, acompanhar seu fluxo de caixa e planejar seu futuro financeiro, tudo em um só lugar.
           </p>
         </div>
 

@@ -1,20 +1,23 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductPage from './pages/ProductPage';
 import CapturePage from './pages/CapturePage';
+import TermosDeUsoPage from './pages/TermosDeUso';
+import PoliticaPrivacidadePage from './pages/PoliticaPrivacidade';
+import ScrollToTop from './components/ScrollToTop';
 
-const App: React.FC = () => {
+function App() {
   return (
-    <HelmetProvider>
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<ProductPage />} />
-          <Route path="/oferta" element={<CapturePage />} />
-        </Routes>
-      </HashRouter>
-    </HelmetProvider>
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<ProductPage />} />
+        <Route path="/oferta" element={<CapturePage />} />
+        <Route path="/termos-de-uso" element={<TermosDeUsoPage />} />
+        <Route path="/politica-privacidade" element={<PoliticaPrivacidadePage />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;

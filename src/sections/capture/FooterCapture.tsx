@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function FooterCapture() {
   return (
@@ -12,13 +13,17 @@ export function FooterCapture() {
           
           {/* COPYRIGHT */}
           <p className="text-center md:text-left">
-            © 2026 Buddy B System. Todos os direitos reservados.
+            © 2025 Buddy B System. Todos os direitos reservados.
           </p>
           
-          {/* LINKS */}
+          {/* LINKS FUNCIONAIS */}
           <div className="flex gap-6 items-center">
-            <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
-            <a href="#" className="hover:text-white transition-colors">Política de Privacidade</a>
+            <Link to="/termos-de-uso" className="hover:text-white transition-colors">
+              Termos de Uso
+            </Link>
+            <Link to="/politica-privacidade" className="hover:text-white transition-colors">
+              Política de Privacidade
+            </Link>
           </div>
 
         </div>

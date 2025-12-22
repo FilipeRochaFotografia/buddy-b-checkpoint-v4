@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../../lib/utils';
+
+// --- Animações (Inline para garantir funcionamento) ---
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 // --- Ícones Inline ---
 const Icons = {
@@ -53,7 +67,7 @@ export function PricingHighlight() {
     "Gestão completa de cartões de crédito",
     "Integração bancária segura via Open Finance",
     "Suporte a múltiplas moedas",
-    "Organização e categorização financeir"
+    "Organização e categorização financeira"
   ];
 
   return (
