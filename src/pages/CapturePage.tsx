@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet-async';
 
 import { UrgencyBanner } from '../sections/capture/UrgencyBanner';
 import { HeroCapture } from '../sections/capture/HeroCapture';
-import { VideoSection } from '../sections/capture/VideoSection';
 import { ValueProposition } from '../sections/capture/ValueProposition';
+import { VideoSection } from '../sections/capture/VideoSection';
 import { PricingHighlight } from '../sections/capture/PricingHighlight';
 import { SocialProof } from '../sections/capture/SocialProof';
 import { CTASection } from '../sections/capture/CTASection';
@@ -28,11 +28,11 @@ const CapturePage: React.FC = () => {
         {/* HERO */}
         <HeroCapture />
         
-        {/* VIDEO */}
-        <VideoSection /> 
+        {/* VALUEPROPOSITION */}
+        <ValueProposition /> 
         
-        {/* FEATURES */}
-        <ValueProposition />
+        {/* VIDEO */}
+        <VideoSection />
         
         {/* PRICING */}
         <PricingHighlight />

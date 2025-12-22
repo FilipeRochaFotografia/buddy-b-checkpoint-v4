@@ -13,7 +13,7 @@ export function VideoSection() {
       <div className="container mx-auto px-4">
         
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-4xl mx-auto mb-12">
           <motion.h2 
             variants={fadeInUp}
             initial="initial"
@@ -21,10 +21,11 @@ export function VideoSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-title mb-4"
           >
-            Controle total em <span className="text-primary">segundos</span>
+            Controle financeiro na <span className="text-primary">palma da mão</span>
           </motion.h2>
           <p className="text-lg text-text-body font-body">
-            Veja como o Buddy B transforma dados complexos em decisões simples.
+            Além de todas as funcionalidades citadas, o Buddy B oferece um grande diferencial: o Fluxo de Caixa. Com ele, você acompanha entradas e saídas, projeta seus próximos meses e toma decisões com mais clareza.
+<br/> Confira no vídeo abaixo como essa função pode facilitar sua rotina financeira:
           </p>
         </div>
 
