@@ -77,7 +77,7 @@ export function PricingHighlight() {
             Escolha <span className={isSmart ? "text-[#9B80FF]" : "text-[#424242]"}>inteligente</span>
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-base text-[#666666] max-w-xxl mx-auto">
-            Veja a diferença brutal de valor entre o plano mensal e a nossa oferta de pré-lançamento.
+            Veja a diferença de valor entre o plano mensal e a nossa oferta de pré-lançamento.
           </motion.p>
         </motion.div>
 
