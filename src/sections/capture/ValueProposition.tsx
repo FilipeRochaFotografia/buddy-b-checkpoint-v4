@@ -75,13 +75,22 @@ export function ValueProposition() {
 
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-  // Timing de 3.5s
+  // Efeito 1: Rotação automática das Imagens (3.5s)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImgIndex((prev) => (prev + 1) % showcaseImages.length);
-    }, 3500);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  // Efeito 2: Rotação automática dos Cards de Texto (3s)
+  // Isso fará os cards passarem para o lado e retornarem (loop)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPage((prev) => (prev + 1) % totalPages);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [totalPages]);
 
   const nextPage = () => {
     setPage((prev) => (prev + 1) % totalPages);
@@ -94,7 +103,6 @@ export function ValueProposition() {
   const currentFeatures = features.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
   return (
-    // AJUSTE 1: Padding reduzido no mobile (py-12)
     <section className="py-12 md:py-20 bg-gradient-to-b from-white to-[#F8F9FA] relative overflow-hidden">
       
       {/* Blobs Roxos */}
@@ -103,7 +111,7 @@ export function ValueProposition() {
 
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* Header - Margem reduzida no mobile */}
+        {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-8 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-[#424242] mb-4 leading-tight">
             Cresça ao lado dos <span className="text-[#9B80FF]">melhores</span>
@@ -113,11 +121,10 @@ export function ValueProposition() {
           </p>
         </div>
 
-        {/* Grid com gap reduzido no mobile */}
+        {/* Grid Principal */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* LADO ESQUERDO: MOCKUPS */}
-          {/* AJUSTE 2: Altura do container reduzida drasticamente no mobile (h-[350px]) */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
              <div className="relative w-full max-w-2xl h-[350px] md:h-[600px] flex items-center justify-center">
                 
@@ -133,7 +140,6 @@ export function ValueProposition() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
-                    // AJUSTE 3: object-contain garante que a imagem não corte, mas a altura do container pai define o espaço
                     className="w-full h-full object-contain drop-shadow-2xl absolute"
                   />
                 </AnimatePresence>
@@ -141,10 +147,9 @@ export function ValueProposition() {
              </div>
           </div>
 
-          {/* LADO DIREITO: CARDS */}
+          {/* LADO DIREITO: CARDS (Com auto-play agora) */}
           <div className="order-1 lg:order-2 flex flex-col justify-center h-full">
             
-            {/* AJUSTE 4: min-h reduzido no mobile para não empurrar muito */}
             <div className="relative min-h-[340px] md:min-h-[420px] flex flex-col justify-center w-full max-w-[380px] mx-auto lg:mx-0">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -161,7 +166,6 @@ export function ValueProposition() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      // AJUSTE 5: Altura do card levemente menor no mobile se necessário, ou padding menor
                       className="bg-white border border-purple-100 p-4 md:p-5 rounded-[16px] shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 transform hover:-translate-x-1 flex items-center h-[90px] md:h-[100px]"
                     >
                       <div className="flex items-center gap-4 w-full">
@@ -176,7 +180,7 @@ export function ValueProposition() {
               </AnimatePresence>
             </div>
 
-            {/* Navegação */}
+            {/* Navegação Manual */}
             <div className="flex items-center justify-center lg:justify-start gap-8 mt-4 md:mt-6 w-full max-w-[380px] mx-auto lg:mx-0">
               <button 
                 onClick={prevPage}

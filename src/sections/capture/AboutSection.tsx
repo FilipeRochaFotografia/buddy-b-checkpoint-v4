@@ -21,7 +21,7 @@ export function AboutSection() {
           {/* AJUSTE 4: Texto um pouco menor no mobile (text-xs) e com padding lateral extra */}
           <p className="text-gray-400 leading-relaxed text-xs md:text-sm max-w-2xl font-light px-2 md:px-0">
             O <strong>Buddy B</strong> nasceu com a missão de simplificar a gestão financeira pessoal. 
-            Nossa tecnologia bancária segura ajuda milhares de pessoas a tomarem melhores decisões todos os dias.
+            Nossa tecnologia segura ajuda milhares de pessoas a tomarem melhores decisões todos os dias.
           </p>
 
         </div>
