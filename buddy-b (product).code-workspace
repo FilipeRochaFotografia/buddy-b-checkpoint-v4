@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "buddy-b",
+			"path": "../../../.."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.css": "tailwindcss"
+		}
+	}
+}
