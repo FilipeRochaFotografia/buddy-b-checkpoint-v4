@@ -13,7 +13,7 @@ export function FooterCapture() {
           
           {/* COPYRIGHT */}
           <p className="text-center md:text-left">
-            © 2025 Buddy B System. Todos os direitos reservados.
+            © 2026 Buddy B System. Todos os direitos reservados.
           </p>
           
           {/* LINKS FUNCIONAIS */}

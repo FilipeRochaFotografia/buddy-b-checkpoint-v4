@@ -1,8 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Navbar } from '../components/layout/Navbar/Navbar';
+import { NavbarProduct } from '../components/layout/Navbar/NavbarProduct';
 
-// Importando as seções modularizadas
 import { HeroProduct } from '../sections/product/HeroProduct';
 import { FeaturesGrid } from '../sections/product/FeaturesGrid';
 import { MobileShowcase } from '../sections/product/MobileShowCase';
@@ -12,6 +11,9 @@ import { TestimonialsGeneral } from '../sections/product/TestimonialsGeneral';
 import { DownloadApp } from '../sections/product/DownloadApp';
 import { FooterProduct } from '../sections/product/FooterProduct';
 
+// IMPORTAR O COOKIE CONSENT
+import { CookieConsent } from '../components/ui/CookieConsent';
+
 const ProductPage: React.FC = () => {
   return (
     <>
@@ -20,12 +22,9 @@ const ProductPage: React.FC = () => {
         <meta name="description" content="Chega de suposições. Visualize seu fluxo de caixa com clareza total com o Buddy B." />
       </Helmet>
 
-      <div className="bg-background min-h-screen font-body text-text-title overflow-x-hidden">
+      <div className="bg-background min-h-screen font-body text-text-title overflow-x-hidden relative">
         
-        {/* NAV */}
-        <Navbar />
-
-        {/* SEÇÕES */}
+        <NavbarProduct />
         <HeroProduct />
         <FeaturesGrid />
         <MobileShowcase />
@@ -33,9 +32,10 @@ const ProductPage: React.FC = () => {
         <BlogPreview />
         <TestimonialsGeneral />
         <DownloadApp />
-        
-        {/* FOOTER */}
         <FooterProduct />
+
+        {/* COMPONENTE DE COOKIES */}
+        <CookieConsent />
 
       </div>
     </>

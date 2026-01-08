@@ -2,14 +2,17 @@ import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-// Páginas
+// Componentes Utilitários
+import ScrollToTop from './components/ScrollToTop';
+
+// Páginas Principais
 import ProductPage from './pages/ProductPage';
 import CapturePage from './pages/CapturePage';
+
+// Páginas Institucionais
 import TermosDeUsoPage from './pages/TermosDeUso';
 import PoliticaPrivacidadePage from './pages/PoliticaPrivacidade';
-
-// Componentes
-import ScrollToTop from './components/ScrollToTop';
+import PoliticaCookiesPage from './pages/PoliticaCookies'; // Nova Página
 
 const App: React.FC = () => {
   return (
@@ -17,17 +20,16 @@ const App: React.FC = () => {
       <HashRouter>
         <ScrollToTop />
         <Routes>
-          {/* --- ROTA PRINCIPAL --- */}
-          {/* Agora a raiz aponta para o Site Institucional (ProductPage) */}
+          {/* --- ROTA PRINCIPAL (HOME) --- */}
           <Route path="/" element={<ProductPage />} />
 
-          {/* --- ROTA DE OFERTA --- */}
-          {/* Landing Page de Captura acessível via /#/oferta */}
+          {/* --- ROTA DE OFERTA (LANDING PAGE) --- */}
           <Route path="/oferta" element={<CapturePage />} />
 
           {/* --- INSTITUCIONAIS --- */}
           <Route path="/termos-de-uso" element={<TermosDeUsoPage />} />
           <Route path="/politica-privacidade" element={<PoliticaPrivacidadePage />} />
+          <Route path="/politica-cookies" element={<PoliticaCookiesPage />} />
         </Routes>
       </HashRouter>
     </HelmetProvider>

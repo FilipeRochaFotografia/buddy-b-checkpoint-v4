@@ -26,13 +26,11 @@ const blogPosts = [
 
 export function BlogPreview() {
   return (
-    // Background Roxo 10%
     <section className="py-24" style={{ backgroundColor: 'rgba(155, 128, 255, 0.1)' }}>
       <div className="container mx-auto px-4 md:px-12">
         
         <div className="grid lg:grid-cols-[470px_1fr] gap-12 lg:gap-20 items-center">
           
-          {/* COLUNA ESQUERDA: TEXTO */}
           <div className="flex flex-col items-start">
             <h2 className="font-heading font-bold text-[#424242] text-[32px] leading-[47px] mb-4 w-full lg:w-[470px]">
               <div className="flex items-center gap-2 mb-1">
@@ -61,55 +59,59 @@ export function BlogPreview() {
             </Link>
           </div>
 
-          {/* COLUNA DIREITA: CARDS */}
           <div className="flex flex-col md:flex-row gap-8 justify-center lg:justify-start">
             {blogPosts.map((post) => (
               <div 
                 key={post.id}
-                className="relative bg-white shadow-md overflow-hidden flex flex-col border border-[#E8E9EA]"
+                className="relative bg-white shadow-md overflow-hidden border border-[#E8E9EA]"
                 style={{ width: '350px', height: '350px', borderRadius: '10px' }}
               >
-                {/* Imagem Topo */}
-                <div className="relative h-[133px] w-full bg-gray-200 group flex-shrink-0">
+                {/* Imagem */}
+                <div className="absolute top-0 left-0 w-full h-[133px] bg-gray-200 group">
                   <img src={post.image} alt="Post" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
                 </div>
 
-                {/* Tag Categoria (Top 109px para sobrepor 24px) */}
+                {/* Tag */}
                 <div 
-                  className="absolute top-[109px] left-0 h-[34px] bg-[#9B80FF] flex items-center justify-center px-4 z-10"
-                  style={{ borderRadius: '0px 5px 5px 0px', minWidth: '130px' }}
+                  className="absolute left-0 h-[34px] bg-[#9B80FF] flex items-center justify-center px-4 z-10"
+                  style={{ top: '109px', borderRadius: '0px 5px 5px 0px', minWidth: '130px' }}
                 >
                   <span className="text-white font-body font-bold text-sm">{post.category}</span>
                 </div>
 
-                {/* Conteúdo - Padding Top de 22px exato */}
-                <div className="px-[12px] pt-[22px] flex flex-col flex-1 relative">
+                {/* Área de Conteúdo */}
+                <div className="absolute top-[133px] left-0 w-full px-[12px]">
                   
-                  {/* Título (22px de margem do topo da div de conteúdo) */}
-                  <div className="w-[291px] mb-[9px]">
+                  {/* Título: Open Sans, SemiBold, 22px */}
+                  <div className="w-[291px]" style={{ marginTop: '22px', height: '53px' }}>
                     <h3 className="font-body font-semibold text-[#424242] text-[22px] leading-[30px]">
                       {post.title}
                     </h3>
                   </div>
                   
-                  {/* Resumo */}
-                  <p 
-                    className="font-body font-normal text-[#424242] text-[14px] leading-[24px] mb-auto w-[290px] line-clamp-3"
-                  >
-                    {post.excerpt}
-                  </p>
+                  {/* Resumo: Open Sans, Regular, 14px */}
+                  <div className="w-[290px]" style={{ marginTop: '9px', height: '65px' }}>
+                    <p className="font-body font-normal text-[#424242] text-[14px] leading-[24px]">
+                      {post.excerpt}
+                    </p>
+                  </div>
 
-                  {/* Rodapé (Sem borda) */}
-                  <div className="flex items-center justify-between mt-auto pb-[18px]">
+                  {/* Rodapé: Margin Top 19px */}
+                  <div className="flex items-center justify-between w-full" style={{ marginTop: '19px' }}>
                     <div className="flex items-center gap-2">
                       <div className="w-[37px] h-[37px] rounded-full bg-gray-300 overflow-hidden">
                          <img src="https://i.pravatar.cc/150?img=11" alt="Avatar" className="w-full h-full object-cover"/>
                       </div>
-                      <span className="font-body font-semibold text-[#424242] text-[14px]">{post.author}</span>
+                      <span className="font-body font-semibold text-[#424242] text-[14px] leading-[26px]">
+                        {post.author}
+                      </span>
                     </div>
-                    <span className="font-body font-normal text-[#424242] text-[14px]">{post.readTime}</span>
+                    <span className="font-body font-normal text-[#424242] text-[14px] leading-[26px]">
+                      {post.readTime}
+                    </span>
                   </div>
+
                 </div>
               </div>
             ))}
