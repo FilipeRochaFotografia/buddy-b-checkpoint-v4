@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CheckIcon = () => (
@@ -96,11 +95,13 @@ const PricingCard = ({ data }: { data: typeof pricingData[0] }) => {
           </div>
         </div>
       ) : (
-        <Link to="/oferta" className="mb-[18px] w-full flex justify-center">
-          <div className={`w-[278px] h-[44px] rounded-pill flex items-center justify-center text-white font-bold text-[16px] cursor-pointer transition-colors shadow-md ${data.buttonColor}`}>
-            {data.buttonText}
-          </div>
-        </Link>
+        <div className="mb-[18px] w-full flex justify-center">
+          <a href="https://app.buddybapp.com/" target="_blank" rel="noopener noreferrer" className="w-full flex justify-center">
+            <div className={`w-[278px] h-[44px] rounded-pill flex items-center justify-center text-white font-bold text-[16px] cursor-pointer transition-colors shadow-md ${data.buttonColor}`}>
+              {data.buttonText}
+            </div>
+          </a>
+        </div>
       )}
 
       <div className="w-full border-t border-[#E8E9EA] pt-[14px]">
@@ -148,7 +149,6 @@ const PricingCard = ({ data }: { data: typeof pricingData[0] }) => {
 };
 
 export function PricingGeneral() {
-  // Inicia no índice 1 (Smart/Recomendado)
   const [mobileIndex, setMobileIndex] = useState(1);
 
   const swipeConfidenceThreshold = 10000;
@@ -164,8 +164,7 @@ export function PricingGeneral() {
   };
 
   return (
-    // Reduzido py-24 para py-10 no mobile
-    <section className="py-10 lg:py-24 bg-[#F3F4F6] overflow-hidden">
+    <section id="planos" className="py-10 lg:py-24 bg-[#F3F4F6] overflow-hidden scroll-mt-24">
       <div className="container mx-auto px-4">
         
         {/* DESKTOP VIEW */}
@@ -185,7 +184,6 @@ export function PricingGeneral() {
 
         {/* MOBILE CAROUSEL */}
         <div className="lg:hidden flex flex-col items-center">
-          {/* Altura ajustada para o card mais alto */}
           <div className="relative w-[338px] h-[525px] flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
@@ -219,8 +217,8 @@ export function PricingGeneral() {
                 onClick={() => setMobileIndex(index)}
                 className={`transition-all duration-300 rounded-full cursor-pointer ${
                   index === mobileIndex 
-                    ? 'w-8 h-3 bg-[#9B80FF]' // Tracinho roxo (Ativo)
-                    : 'w-3 h-3 border-2 border-[#9B80FF] bg-transparent' // Bolinha vazada (Inativo)
+                    ? 'w-8 h-3 bg-[#9B80FF]' 
+                    : 'w-3 h-3 border-2 border-[#9B80FF] bg-transparent' 
                 }`}
               />
             ))}

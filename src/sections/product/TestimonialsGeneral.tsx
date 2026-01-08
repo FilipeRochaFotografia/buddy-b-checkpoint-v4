@@ -20,7 +20,6 @@ const testimonials = [
 export function TestimonialsGeneral() {
   const [activeIndex, setActiveIndex] = useState(1);
 
-  // Lógica para definir quem é o anterior e o próximo no loop de 3 itens
   const getPrevIndex = (current: number) => (current === 0 ? testimonials.length - 1 : current - 1);
   const getNextIndex = (current: number) => (current === testimonials.length - 1 ? 0 : current + 1);
 
@@ -110,11 +109,11 @@ export function TestimonialsGeneral() {
           })}
         </div>
 
-        {/* --- MOBILE VIEW (Carousel com laterais visíveis) --- */}
+        {/* --- MOBILE VIEW --- */}
         <div className="lg:hidden w-full relative h-[320px] flex justify-center items-center mt-4">
           <div className="relative w-full max-w-[360px] h-[300px] flex justify-center items-center">
             
-            {/* Card Anterior (Esquerda) */}
+            {/* Card Anterior */}
             <div 
               className="absolute left-[-20px] z-0 opacity-100 scale-90 blur-[1px]"
               onClick={() => setActiveIndex(getPrevIndex(activeIndex))}
@@ -129,7 +128,7 @@ export function TestimonialsGeneral() {
                </div>
             </div>
 
-            {/* Card Próximo (Direita) */}
+            {/* Card Próximo */}
             <div 
               className="absolute right-[-20px] z-0 opacity-100 scale-90 blur-[1px]"
               onClick={() => setActiveIndex(getNextIndex(activeIndex))}
@@ -144,37 +143,22 @@ export function TestimonialsGeneral() {
                </div>
             </div>
 
-            {/* Card Ativo (Centro) */}
+            {/* Card Ativo (Sem animação de cor lenta) */}
             <motion.div
               key={activeIndex}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
               onDragEnd={handleDragEnd}
-              initial={{ backgroundColor: '#9B80FF' }}
-              animate={{ backgroundColor: '#FDFDFD' }}
-              transition={{ duration: 2, ease: "easeInOut" }}
-              className="absolute z-20 w-[320px] h-auto min-h-[260px] rounded-[10px] border border-[#9B80FF] p-6 flex flex-col justify-center shadow-lg"
+              className="absolute z-20 w-[320px] h-auto min-h-[260px] bg-[#FDFDFD] rounded-[10px] border border-[#9B80FF] p-6 flex flex-col justify-center shadow-lg"
             >
-              {/* Texto: Roxo se o fundo for branco (após animação), mas controlamos via framer variants ou classes.
-                  Como a transição de cor do texto também deve ser suave, usamos motion no texto */}
-              <motion.p 
-                initial={{ color: '#FDFDFD' }}
-                animate={{ color: '#9B80FF' }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-                className="font-body font-semibold text-[16px] leading-[24px] text-left mb-4"
-              >
+              <p className="font-body font-semibold text-[16px] leading-[24px] text-left mb-4 text-[#9B80FF]">
                 {testimonials[activeIndex].text}
-              </motion.p>
+              </p>
               
-              <motion.span 
-                initial={{ color: '#FDFDFD' }}
-                animate={{ color: '#9B80FF' }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-                className="font-body font-bold text-[16px] leading-[22px] text-left"
-              >
+              <span className="font-body font-bold text-[16px] leading-[22px] text-left text-[#9B80FF]">
                 {testimonials[activeIndex].name}
-              </motion.span>
+              </span>
             </motion.div>
 
           </div>

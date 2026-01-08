@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Button from '../../components/ui/Button';
 import { fadeInUp, staggerContainer } from '../../lib/utils';
 
@@ -58,7 +57,7 @@ export function HeroProduct() {
               </motion.p>
 
               <motion.div variants={fadeInUp} className="w-full flex justify-center lg:justify-start">
-                <Link to="/oferta">
+                <a href="https://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
                   <Button 
                     variant="primary" 
                     className="w-[350px] max-w-full lg:w-[305px] h-[54px] text-[18px] font-semibold shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
@@ -69,7 +68,7 @@ export function HeroProduct() {
                       <path d="M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </Button>
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>

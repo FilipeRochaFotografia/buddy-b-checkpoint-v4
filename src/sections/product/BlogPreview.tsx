@@ -27,7 +27,7 @@ const blogPosts = [
 
 export function BlogPreview() {
   return (
-    <section className="py-10 lg:py-24" style={{ backgroundColor: 'rgba(155, 128, 255, 0.1)' }}>
+    <section id="blog" className="py-10 lg:py-24 scroll-mt-24" style={{ backgroundColor: 'rgba(155, 128, 255, 0.1)' }}>
       <div className="container mx-auto px-4 md:px-12">
         
         <motion.div 
