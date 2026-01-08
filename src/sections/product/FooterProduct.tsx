@@ -1,15 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '../../lib/utils';
 
 export function FooterProduct() {
   return (
     <>
-      {/* SEÇÃO CTA (NEWSLETTER) */}
+      {/* Newsletter Section */}
       <section className="py-20" style={{ backgroundColor: 'rgba(155, 128, 255, 0.1)' }}>
-        <div className="container mx-auto px-4 flex flex-col items-center">
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="container mx-auto px-4 flex flex-col items-center"
+        >
           
-          {/* Ícone Carta */}
-          <div className="mb-6">
+          {/* Icon */}
+          <motion.div variants={fadeInUp} className="mb-6">
             <svg width="93" height="50" viewBox="0 0 93 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M26.5244 19.4252V5.05394C26.5244 3.09927 28.1225 1.5 30.0756 1.5H87.339C89.2922 1.5 90.8903 3.09927 90.8903 5.05394V27.0884" stroke="#9B80FF" strokeWidth="3" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M90.8903 35.8841V44.7245C90.8903 46.6792 89.2922 48.2784 87.339 48.2784H30.0756C28.1225 48.2784 26.5244 46.6792 26.5244 44.7245V30.1978" stroke="#9B80FF" strokeWidth="3" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
@@ -23,15 +31,15 @@ export function FooterProduct() {
               <path d="M9.96594 15.394C10.2899 15.3942 10.5529 15.6577 10.5529 15.9829C10.5526 16.3079 10.2898 16.5706 9.96594 16.5708C9.64196 16.5708 9.37831 16.308 9.37805 15.9829C9.37805 15.6576 9.6418 15.394 9.96594 15.394Z" fill="white" stroke="#9B80FF"/>
               <path d="M14.3828 33.1636C14.7068 33.1638 14.9697 33.4272 14.9697 33.7524C14.9695 34.0774 14.7066 34.3402 14.3828 34.3403C14.0588 34.3403 13.7952 34.0775 13.7949 33.7524C13.7949 33.4271 14.0587 33.1636 14.3828 33.1636Z" fill="white" stroke="#9B80FF"/>
             </svg>
-          </div>
+          </motion.div>
 
-          {/* Título */}
-          <h2 className="font-heading font-semibold text-[#9B80FF] text-[36px] leading-[48px] text-center mb-8">
+          {/* Title */}
+          <motion.h2 variants={fadeInUp} className="font-heading font-semibold text-[#9B80FF] text-[36px] leading-[48px] text-center mb-8">
             Receba novidades no seu e-mail.
-          </h2>
+          </motion.h2>
 
-          {/* Formulário */}
-          <div className="flex gap-4 w-full max-w-[680px]">
+          {/* Form */}
+          <motion.div variants={fadeInUp} className="flex gap-4 w-full max-w-[680px]">
             <input 
               type="email" 
               placeholder="Seu e-mail" 
@@ -45,17 +53,23 @@ export function FooterProduct() {
                 <path d="M19.6479 1.5L26.955 8.7662" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
       </section>
 
-      {/* FOOTER PRINCIPAL */}
+      {/* Main Footer */}
       <footer className="bg-[#F3F4F6] py-12 border-t border-gray-200">
         <div className="container mx-auto px-4">
           
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
-            {/* Redes Sociais */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8"
+          >
+            {/* Social Media */}
             <div className="flex gap-4">
               {/* Facebook */}
               <a href="#" className="w-10 h-10 bg-[#9B80FF] rounded-[4px] flex items-center justify-center hover:bg-[#8a6df0] transition-colors">
@@ -92,17 +106,22 @@ export function FooterProduct() {
                 </svg>
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Links e Copyright */}
-          <div className="text-[12px] leading-[22px] text-[#424242] font-normal flex flex-col md:flex-row justify-between items-center border-t border-gray-300 pt-8 mt-4">
+          <motion.div 
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.5, delay: 0.2 }}
+             className="text-[12px] leading-[22px] text-[#424242] font-normal flex flex-col md:flex-row justify-between items-center border-t border-gray-300 pt-8 mt-4"
+          >
             <p className="mb-2 md:mb-0">Copyright 2026 © Savvy B. Todos os direitos reservados.</p>
             <div className="flex gap-4">
               <Link to="/termos-de-uso" className="hover:text-[#9B80FF]">Termos de Uso</Link>
               <span>•</span>
               <Link to="/politica-privacidade" className="hover:text-[#9B80FF]">Política de Privacidade</Link>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </footer>

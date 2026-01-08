@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
+// --- DATA & ASSETS ---
 const features = [
   {
     title: "Fluxo de Caixa Poderoso",
     text: "Monitore todas as suas entradas e saídas em tempo real, com gráficos claros que transformam números em decisões inteligentes.",
     icon: (color: string) => (
       <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clipPath="url(#clip0_1_22910)">
+        <g clipPath="url(#clip0_fc)">
           <path d="M18.8739 3.33527H16.2853C16.1194 3.3353 15.9572 3.38452 15.8193 3.47669C15.6814 3.56887 15.5739 3.69987 15.5104 3.85312C15.447 4.00638 15.4304 4.17502 15.4627 4.33771C15.4951 4.50041 15.5749 4.64986 15.6922 4.76718L16.6032 5.67816L13.5951 8.68542C13.4353 8.83818 13.2227 8.92342 13.0016 8.92342C12.7805 8.92342 12.5679 8.83818 12.4081 8.68542L12.2655 8.54198C11.7862 8.08403 11.1488 7.82848 10.4859 7.82848C9.82299 7.82848 9.1856 8.08403 8.70629 8.54198L4.42818 12.8201C4.27056 12.9782 4.18218 13.1924 4.1825 13.4156C4.18281 13.6388 4.27179 13.8528 4.42986 14.0104C4.58793 14.168 4.80214 14.2564 5.02537 14.2561C5.2486 14.2558 5.46256 14.1668 5.62018 14.0087L9.89829 9.73063C10.058 9.57768 10.2706 9.49231 10.4918 9.49231C10.7129 9.49231 10.9255 9.57768 11.0853 9.73063L11.2279 9.87407C11.7074 10.3316 12.3447 10.5869 13.0075 10.5869C13.6703 10.5869 14.3076 10.3316 14.7871 9.87407L17.7952 6.86597L18.7062 7.77695C18.8239 7.89234 18.973 7.97048 19.1348 8.00164C19.2967 8.03279 19.4641 8.01557 19.6163 7.95212C19.7684 7.88867 19.8985 7.78182 19.9902 7.64489C20.082 7.50796 20.1314 7.34704 20.1322 7.18221V4.59353C20.1322 4.25982 19.9996 3.93978 19.7637 3.7038C19.5277 3.46783 19.2077 3.33527 18.8739 3.33527Z" fill={color}/>
           <path d="M19.2935 18.4345H4.19423C3.5268 18.4345 2.88671 18.1693 2.41477 17.6974C1.94283 17.2255 1.67769 16.5854 1.67769 15.9179V0.838846C1.67769 0.61637 1.58931 0.403006 1.432 0.245692C1.27469 0.0883781 1.06132 0 0.838846 0C0.61637 0 0.403006 0.0883781 0.245692 0.245692C0.0883781 0.403006 0 0.61637 0 0.838846L0 15.9179C0.00133197 17.0299 0.44365 18.096 1.22993 18.8822C2.01621 19.6685 3.08226 20.1108 4.19423 20.1122H19.2935C19.5159 20.1122 19.7293 20.0238 19.8866 19.8665C20.0439 19.7092 20.1323 19.4958 20.1323 19.2733C20.1323 19.0508 20.0439 18.8375 19.8866 18.6802C19.7293 18.5229 19.5159 18.4345 19.2935 18.4345Z" fill={color}/>
         </g>
         <defs>
-          <clipPath id="clip0_1_22910">
+          <clipPath id="clip0_fc">
             <rect width="20.1323" height="20.1323" fill="white"/>
           </clipPath>
         </defs>
@@ -23,13 +25,13 @@ const features = [
     text: "Defina seu budget, crie metas financeiras e acompanhe o progresso de forma prática para alcançar seus objetivos sem surpresas.",
     icon: (color: string) => (
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_1_22918)">
+            <g clipPath="url(#clip0_orc)">
             <path d="M11.3244 5.66223C10.5735 5.66223 9.85343 5.96051 9.3225 6.49144C8.79156 7.02238 8.49329 7.74248 8.49329 8.49334V19.8178C8.49329 20.5686 8.79156 21.2887 9.3225 21.8196C9.85343 22.3506 10.5735 22.6489 11.3244 22.6489C12.0752 22.6489 12.7953 22.3506 13.3263 21.8196C13.8572 21.2887 14.1555 20.5686 14.1555 19.8178V8.49334C14.1555 7.74248 13.8572 7.02238 13.3263 6.49144C12.7953 5.96051 12.0752 5.66223 11.3244 5.66223Z" fill={color}/>
             <path d="M19.8177 0C19.0668 0 18.3467 0.298276 17.8158 0.829211C17.2848 1.36015 16.9866 2.08025 16.9866 2.8311V19.8177C16.9866 20.5686 17.2848 21.2887 17.8158 21.8196C18.3467 22.3506 19.0668 22.6488 19.8177 22.6488C20.5685 22.6488 21.2886 22.3506 21.8196 21.8196C22.3505 21.2887 22.6488 20.5686 22.6488 19.8177V2.8311C22.6488 2.08025 22.3505 1.36015 21.8196 0.829211C21.2886 0.298276 20.5685 0 19.8177 0V0ZM20.7614 19.8177C20.7614 20.068 20.662 20.3081 20.485 20.485C20.308 20.662 20.068 20.7614 19.8177 20.7614C19.5674 20.7614 19.3274 20.662 19.1504 20.485C18.9734 20.3081 18.874 20.068 18.874 19.8177V2.8311C18.874 2.58082 18.9734 2.34078 19.1504 2.16381C19.3274 1.98683 19.5674 1.8874 19.8177 1.8874C20.068 1.8874 20.308 1.98683 20.485 2.16381C20.662 2.34078 20.7614 2.58082 20.7614 2.8311V19.8177Z" fill={color}/>
             <path d="M2.8311 11.3244C2.08025 11.3244 1.36015 11.6227 0.829211 12.1536C0.298276 12.6845 0 13.4047 0 14.1555L0 19.8177C0 20.5686 0.298276 21.2887 0.829211 21.8196C1.36015 22.3505 2.08025 22.6488 2.8311 22.6488C3.58196 22.6488 4.30206 22.3505 4.833 21.8196C5.36393 21.2887 5.66221 20.5686 5.66221 19.8177V14.1555C5.66221 13.4047 5.36393 12.6845 4.833 12.1536C4.30206 11.6227 3.58196 11.3244 2.8311 11.3244Z" fill={color}/>
             </g>
             <defs>
-            <clipPath id="clip0_1_22918">
+            <clipPath id="clip0_orc">
             <rect width="22.6488" height="22.6488" fill="white"/>
             </clipPath>
             </defs>
@@ -41,11 +43,11 @@ const features = [
     text: "Registre, categorize e visualize todas as suas movimentações financeiras de forma simples e rápida, tudo em um só lugar.",
     icon: (color: string) => (
         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_1_22927)">
+            <g clipPath="url(#clip0_trans)">
             <path d="M14.6086 4.19423C15.4616 4.19506 16.2793 4.53426 16.8825 5.13738C17.4856 5.7405 17.8248 6.55826 17.8256 7.4112C17.8256 7.6893 17.9361 7.956 18.1327 8.15264C18.3294 8.34929 18.5961 8.45976 18.8742 8.45976C19.1523 8.45976 19.419 8.34929 19.6156 8.15264C19.8122 7.956 19.9227 7.6893 19.9227 7.4112V7.3399C19.9227 7.31998 19.9227 7.30215 19.9227 7.28223C19.8877 5.89575 19.3126 4.57777 18.3199 3.60919C17.3273 2.64061 15.9956 2.09804 14.6086 2.09711H13.6314V1.04856C13.6314 0.770463 13.5209 0.503758 13.3243 0.307115C13.1276 0.110473 12.8609 0 12.5828 0C12.3047 0 12.038 0.110473 11.8414 0.307115C11.6447 0.503758 11.5343 0.770463 11.5343 1.04856V2.09711H10.557C9.29593 2.09846 8.07643 2.54824 7.11648 3.36606C6.15653 4.18387 5.5187 5.31642 5.317 6.56127C5.11531 7.80611 5.36289 9.08212 6.01549 10.1612C6.66809 11.2403 7.68318 12.0521 8.87932 12.4516L11.5343 13.3376V20.9711H10.557C9.70407 20.9703 8.8863 20.6311 8.28318 20.028C7.68006 19.4249 7.34087 18.6071 7.34003 17.7542C7.34003 17.4761 7.22956 17.2094 7.03292 17.0127C6.83628 16.8161 6.56957 16.7056 6.29148 16.7056C6.01338 16.7056 5.74668 16.8161 5.55004 17.0127C5.35339 17.2094 5.24292 17.4761 5.24292 17.7542V17.8255C5.24292 17.8454 5.24292 17.8632 5.24292 17.8831C5.27791 19.2696 5.85304 20.5876 6.84571 21.5562C7.83838 22.5248 9.17009 23.0673 10.557 23.0683H11.5343V24.1168C11.5343 24.3949 11.6447 24.6616 11.8414 24.8583C12.038 25.0549 12.3047 25.1654 12.5828 25.1654C12.8609 25.1654 13.1276 25.0549 13.3243 24.8583C13.5209 24.6616 13.6314 24.3949 13.6314 24.1168V23.0683H14.6086C15.8697 23.0669 17.0892 22.6171 18.0492 21.7993C19.0091 20.9815 19.6469 19.849 19.8486 18.6041C20.0503 17.3593 19.8028 16.0833 19.1502 15.0042C18.4975 13.9251 17.4825 13.1132 16.2863 12.7138L13.6314 11.8277V4.19423H14.6086ZM15.6257 14.7018C16.3507 14.9431 16.9662 15.4346 17.3619 16.0883C17.7575 16.7419 17.9076 17.5151 17.7853 18.2693C17.6629 19.0236 17.2761 19.7096 16.694 20.2047C16.112 20.6997 15.3727 20.9714 14.6086 20.9711H13.6314V14.037L15.6257 14.7018ZM11.5343 11.1283L9.542 10.4636C8.81718 10.2223 8.20185 9.731 7.80615 9.07755C7.41045 8.42411 7.2602 7.65117 7.38229 6.89707C7.50438 6.14297 7.89084 5.45692 8.47251 4.96171C9.05418 4.4665 9.79309 4.19444 10.557 4.19423H11.5343V11.1283Z" fill={color}/>
             </g>
             <defs>
-            <clipPath id="clip0_1_22927">
+            <clipPath id="clip0_trans">
             <rect width="25.1654" height="25.1654" fill="white"/>
             </clipPath>
             </defs>
@@ -57,11 +59,11 @@ const features = [
     text: "Gerencie diferentes moedas em um só lugar, com total praticidade e conversão automática, sem perder o controle.",
     icon: (color: string) => (
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_1_23191)">
+            <g clipPath="url(#clip0_moeda)">
             <path d="M25.0001 23.9585C25.0001 24.2347 24.8903 24.4997 24.695 24.695C24.4996 24.8904 24.2347 25.0001 23.9584 25.0001H1.04176C0.765491 25.0001 0.500539 24.8904 0.305189 24.695C0.109838 24.4997 9.17712e-05 24.2347 9.17712e-05 23.9585C9.17712e-05 23.6822 0.109838 23.4172 0.305189 23.2219C0.500539 23.0265 0.765491 22.9168 1.04176 22.9168H23.9584C24.2347 22.9168 24.4996 23.0265 24.695 23.2219C24.8903 23.4172 25.0001 23.6822 25.0001 23.9585ZM0.303217 8.90845C0.0787608 8.49212 -0.0252263 8.02148 0.00292555 7.54934C0.0310774 7.0772 0.190254 6.62224 0.462592 6.23554C0.907652 5.58253 1.50368 5.04654 2.20009 4.67304L10.0136 0.606369C10.7816 0.207026 11.6345 -0.00146484 12.5001 -0.00146484C13.3657 -0.00146484 14.2186 0.207026 14.9866 0.606369L22.7991 4.67616C23.4955 5.04966 24.0915 5.58566 24.5366 6.23866C24.8089 6.62537 24.9681 7.08032 24.9962 7.55246C25.0244 8.0246 24.9204 8.49525 24.6959 8.91158C24.4543 9.36869 24.0918 9.75075 23.6481 10.0161C23.2044 10.2816 22.6963 10.4201 22.1793 10.4168H21.8751V18.7501H22.9168C23.193 18.7501 23.458 18.8599 23.6533 19.0552C23.8487 19.2506 23.9584 19.5155 23.9584 19.7918C23.9584 20.0681 23.8487 20.333 23.6533 20.5284C23.458 20.7237 23.193 20.8335 22.9168 20.8335H2.08343C1.80716 20.8335 1.54221 20.7237 1.34686 20.5284C1.15151 20.333 1.04176 20.0681 1.04176 19.7918C1.04176 19.5155 1.15151 19.2506 1.34686 19.0552C1.54221 18.8599 1.80716 18.7501 2.08343 18.7501H3.12509V10.4168H2.82093C2.30338 10.42 1.79489 10.2811 1.35091 10.0151C0.906937 9.7491 0.544528 9.36631 0.303217 8.90845V8.90845ZM5.20843 18.7501H8.33343V10.4168H5.20843V18.7501ZM10.4168 10.4168V18.7501H14.5834V10.4168H10.4168ZM19.7918 10.4168H16.6668V18.7501H19.7918V10.4168ZM2.14905 7.94283C2.21441 8.06333 2.31167 8.16351 2.43018 8.23241C2.54869 8.30131 2.68387 8.33627 2.82093 8.33345H22.1793C22.3163 8.33627 22.4515 8.30131 22.57 8.23241C22.6885 8.16351 22.7858 8.06333 22.8511 7.94283C22.8987 7.86321 22.9218 7.7713 22.9173 7.67863C22.9129 7.58597 22.8811 7.49669 22.8261 7.42199C22.5737 7.0469 22.2347 6.73818 21.8376 6.52199L14.0251 2.4522C13.5543 2.20785 13.0316 2.0803 12.5011 2.0803C11.9707 2.0803 11.448 2.20785 10.9772 2.4522L3.16468 6.52199C2.76778 6.73888 2.42877 7.04789 2.17613 7.42304C2.12102 7.49742 2.08905 7.5864 2.08424 7.67885C2.07942 7.7713 2.10196 7.86312 2.14905 7.94283V7.94283Z" fill={color}/>
             </g>
             <defs>
-            <clipPath id="clip0_1_23191">
+            <clipPath id="clip0_moeda">
             <rect width="25" height="25" fill="white"/>
             </clipPath>
             </defs>
@@ -73,11 +75,11 @@ const features = [
     text: "Dúvidas? Nossos consultores financeiros estão prontos para ajudar você a crescer, direto pelo app.",
     icon: (color: string) => (
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_1_22936)">
+            <g clipPath="url(#clip0_consul)">
             <path d="M16.0431 0H6.60608C5.35511 0.00149846 4.15581 0.499107 3.27125 1.38367C2.38668 2.26824 1.88907 3.46754 1.88757 4.71851V17.9303C1.88907 19.1813 2.38668 20.3806 3.27125 21.2652C4.15581 22.1497 5.35511 22.6473 6.60608 22.6488H16.0431C17.2941 22.6473 18.4934 22.1497 19.3779 21.2652C20.2625 20.3806 20.7601 19.1813 20.7616 17.9303V4.71851C20.7601 3.46754 20.2625 2.26824 19.3779 1.38367C18.4934 0.499107 17.2941 0.00149846 16.0431 0V0ZM6.60608 1.8874H16.0431C16.794 1.8874 17.5141 2.18568 18.045 2.71661C18.5759 3.24755 18.8742 3.96765 18.8742 4.71851V16.0429H3.77498V4.71851C3.77498 3.96765 4.07325 3.24755 4.60419 2.71661C5.13512 2.18568 5.85522 1.8874 6.60608 1.8874V1.8874ZM16.0431 20.7614H6.60608C5.85522 20.7614 5.13512 20.4632 4.60419 19.9322C4.07325 19.4013 3.77498 18.6812 3.77498 17.9303H10.3809V18.874C10.3809 19.1243 10.4803 19.3643 10.6573 19.5413C10.8343 19.7183 11.0743 19.8177 11.3246 19.8177C11.5749 19.8177 11.8149 19.7183 11.9919 19.5413C12.1689 19.3643 12.2683 19.1243 12.2683 18.874V17.9303H18.8742C18.8742 18.6812 18.5759 19.4013 18.045 19.9322C17.5141 20.4632 16.794 20.7614 16.0431 20.7614Z" fill={color}/>
             </g>
             <defs>
-            <clipPath id="clip0_1_22936">
+            <clipPath id="clip0_consul">
             <rect width="22.6488" height="22.6488" fill="white"/>
             </clipPath>
             </defs>
@@ -89,11 +91,11 @@ const features = [
     text: "Segurança máxima para o que é seu: criptografia avançada e total conformidade com a LGPD.",
     icon: (color: string) => (
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_1_22945)">
+            <g clipPath="url(#clip0_protec)">
             <path d="M21.9126 5.41968L19.0711 1.5807C18.7217 1.09218 18.2609 0.693969 17.7268 0.419076C17.1928 0.144183 16.601 0.000522547 16.0003 1.66317e-06H6.64825C6.05054 -0.000559365 5.46124 0.140824 4.92885 0.419076C4.39646 0.684207 3.9362 1.07844 3.58594 1.56277L0.693495 5.42912C0.222554 6.09319 -0.0206556 6.89192 0.000268925 7.70577C0.0211934 8.51961 0.305126 9.30479 0.80957 9.94378L9.10659 21.5777C9.37101 21.9126 9.70801 22.1829 10.0922 22.3685C10.4764 22.554 10.8977 22.6499 11.3243 22.6488C11.7582 22.648 12.1862 22.5476 12.5753 22.3553C12.9643 22.1631 13.3041 21.8842 13.5684 21.54L21.7994 10.0353C22.3264 9.38698 22.6235 8.58211 22.6439 7.74683C22.6644 6.91156 22.4072 6.09308 21.9126 5.41968ZM17.5452 2.69049L20.3933 6.53891C20.4084 6.55967 20.4121 6.58421 20.4272 6.60591H15.8106L14.463 1.8874H16.0003C16.3032 1.88834 16.6015 1.96173 16.8702 2.10144C17.139 2.24115 17.3704 2.44312 17.5452 2.69049ZM11.3243 18.0417L8.7763 8.49331H13.8723L11.3243 18.0417ZM8.80083 6.60591L10.1484 1.8874H12.5001L13.8477 6.60591H8.80083ZM5.11191 2.67728C5.28701 2.43323 5.51765 2.23432 5.78478 2.09698C6.05191 1.95964 6.34788 1.88781 6.64825 1.8874H8.18554L6.83793 6.60591H2.18737C2.20059 6.58515 2.20436 6.55967 2.21946 6.53985L5.11191 2.67728ZM2.31006 8.80002C2.24192 8.70377 2.18344 8.60104 2.13547 8.49331H6.82472L9.65017 19.0911L2.31006 8.80002ZM12.9956 19.1005L15.8267 8.49331H20.532C20.4712 8.63418 20.3942 8.7675 20.3027 8.89061L12.9956 19.1005Z" fill={color}/>
             </g>
             <defs>
-            <clipPath id="clip0_1_22945">
+            <clipPath id="clip0_protec">
             <rect width="22.6488" height="22.6488" fill="white"/>
             </clipPath>
             </defs>
@@ -102,21 +104,51 @@ const features = [
   }
 ];
 
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
+
 export function FeaturesGrid() {
-  const [activeCardIndex, setActiveCardIndex] = useState<number>(5);
+  const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
+  
+  // Mobile States
+  const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
+  const [isMobileActive, setIsMobileActive] = useState(false);
+
+  useEffect(() => {
+    setIsMobileActive(false);
+    
+    const timer = setTimeout(() => {
+        setIsMobileActive(true);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [mobileCurrentIndex]);
+
+  const paginateMobile = (newDirection: number) => {
+    let nextIndex = mobileCurrentIndex + newDirection;
+    if (nextIndex < 0) nextIndex = features.length - 1;
+    if (nextIndex >= features.length) nextIndex = 0;
+    setMobileCurrentIndex(nextIndex);
+  };
 
   return (
-    <section id="funcionalidades" className="py-24 bg-[#F3F4F6]">
+    <section id="funcionalidades" className="py-24 bg-[#F3F4F6] overflow-hidden">
       <div className="container mx-auto px-4 md:px-10">
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          
+        {/* DESKTOP GRID */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
           {features.map((feature, index) => {
              const isActive = activeCardIndex === index;
              
              return (
-              <div 
+              <motion.div 
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => setActiveCardIndex(index)}
                 className={`
                   relative w-full max-w-[412px] h-[200px] rounded-[10px] pl-[21px] pt-[22px] pr-[14px] flex flex-col justify-start
@@ -127,7 +159,6 @@ export function FeaturesGrid() {
                   }
                 `}
               >
-                
                 <div 
                   className={`
                     w-[45.3px] h-[45.3px] rounded-full flex items-center justify-center mb-2
@@ -154,12 +185,84 @@ export function FeaturesGrid() {
                 >
                   {feature.text}
                 </p>
-
-              </div>
+              </motion.div>
              );
           })}
-
         </div>
+
+        {/* MOBILE CAROUSEL */}
+        <div className="md:hidden flex flex-col items-center">
+            <div className="relative w-full max-w-[350px] min-h-[220px]">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={mobileCurrentIndex}
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.3 }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={(e, { offset, velocity }) => {
+                            const swipe = swipePower(offset.x, velocity.x);
+                            if (swipe < -swipeConfidenceThreshold) {
+                                paginateMobile(1);
+                            } else if (swipe > swipeConfidenceThreshold) {
+                                paginateMobile(-1);
+                            }
+                        }}
+                        className={`
+                            border border-[#9B80FF] rounded-[10px] pl-[21px] pt-[22px] pr-[14px] pb-6 flex flex-col justify-start w-full shadow-sm
+                            transition-colors duration-[2000ms] ease-in-out
+                            ${isMobileActive ? 'bg-[#9B80FF]' : 'bg-[#FDFDFD]'}
+                        `}
+                    >
+                         {/* Icon Container: Transition Colors */}
+                        <div className={`
+                            w-[45.3px] h-[45.3px] rounded-full flex items-center justify-center mb-2
+                            transition-colors duration-[2000ms] ease-in-out
+                            ${isMobileActive ? 'bg-white' : 'bg-[#9B80FF]'}
+                        `}>
+                            {features[mobileCurrentIndex].icon(isMobileActive ? '#9B80FF' : '#FDFDFD')}
+                        </div>
+
+                        <h3 className={`
+                            font-heading font-bold text-[18px] leading-[26px] md:text-[20px] md:leading-[30px] mb-1.5
+                            transition-colors duration-[2000ms] ease-in-out
+                            ${isMobileActive ? 'text-white' : 'text-[#9B80FF]'}
+                        `}>
+                            {features[mobileCurrentIndex].title}
+                        </h3>
+
+                        {/* Text: Colors */}
+                        <p className={`
+                            font-body font-normal text-[16px] leading-[22px] text-justify
+                            transition-colors duration-[2000ms] ease-in-out
+                            ${isMobileActive ? 'text-white' : 'text-[#9B80FF]'}
+                        `}>
+                            {features[mobileCurrentIndex].text}
+                        </p>
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+            
+            {/* Pagination Dots */}
+            <div className="flex items-center gap-2 mt-6">
+                {features.map((_, index) => {
+                    const isActive = mobileCurrentIndex === index;
+                    return (
+                        <motion.div
+                            key={index}
+                            onClick={() => setMobileCurrentIndex(index)}
+                            className={`rounded-full cursor-pointer transition-all duration-300 ${
+                                isActive ? 'bg-[#9B80FF] w-6 h-3' : 'bg-[#9B80FF]/40 w-3 h-3'
+                            }`}
+                        />
+                    )
+                })}
+            </div>
+        </div>
+
       </div>
     </section>
   );

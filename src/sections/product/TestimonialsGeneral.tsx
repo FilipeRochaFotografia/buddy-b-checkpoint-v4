@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { fadeInUp } from '../../lib/utils';
 
 const testimonials = [
   {
@@ -18,37 +20,51 @@ const testimonials = [
 export function TestimonialsGeneral() {
   const [activeIndex, setActiveIndex] = useState(1);
 
+  // Lógica para definir quem é o anterior e o próximo no loop de 3 itens
+  const getPrevIndex = (current: number) => (current === 0 ? testimonials.length - 1 : current - 1);
+  const getNextIndex = (current: number) => (current === testimonials.length - 1 ? 0 : current + 1);
+
+  const handleDragEnd = (event: any, info: any) => {
+    if (info.offset.x > 50) {
+      setActiveIndex(getPrevIndex(activeIndex));
+    } else if (info.offset.x < -50) {
+      setActiveIndex(getNextIndex(activeIndex));
+    }
+  };
+
   return (
-    <section id="depoimentos" className="py-24 bg-[#F9FAFB]">
+    <section id="depoimentos" className="py-16 lg:py-24 bg-[#F9FAFB] overflow-hidden">
       <div className="container mx-auto px-4 md:px-12 flex flex-col items-center">
         
-        {/* CABEÇALHO */}
-        <div className="text-left w-full max-w-[1280px] mb-16">
-          <h2 className="font-heading font-bold text-[#424242] text-[32px] leading-[47px] mb-2">
+        <motion.div 
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-left md:text-center lg:text-left w-full max-w-[1280px] mb-8 lg:mb-16"
+        >
+          <h2 className="font-heading font-bold text-[#424242] text-[32px] leading-[40px] lg:leading-[47px] mb-4">
             Confiança que gera resultados
           </h2>
-          <p className="font-body font-normal text-[#424242] text-[26px] leading-[35px] max-w-[758px]">
+          <p className="font-body font-normal text-[#424242] text-[20px] leading-[27px] lg:text-[26px] lg:leading-[35px] max-w-[758px]">
             Quem usa o Buddy B sabe: gestão financeira inteligente faz toda a diferença. Confira o que nossos usuários têm a dizer.
           </p>
-        </div>
+        </motion.div>
 
-        {/* CARDS CONTAINER */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 relative">
-          
+        {/* --- DESKTOP VIEW --- */}
+        <div className="hidden lg:flex flex-row items-center justify-center gap-8 relative">
           {testimonials.map((testimonial, index) => {
             const isActive = activeIndex === index;
             
-            // Estilos condicionais
             const cardStyles: React.CSSProperties = isActive ? {
               width: '414px',
               height: '266px',
               paddingLeft: '36px',
-              // MUDANÇA: Removemos paddingTop fixo e usamos justify-center no className para centralizar verticalmente
               marginTop: '0px'
             } : {
               width: '400px',
               height: '236px',
-              paddingTop: '25px', // Inativos mantêm o topo fixo conforme original
+              paddingTop: '25px',
               paddingLeft: '29px', 
               marginTop: '15px'
             };
@@ -56,8 +72,12 @@ export function TestimonialsGeneral() {
             const gapSize = isActive ? '21px' : '10px';
 
             return (
-              <div 
+              <motion.div 
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
                 onClick={() => setActiveIndex(index)}
                 className={`
                   relative rounded-[10px] flex flex-col shadow-sm border border-[#9B80FF] cursor-pointer transition-all duration-300
@@ -65,7 +85,6 @@ export function TestimonialsGeneral() {
                 `}
                 style={cardStyles}
               >
-                {/* Texto: Open Sans 600 */}
                 <p 
                   className={`
                     font-body font-semibold text-[16px] leading-[22px] text-left
@@ -76,7 +95,6 @@ export function TestimonialsGeneral() {
                   {testimonial.text}
                 </p>
                 
-                {/* Nome: Open Sans 700 */}
                 <div style={{ width: '341px', textAlign: 'left' }}>
                   <span 
                     className={`
@@ -87,14 +105,83 @@ export function TestimonialsGeneral() {
                     {testimonial.name}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
+        </div>
 
+        {/* --- MOBILE VIEW (Carousel com laterais visíveis) --- */}
+        <div className="lg:hidden w-full relative h-[320px] flex justify-center items-center mt-4">
+          <div className="relative w-full max-w-[360px] h-[300px] flex justify-center items-center">
+            
+            {/* Card Anterior (Esquerda) */}
+            <div 
+              className="absolute left-[-20px] z-0 opacity-100 scale-90 blur-[1px]"
+              onClick={() => setActiveIndex(getPrevIndex(activeIndex))}
+            >
+               <div className="w-[300px] h-[240px] bg-[#9B80FF] rounded-[10px] border border-[#9B80FF] p-6 flex flex-col justify-center shadow-sm">
+                  <p className="font-body font-semibold text-[14px] leading-[20px] text-[#FDFDFD] line-clamp-5">
+                    {testimonials[getPrevIndex(activeIndex)].text}
+                  </p>
+                  <span className="font-body font-bold text-[14px] text-[#FDFDFD] mt-4">
+                    {testimonials[getPrevIndex(activeIndex)].name}
+                  </span>
+               </div>
+            </div>
+
+            {/* Card Próximo (Direita) */}
+            <div 
+              className="absolute right-[-20px] z-0 opacity-100 scale-90 blur-[1px]"
+              onClick={() => setActiveIndex(getNextIndex(activeIndex))}
+            >
+               <div className="w-[300px] h-[240px] bg-[#9B80FF] rounded-[10px] border border-[#9B80FF] p-6 flex flex-col justify-center shadow-sm">
+                  <p className="font-body font-semibold text-[14px] leading-[20px] text-[#FDFDFD] line-clamp-5">
+                    {testimonials[getNextIndex(activeIndex)].text}
+                  </p>
+                  <span className="font-body font-bold text-[14px] text-[#FDFDFD] mt-4">
+                     {testimonials[getNextIndex(activeIndex)].name}
+                  </span>
+               </div>
+            </div>
+
+            {/* Card Ativo (Centro) */}
+            <motion.div
+              key={activeIndex}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={handleDragEnd}
+              initial={{ backgroundColor: '#9B80FF' }}
+              animate={{ backgroundColor: '#FDFDFD' }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="absolute z-20 w-[320px] h-auto min-h-[260px] rounded-[10px] border border-[#9B80FF] p-6 flex flex-col justify-center shadow-lg"
+            >
+              {/* Texto: Roxo se o fundo for branco (após animação), mas controlamos via framer variants ou classes.
+                  Como a transição de cor do texto também deve ser suave, usamos motion no texto */}
+              <motion.p 
+                initial={{ color: '#FDFDFD' }}
+                animate={{ color: '#9B80FF' }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+                className="font-body font-semibold text-[16px] leading-[24px] text-left mb-4"
+              >
+                {testimonials[activeIndex].text}
+              </motion.p>
+              
+              <motion.span 
+                initial={{ color: '#FDFDFD' }}
+                animate={{ color: '#9B80FF' }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+                className="font-body font-bold text-[16px] leading-[22px] text-left"
+              >
+                {testimonials[activeIndex].name}
+              </motion.span>
+            </motion.div>
+
+          </div>
         </div>
 
         {/* PAGINAÇÃO */}
-        <div className="flex gap-2 mt-12">
+        <div className="flex gap-2 mt-8 lg:mt-12">
           {testimonials.map((_, index) => (
             <div 
               key={index}

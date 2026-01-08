@@ -2,19 +2,25 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Buddy B
 
-This contains everything you need to run your app locally.
+Landing page oficial do **Buddy B**, uma plataforma completa de gestão financeira que ajuda usuários a controlar fluxo de caixa, orçamentos e investimentos de forma inteligente e integrada.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1aexom6KAxiKvP-2QXjDCJcY6MhAS7zX-
+## 🚀 Tecnologias Utilizadas
 
-## Run Locally
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-**Prerequisites:**  Node.js
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** (Animações)
 
+## 💻 Como Rodar o Projeto
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Siga os passos abaixo para executar a aplicação em seu ambiente local.
+
+**Pré-requisitos:** Ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
+
+1. Instale as dependências do projeto:
+   ```bash
+   npm install
