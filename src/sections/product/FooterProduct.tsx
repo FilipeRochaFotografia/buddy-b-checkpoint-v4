@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../../lib/utils';
+import { useRDStation } from '../../hooks/useRDStation';
 
 export function FooterProduct() {
+  const [email, setEmail] = useState('');
+  const { sendLead, isLoading, isSuccess } = useRDStation();
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    sendLead({
+      name: 'Lead Newsletter Footer',
+      email: email,
+      phone: '',
+      profile: 'Newsletter',
+    }, 'home');
+  };
+
   return (
     <>
       <section id="contato" className="py-20 scroll-mt-24" style={{ backgroundColor: 'rgba(155, 128, 255, 0.1)' }}>
@@ -35,20 +51,56 @@ export function FooterProduct() {
             Receba novidades no seu e-mail.
           </motion.h2>
 
-          <motion.div variants={fadeInUp} className="flex gap-4 w-full max-w-[680px]">
-            <input 
-              type="email" 
-              placeholder="Seu e-mail" 
-              className="flex-1 h-[58px] px-6 rounded-[8px] border border-[#9B80FF]/50 bg-[#9B80FF]/10 text-[#9B80FF] placeholder-[#9B80FF]/60 focus:outline-none focus:border-[#9B80FF]"
-            />
-            <button className="w-[58px] h-[58px] bg-[#9B80FF] rounded-[8px] flex items-center justify-center hover:bg-[#8a6df0] transition-colors shadow-sm">
-              <svg width="29" height="18" viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.2041 8.06836C1.59565 8.06836 1.90893 8.38313 1.90918 8.76562C1.90918 9.14833 1.59581 9.46387 1.2041 9.46387C0.812563 9.46368 0.5 9.14822 0.5 8.76562C0.500252 8.38324 0.812721 8.06855 1.2041 8.06836Z" fill="#FDFDFD" stroke="#FDFDFD"/>
-                <path d="M6.52417 8.76611H26.0042" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M19.6479 16.1122L26.955 8.76611" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M19.6479 1.5L26.955 8.7662" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+          <motion.div variants={fadeInUp} className="w-full max-w-[680px] flex flex-col items-center">
+            <form 
+              onSubmit={handleNewsletterSubmit}
+              className="flex gap-4 w-full"
+            >
+              <input 
+                type="email" 
+                placeholder="Seu e-mail" 
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isLoading || isSuccess}
+                className="flex-1 h-[58px] px-6 rounded-[8px] border border-[#9B80FF]/50 bg-[#9B80FF]/10 text-[#9B80FF] placeholder-[#9B80FF]/60 focus:outline-none focus:border-[#9B80FF] disabled:opacity-50"
+              />
+              <button 
+                type="submit"
+                disabled={isLoading || isSuccess}
+                className={`w-[58px] h-[58px] rounded-[8px] flex items-center justify-center transition-all shadow-sm ${
+                  isSuccess ? 'bg-[#20CE66]' : 'bg-[#9B80FF] hover:bg-[#8a6df0]'
+                }`}
+              >
+                {isLoading ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : isSuccess ? (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                ) : (
+                  <svg width="29" height="18" viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.2041 8.06836C1.59565 8.06836 1.90893 8.38313 1.90918 8.76562C1.90918 9.14833 1.59581 9.46387 1.2041 9.46387C0.812563 9.46368 0.5 9.14822 0.5 8.76562C0.500252 8.38324 0.812721 8.06855 1.2041 8.06836Z" fill="#FDFDFD" stroke="#FDFDFD"/>
+                    <path d="M6.52417 8.76611H26.0042" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M19.6479 16.1122L26.955 8.76611" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M19.6479 1.5L26.955 8.7662" stroke="#FDFDFD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </button>
+            </form>
+
+            <AnimatePresence>
+              {isSuccess && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="text-[#20CE66] font-bold mt-4"
+                >
+                  E-mail cadastrado com sucesso!
+                </motion.p>
+              )}
+            </AnimatePresence>
           </motion.div>
 
         </motion.div>
