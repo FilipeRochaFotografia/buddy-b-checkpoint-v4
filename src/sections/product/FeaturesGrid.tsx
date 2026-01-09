@@ -134,7 +134,7 @@ export function FeaturesGrid() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onMouseEnter={() => setActiveCardIndex(index)}
                 className={`
-                  relative w-full max-w-[412px] h-[200px] rounded-[10px] pl-[21px] pt-[22px] pr-[14px] flex flex-col justify-start
+                  relative w-full max-w-[412px] min-h-[200px] h-auto rounded-[10px] pl-[21px] pt-[22px] pr-[14px] pb-6 flex flex-col justify-start
                   transition-all duration-300 cursor-pointer
                   ${isActive 
                     ? 'bg-[#9B80FF] border border-[#9B80FF]' 

@@ -50,7 +50,7 @@ export function HeroProduct() {
                 className="font-body font-normal text-[#424242] 
                 text-[20px] leading-[27px] text-justify
                 w-[347px] max-w-full
-                lg:w-[580px] 
+                lg:w-[600px] 
                 mb-8"
               >
                 Tenha acesso ao relatório de <strong>Fluxo de Caixa mais completo do mercado</strong>, direto no seu app. Acompanhe entradas e saídas em tempo real, identifique seus desafios financeiros e tome decisões com mais segurança. Tudo isso integrado às suas contas bancárias, com suporte a múltiplas moedas e idiomas.
