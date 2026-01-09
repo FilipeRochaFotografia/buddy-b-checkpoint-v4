@@ -26,13 +26,13 @@ export function DownloadApp() {
               Escaneie o QR Code com a câmera do seu celular e instale o Buddy B em poucos segundos.
             </p>
             
-            <div className="w-[220px] h-[220px] bg-white p-2 shadow-sm mb-8 lg:mb-0">
+            <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer" className="w-[220px] h-[220px] bg-white p-2 shadow-sm mb-8 lg:mb-0 block">
                <img 
                  src="/assets/images/qrcode.png" 
                  alt="QR Code" 
                  className="w-full h-full object-contain" 
                />
-            </div>
+            </a>
           </motion.div>
           
           {/* Right Column */}
@@ -57,11 +57,13 @@ export function DownloadApp() {
 
                <div className="hidden lg:flex relative z-20 items-center gap-4 lg:mr-8">
                   <span className="font-body text-[#4D4D4D] font-semibold text-sm">Baixe o app</span>
-                  <img 
-                    src="/assets/images/disponivel.png" 
-                    alt="Disponível no Google Play e App Store" 
-                    className="h-[42px] w-auto object-contain cursor-pointer" 
-                  />
+                  <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src="/assets/images/disponivel.png" 
+                      alt="Disponível no Google Play e App Store" 
+                      className="h-[42px] w-auto object-contain cursor-pointer" 
+                    />
+                  </a>
                </div>
              </div>
 
@@ -69,11 +71,13 @@ export function DownloadApp() {
                 <span className="font-body text-[#4D4D4D] font-semibold text-[14px] leading-[19px]">
                   Baixe o app
                 </span>
-                <img 
-                  src="/assets/images/disponivel.png" 
-                  alt="Disponível no Google Play e App Store" 
-                  className="w-[210px] h-auto object-contain cursor-pointer" 
-                />
+                <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src="/assets/images/disponivel.png" 
+                    alt="Disponível no Google Play e App Store" 
+                    className="w-[210px] h-auto object-contain cursor-pointer" 
+                  />
+                </a>
              </div>
 
           </motion.div>

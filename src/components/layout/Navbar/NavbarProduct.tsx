@@ -5,18 +5,16 @@ export function NavbarProduct() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Indicadores', href: '#indicadores' },
-    { label: 'Planos', href: '#planos' }, // Certifique-se que PricingGeneral tem id="planos"
-    { label: 'Blog', href: '#blog' },     // Certifique-se que BlogPreview tem id="blog"
-    { label: 'Contato', href: '#footer' }, // Certifique-se que Footer tem id="footer" ou a section de contato
+    { label: 'Diferenciais', href: '#diferenciais' },
+    { label: 'Planos', href: '#planos' }, 
+    { label: 'Blog', href: '#blog' },     
     { label: 'FAQ', href: '#' },
   ];
 
-  // Função para lidar com o Scroll Suave
+  
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault(); // Impede o recarregamento/mudança de URL
+    e.preventDefault(); 
     
-    // Se for FAQ ou link vazio, não faz nada
     if (href === '#') return;
 
     const targetId = href.replace('#', '');
@@ -24,7 +22,7 @@ export function NavbarProduct() {
 
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false); // Fecha o menu mobile ao clicar
+      setIsOpen(false); 
     }
   };
 
@@ -38,7 +36,7 @@ export function NavbarProduct() {
             <img 
               src="/assets/images/Logo2.png" 
               alt="Buddy B" 
-              className="h-[48px] w-auto object-contain" 
+              className="h-[64px] w-auto object-contain" 
             />
           </Link>
         </div>
@@ -62,13 +60,13 @@ export function NavbarProduct() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="http://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
+            <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
               <button className="w-[69px] h-[48px] bg-[#9B80FF] text-white font-heading font-bold rounded-[15px] hover:bg-[#8a6df0] transition-colors shadow-sm text-sm flex items-center justify-center">
                 Entrar
               </button>
             </a>
 
-            <a href="http://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
+            <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
               <button className="h-[48px] px-6 bg-transparent border-2 border-[#9B80FF] text-[#9B80FF] font-heading font-normal rounded-[15px] hover:bg-[#9B80FF] hover:text-white transition-colors text-sm flex items-center justify-center">
                 Cadastrar
               </button>
@@ -103,10 +101,10 @@ export function NavbarProduct() {
             </a>
           ))}
           <div className="flex flex-col gap-3 mt-2">
-             <a href="http://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
+             <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
                 <button className="w-full h-[48px] bg-[#9B80FF] text-white font-bold rounded-[15px]">Entrar</button>
              </a>
-             <a href="http://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
+             <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
                 <button className="w-full h-[48px] border-2 border-[#9B80FF] text-[#9B80FF] font-normal rounded-[15px]">Cadastrar</button>
              </a>
           </div>

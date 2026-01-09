@@ -42,7 +42,7 @@ export function HeroProduct() {
                 lg:text-[40px] lg:leading-[59px] lg:w-[561px]
                 mb-6"
               >
-                Chega de suposições. Visualize seu fluxo de caixa com clareza total.
+                Chega de suposições. Visualize seu Fluxo de Caixa com clareza total.
               </motion.h1>
 
               <motion.p 
@@ -57,7 +57,7 @@ export function HeroProduct() {
               </motion.p>
 
               <motion.div variants={fadeInUp} className="w-full flex justify-center lg:justify-start">
-                <a href="https://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
+                <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
                   <Button 
                     variant="primary" 
                     className="w-[350px] max-w-full lg:w-[305px] h-[54px] text-[18px] font-semibold shadow-lg hover:shadow-xl flex items-center justify-center gap-3"

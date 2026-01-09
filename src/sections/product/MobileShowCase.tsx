@@ -5,7 +5,7 @@ import { fadeInUp, staggerContainer } from '../../lib/utils';
 
 export function MobileShowcase() {
   return (
-    <section id="indicadores" className="relative py-20 lg:py-32 overflow-hidden scroll-mt-24">
+    <section id="diferenciais" className="relative py-20 lg:py-32 overflow-hidden scroll-mt-24">
       
       <div 
         className="absolute inset-0 z-0"
@@ -60,7 +60,7 @@ export function MobileShowcase() {
                 variants={fadeInUp}
                 className="w-full flex justify-center lg:justify-start"
               >
-                <a href="https://app.buddybapp.com/" target="_blank" rel="noopener noreferrer">
+                <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
                   <Button 
                     variant="primary" 
                     className="w-[350px] lg:w-[476px] h-[54px] text-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"

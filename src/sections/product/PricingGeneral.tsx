@@ -9,40 +9,48 @@ const CheckIcon = () => (
   </div>
 );
 
+type Feature = {
+  text: string;
+  sub?: string;
+};
+
 const pricingData = [
   {
     id: 'standard',
     type: 'standard',
     title: 'Buddy B Standard',
-    price: 'R$ 29,90',
-    period: '/Mês',
-    yearlyPrice: 'R$ 358,80/Ano',
+    price: 'R$ 39,99',
+    period: '/mês',
+    yearlyPrice: '',
     description: 'Organize suas finanças com autonomia e dê o primeiro passo para uma vida financeira mais equilibrada.',
     buttonText: 'Testar grátis por 7 dias',
     buttonColor: 'bg-[#0A438F] hover:bg-[#083675]',
-    sectionTitle: 'Assinatura mensal',
+    sectionTitle: 'Assinatura Mensal',
     features: [
-      { text: 'Liberdade contratual', sub: '(Pay as You Go )' },
-      { text: 'Possibilidade de upgrade' },
-      { text: 'Conteúdos exclusivos' }
-    ]
+      { text: 'Gestão completa de cartões de crédito' },
+      { text: 'Integração bancária segura via Open Finance' },
+      { text: 'Suporte a múltiplas moedas' },
+      { text: 'Organização e categorização financeira' }
+    ] as Feature[]
   },
   {
     id: 'smart',
     type: 'smart',
     title: 'Buddy B Smart',
-    price: 'R$ 6,90',
-    period: '/Mês',
-    yearlyPrice: 'R$ 82,80/Ano',
-    description: 'Planeje com estratégia e economize enquanto evolui. Mais vantagens para você alcançar suas metas.',
+    price: 'R$ 6,69',
+    period: '/mês',
+    yearlyPrice: 'De R$ 399,99/ano por R$ 79,99/ano',
+    description: 'Pagamento único (sem mensalidade). Único com Fluxo de Caixa.',
     buttonText: 'Testar grátis por 7 dias',
     buttonColor: 'bg-[#9B80FF] hover:bg-[#8a6df0]',
     sectionTitle: 'Assinatura anual',
     features: [
-      { text: 'Economia garantida' },
-      { text: 'Pagamentos único para melhor planejamento' },
-      { text: 'Conteúdos exclusivos' }
-    ]
+      { text: 'Controle seus cartões de crédito' },
+      { text: 'Integração bancária (ilimitada)' },
+      { text: 'Conexão via Open Finance' },
+      { text: 'Multimoeda' },
+      { text: 'Categorize suas finanças' }
+    ] as Feature[]
   },
   {
     id: 'chat',
@@ -59,7 +67,7 @@ const pricingData = [
       { text: 'Orientações financeiras personalizadas' },
       { text: 'Agende online com facilidade' },
       { text: 'Inclui 50 minutos de consultoria dedicada' }
-    ]
+    ] as Feature[]
   }
 ];
 
@@ -69,7 +77,7 @@ const PricingCard = ({ data }: { data: typeof pricingData[0] }) => {
 
   const CardContent = () => (
     <>
-      <h3 className={`w-full text-left font-heading font-extrabold text-[#424242] text-[22px] leading-[33px] ${isChat ? 'mb-[19px]' : 'mb-[16px]'}`}>
+      <h3 className={`w-full text-left font-heading font-black text-[#424242] text-[22px] leading-[33px] ${isChat ? 'mb-[19px]' : 'mb-[16px]'}`}>
         {data.title}
       </h3>
       
@@ -78,7 +86,7 @@ const PricingCard = ({ data }: { data: typeof pricingData[0] }) => {
         {data.period && <span className="font-body font-semibold text-[#424242] text-[24px]">{data.period}</span>}
       </div>
       
-      {!isChat && (
+      {!isChat && data.yearlyPrice && (
         <p className="w-full text-left font-body font-bold text-[#424242] text-[12px] leading-[16px] mb-[8px]">
           {data.yearlyPrice}
         </p>
@@ -96,7 +104,7 @@ const PricingCard = ({ data }: { data: typeof pricingData[0] }) => {
         </div>
       ) : (
         <div className="mb-[18px] w-full flex justify-center">
-          <a href="https://app.buddybapp.com/" target="_blank" rel="noopener noreferrer" className="w-full flex justify-center">
+          <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer" className="w-full flex justify-center">
             <div className={`w-[278px] h-[44px] rounded-pill flex items-center justify-center text-white font-bold text-[16px] cursor-pointer transition-colors shadow-md ${data.buttonColor}`}>
               {data.buttonText}
             </div>
@@ -125,7 +133,7 @@ const PricingCard = ({ data }: { data: typeof pricingData[0] }) => {
 
   if (isSmart) {
     return (
-      <div className="relative flex flex-col" style={{ width: '338px', height: '525px' }}>
+      <div className="relative flex flex-col" style={{ width: '338px', height: '560px' }}>
         <div className="w-full h-[36px] bg-[#7E5BFF]/70 rounded-t-[8px] flex items-center justify-end pr-6 relative z-10 flex-shrink-0">
           <span className="font-body font-extrabold text-[#F0F4F8] text-[20px] leading-[33px]">
             Recomendado
@@ -164,6 +172,7 @@ export function PricingGeneral() {
   };
 
   return (
+    /* PRICING SECTION */
     <section id="planos" className="py-10 lg:py-24 bg-[#F3F4F6] overflow-hidden scroll-mt-24">
       <div className="container mx-auto px-4">
         
@@ -184,7 +193,7 @@ export function PricingGeneral() {
 
         {/* MOBILE CAROUSEL */}
         <div className="lg:hidden flex flex-col items-center">
-          <div className="relative w-[338px] h-[525px] flex items-center justify-center">
+          <div className="relative w-[338px] h-[560px] flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={mobileIndex}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { NavbarProduct } from '../components/layout/Navbar/NavbarProduct'; // Navbar da Home
+import { NavbarProduct } from '../components/layout/Navbar/NavbarProduct'; 
 import { FooterProduct } from '../sections/product/FooterProduct';
 
 const PoliticaCookiesPage: React.FC = () => {

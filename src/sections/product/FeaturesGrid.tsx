@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- DATA & ASSETS ---
+
 const features = [
   {
     title: "Fluxo de Caixa Poderoso",
@@ -92,7 +92,7 @@ const features = [
     icon: (color: string) => (
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_protec)">
-            <path d="M21.9126 5.41968L19.0711 1.5807C18.7217 1.09218 18.2609 0.693969 17.7268 0.419076C17.1928 0.144183 16.601 0.000522547 16.0003 1.66317e-06H6.64825C6.05054 -0.000559365 5.46124 0.140824 4.92885 0.419076C4.39646 0.684207 3.9362 1.07844 3.58594 1.56277L0.693495 5.42912C0.222554 6.09319 -0.0206556 6.89192 0.000268925 7.70577C0.0211934 8.51961 0.305126 9.30479 0.80957 9.94378L9.10659 21.5777C9.37101 21.9126 9.70801 22.1829 10.0922 22.3685C10.4764 22.554 10.8977 22.6499 11.3243 22.6488C11.7582 22.648 12.1862 22.5476 12.5753 22.3553C12.9643 22.1631 13.3041 21.8842 13.5684 21.54L21.7994 10.0353C22.3264 9.38698 22.6235 8.58211 22.6439 7.74683C22.6644 6.91156 22.4072 6.09308 21.9126 5.41968ZM17.5452 2.69049L20.3933 6.53891C20.4084 6.55967 20.4121 6.58421 20.4272 6.60591H15.8106L14.463 1.8874H16.0003C16.3032 1.88834 16.6015 1.96173 16.8702 2.10144C17.139 2.24115 17.3704 2.44312 17.5452 2.69049ZM11.3243 18.0417L8.7763 8.49331H13.8723L11.3243 18.0417ZM8.80083 6.60591L10.1484 1.8874H12.5001L13.8477 6.60591H8.80083ZM5.11191 2.67728C5.28701 2.43323 5.51765 2.23432 5.78478 2.09698C6.05191 1.95964 6.34788 1.88781 6.64825 1.8874H8.18554L6.83793 6.60591H2.18737C2.20059 6.58515 2.20436 6.55967 2.21946 6.53985L5.11191 2.67728ZM2.31006 8.80002C2.24192 8.70377 2.18344 8.60104 2.13547 8.49331H6.82472L9.65017 19.0911L2.31006 8.80002ZM12.9956 19.1005L15.8267 8.49331H20.532C20.4712 8.63418 20.3942 8.7675 20.3027 8.89061L12.9956 19.1005Z" fill={color}/>
+            <path d="M21.9126 5.41968L19.0711 1.5807C18.7217 1.09218 18.2609 0.693969 17.7268 0.419076C17.1928 0.144183 16.601 0.000522547 16.0003 1.66317e-06H6.64825C6.05054 -0.000559365 5.46124 0.140824 4.92885 0.412515C4.39646 0.684207 3.9362 1.07844 3.58594 1.56277L0.693495 5.42912C0.222554 6.09319 -0.0206556 6.89192 0.000268925 7.70577C0.0211934 8.51961 0.305126 9.30479 0.80957 9.94378L9.10659 21.5777C9.37101 21.9126 9.70801 22.1829 10.0922 22.3685C10.4764 22.554 10.8977 22.6499 11.3243 22.6488C11.7582 22.648 12.1862 22.5476 12.5753 22.3553C12.9643 22.1631 13.3041 21.8842 13.5684 21.54L21.7994 10.0353C22.3264 9.38698 22.6235 8.58211 22.6439 7.74683C22.6644 6.91156 22.4072 6.09308 21.9126 5.41968ZM17.5452 2.69049L20.3933 6.53891C20.4084 6.55967 20.4121 6.58421 20.4272 6.60591H15.8106L14.463 1.8874H16.0003C16.3032 1.88834 16.6015 1.96173 16.8702 2.10144C17.139 2.24115 17.3704 2.44312 17.5452 2.69049ZM11.3243 18.0417L8.7763 8.49331H13.8723L11.3243 18.0417ZM8.80083 6.60591L10.1484 1.8874H12.5001L13.8477 6.60591H8.80083ZM5.11191 2.67728C5.28701 2.43323 5.51765 2.23432 5.78478 2.09698C6.05191 1.95964 6.34788 1.88781 6.64825 1.8874H8.18554L6.83793 6.60591H2.18737C2.20059 6.58515 2.20436 6.55967 2.21946 6.53985L5.11191 2.67728ZM2.31006 8.80002C2.24192 8.70377 2.18344 8.60104 2.13547 8.49331H6.82472L9.65017 19.0911L2.31006 8.80002ZM12.9956 19.1005L15.8267 8.49331H20.532C20.4712 8.63418 20.3942 8.7675 20.3027 8.89061L12.9956 19.1005Z" fill={color}/>
             </g>
             <defs>
             <clipPath id="clip0_protec">
@@ -104,34 +104,19 @@ const features = [
   }
 ];
 
-const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
-
 export function FeaturesGrid() {
   const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
-  
-  // Mobile States
   const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
-  const [isMobileActive, setIsMobileActive] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    setIsMobileActive(false);
-    
-    const timer = setTimeout(() => {
-        setIsMobileActive(true);
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [mobileCurrentIndex]);
-
-  const paginateMobile = (newDirection: number) => {
-    let nextIndex = mobileCurrentIndex + newDirection;
-    if (nextIndex < 0) nextIndex = features.length - 1;
-    if (nextIndex >= features.length) nextIndex = 0;
-    setMobileCurrentIndex(nextIndex);
-  };
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setMobileCurrentIndex((prev) => (prev === features.length - 1 ? 0 : prev + 1));
+      }, 3500);
+      return () => clearInterval(interval);
+    }
+  }, [isPaused]);
 
   return (
     <section id="funcionalidades" className="py-24 bg-[#F3F4F6] overflow-hidden">
@@ -141,7 +126,6 @@ export function FeaturesGrid() {
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
           {features.map((feature, index) => {
              const isActive = activeCardIndex === index;
-             
              return (
               <motion.div 
                 key={index}
@@ -149,7 +133,7 @@ export function FeaturesGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setActiveCardIndex(index)}
+                onMouseEnter={() => setActiveCardIndex(index)}
                 className={`
                   relative w-full max-w-[412px] h-[200px] rounded-[10px] pl-[21px] pt-[22px] pr-[14px] flex flex-col justify-start
                   transition-all duration-300 cursor-pointer
@@ -191,7 +175,13 @@ export function FeaturesGrid() {
         </div>
 
         {/* MOBILE CAROUSEL */}
-        <div className="md:hidden flex flex-col items-center">
+        <div 
+          className="md:hidden flex flex-col items-center"
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          onMouseDown={() => setIsPaused(true)}
+          onMouseUp={() => setIsPaused(false)}
+        >
             <div className="relative w-full max-w-[350px] min-h-[220px]">
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -199,67 +189,34 @@ export function FeaturesGrid() {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -50 }}
-                        transition={{ duration: 0.3 }}
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={1}
-                        onDragEnd={(e, { offset, velocity }) => {
-                            const swipe = swipePower(offset.x, velocity.x);
-                            if (swipe < -swipeConfidenceThreshold) {
-                                paginateMobile(1);
-                            } else if (swipe > swipeConfidenceThreshold) {
-                                paginateMobile(-1);
-                            }
-                        }}
-                        className={`
-                            border border-[#9B80FF] rounded-[10px] pl-[21px] pt-[22px] pr-[14px] pb-6 flex flex-col justify-start w-full shadow-sm
-                            transition-colors duration-[2000ms] ease-in-out
-                            ${isMobileActive ? 'bg-[#9B80FF]' : 'bg-[#FDFDFD]'}
-                        `}
+                        transition={{ duration: 0.5 }}
+                        className="border border-[#9B80FF] rounded-[10px] pl-[21px] pt-[22px] pr-[14px] pb-6 flex flex-col justify-start w-full shadow-sm bg-[#9B80FF]"
                     >
-                         {/* Icon Container: Transition Colors */}
-                        <div className={`
-                            w-[45.3px] h-[45.3px] rounded-full flex items-center justify-center mb-2
-                            transition-colors duration-[2000ms] ease-in-out
-                            ${isMobileActive ? 'bg-white' : 'bg-[#9B80FF]'}
-                        `}>
-                            {features[mobileCurrentIndex].icon(isMobileActive ? '#9B80FF' : '#FDFDFD')}
+                        <div className="w-[45.3px] h-[45.3px] rounded-full flex items-center justify-center mb-2 bg-white">
+                            {features[mobileCurrentIndex].icon('#9B80FF')}
                         </div>
 
-                        <h3 className={`
-                            font-heading font-bold text-[18px] leading-[26px] md:text-[20px] md:leading-[30px] mb-1.5
-                            transition-colors duration-[2000ms] ease-in-out
-                            ${isMobileActive ? 'text-white' : 'text-[#9B80FF]'}
-                        `}>
+                        <h3 className="font-heading font-bold text-[18px] leading-[26px] mb-1.5 text-white">
                             {features[mobileCurrentIndex].title}
                         </h3>
 
-                        {/* Text: Colors */}
-                        <p className={`
-                            font-body font-normal text-[16px] leading-[22px] text-justify
-                            transition-colors duration-[2000ms] ease-in-out
-                            ${isMobileActive ? 'text-white' : 'text-[#9B80FF]'}
-                        `}>
+                        <p className="font-body font-normal text-[16px] leading-[22px] text-justify text-white">
                             {features[mobileCurrentIndex].text}
                         </p>
                     </motion.div>
                 </AnimatePresence>
             </div>
             
-            {/* Pagination Dots */}
             <div className="flex items-center gap-2 mt-6">
-                {features.map((_, index) => {
-                    const isActive = mobileCurrentIndex === index;
-                    return (
-                        <motion.div
-                            key={index}
-                            onClick={() => setMobileCurrentIndex(index)}
-                            className={`rounded-full cursor-pointer transition-all duration-300 ${
-                                isActive ? 'bg-[#9B80FF] w-6 h-3' : 'bg-[#9B80FF]/40 w-3 h-3'
-                            }`}
-                        />
-                    )
-                })}
+                {features.map((_, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setMobileCurrentIndex(index)}
+                        className={`rounded-full cursor-pointer transition-all duration-300 ${
+                            mobileCurrentIndex === index ? 'bg-[#9B80FF] w-6 h-3' : 'bg-[#9B80FF]/40 w-3 h-3'
+                        }`}
+                    />
+                ))}
             </div>
         </div>
 

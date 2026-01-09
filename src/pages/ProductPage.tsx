@@ -11,7 +11,7 @@ import { TestimonialsGeneral } from '../sections/product/TestimonialsGeneral';
 import { DownloadApp } from '../sections/product/DownloadApp';
 import { FooterProduct } from '../sections/product/FooterProduct';
 
-// IMPORTAR O COOKIE CONSENT
+
 import { CookieConsent } from '../components/ui/CookieConsent';
 
 const ProductPage: React.FC = () => {
