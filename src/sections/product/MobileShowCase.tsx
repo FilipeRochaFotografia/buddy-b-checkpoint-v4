@@ -53,7 +53,7 @@ export function MobileShowcase() {
                 variants={fadeInUp}
                 className="font-body font-normal text-[#424242] text-[20px] leading-[27px] text-justify w-[350px] lg:w-[499px] mb-10"
               >
-                Do fluxo de caixa à consultoria financeira, tudo o que você precisa para organizar suas finanças está em um só app. Acompanhe cada movimentação em tempo real, visualize seus saldos de forma integrada, defina metas claras e tome decisões com confiança. Mais do que números, você ganha clareza e estratégia para crescer sem surpresas.
+                Do Fluxo de Caixa à consultoria financeira, tudo o que você precisa para organizar suas finanças está em um só app. Acompanhe cada movimentação em tempo real, visualize seus saldos de forma integrada, defina metas claras e tome decisões com confiança. Mais do que números, você ganha clareza e estratégia para crescer sem surpresas.
               </motion.p>
 
               <motion.div 

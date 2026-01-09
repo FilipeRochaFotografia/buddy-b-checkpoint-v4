@@ -53,7 +53,7 @@ export function HeroProduct() {
                 lg:w-[580px] 
                 mb-8"
               >
-                Tenha acesso ao relatório de <strong>cash flow mais completo do mercado</strong>, direto no seu app. Acompanhe entradas e saídas em tempo real, identifique seus desafios financeiros e tome decisões com mais segurança. Tudo isso integrado às suas contas bancárias, com suporte a múltiplas moedas e idiomas.
+                Tenha acesso ao relatório de <strong>Fluxo de Caixa mais completo do mercado</strong>, direto no seu app. Acompanhe entradas e saídas em tempo real, identifique seus desafios financeiros e tome decisões com mais segurança. Tudo isso integrado às suas contas bancárias, com suporte a múltiplas moedas e idiomas.
               </motion.p>
 
               <motion.div variants={fadeInUp} className="w-full flex justify-center lg:justify-start">

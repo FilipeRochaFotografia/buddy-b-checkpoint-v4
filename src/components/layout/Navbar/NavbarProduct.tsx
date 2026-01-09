@@ -5,7 +5,7 @@ export function NavbarProduct() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Diferenciais', href: '#diferenciais' },
+    { label: 'Diferenciais', href: '#funcionalidades' },
     { label: 'Planos', href: '#planos' }, 
     { label: 'Blog', href: '#blog' },     
     { label: 'FAQ', href: '#' },

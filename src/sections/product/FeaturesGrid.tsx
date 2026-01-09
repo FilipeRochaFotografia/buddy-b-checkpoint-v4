@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
 const features = [
   {
     title: "Fluxo de Caixa Poderoso",
@@ -119,7 +118,7 @@ export function FeaturesGrid() {
   }, [isPaused]);
 
   return (
-    <section id="funcionalidades" className="py-24 bg-[#F3F4F6] overflow-hidden">
+    <section id="funcionalidades" className="py-24 bg-[#F3F4F6] overflow-hidden scroll-mt-24">
       <div className="container mx-auto px-4 md:px-10">
         
         {/* DESKTOP GRID */}
