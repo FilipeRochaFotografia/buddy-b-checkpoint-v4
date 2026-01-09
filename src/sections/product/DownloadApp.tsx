@@ -55,29 +55,35 @@ export function DownloadApp() {
                   />
                </div>
 
-               <div className="hidden lg:flex relative z-20 items-center gap-4 lg:mr-8">
-                  <span className="font-body text-[#4D4D4D] font-semibold text-sm">Baixe o app</span>
+               <div className="hidden lg:flex relative z-20 flex-col items-end gap-1 lg:mr-8">
+                  <div className="flex items-center gap-4">
+                    <span className="font-body text-[#4D4D4D] font-semibold text-sm">Baixe o app</span>
+                    <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
+                      <img 
+                        src="/assets/images/disponivel.png" 
+                        alt="Disponível no Google Play e App Store" 
+                        className="h-[42px] w-auto object-contain cursor-pointer" 
+                      />
+                    </a>
+                  </div>
+                  <span className="text-[10px] text-[#424242] italic pr-1">*Em breve na App Store</span>
+               </div>
+             </div>
+
+             <div className="flex flex-col w-full max-w-[350px] items-center mt-4 px-2 lg:hidden">
+                <div className="flex w-full items-center justify-between">
+                  <span className="font-body text-[#4D4D4D] font-semibold text-[14px] leading-[19px]">
+                    Baixe o app
+                  </span>
                   <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
                     <img 
                       src="/assets/images/disponivel.png" 
                       alt="Disponível no Google Play e App Store" 
-                      className="h-[42px] w-auto object-contain cursor-pointer" 
+                      className="w-[210px] h-auto object-contain cursor-pointer" 
                     />
                   </a>
-               </div>
-             </div>
-
-             <div className="flex lg:hidden w-full max-w-[350px] items-center justify-between mt-4 px-2">
-                <span className="font-body text-[#4D4D4D] font-semibold text-[14px] leading-[19px]">
-                  Baixe o app
-                </span>
-                <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
-                  <img 
-                    src="/assets/images/disponivel.png" 
-                    alt="Disponível no Google Play e App Store" 
-                    className="w-[210px] h-auto object-contain cursor-pointer" 
-                  />
-                </a>
+                </div>
+                <span className="text-[10px] text-[#424242] italic w-full text-right mt-1 pr-2">*Em breve na App Store</span>
              </div>
 
           </motion.div>

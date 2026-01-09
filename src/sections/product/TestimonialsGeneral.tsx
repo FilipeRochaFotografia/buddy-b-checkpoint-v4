@@ -5,15 +5,15 @@ import { fadeInUp } from '../../lib/utils';
 const testimonials = [
   {
     name: "Amanda Silva.",
-    text: "“Sempre tentei controlar minhas finanças em planilhas, mas acabava me perdendo e desistindo no meio do caminho. O BuddyB facilitou tudo! Agora acompanho meu fluxo de caixa em tempo real e tenho uma visão muito mais clara do meu dinheiro. Salvou minha organização financeira!”"
+    text: "“Sempre tentei controlar minhas finanças em planilhas, mas acabava me perdendo e desistindo no meio do caminho. O Buddy B facilitou tudo! Agora acompanho meu fluxo de caixa em tempo real e tenho uma visão muito mais clara do meu dinheiro. Salvou minha organização financeira!”"
   },
   {
     name: "Felipe Rodriges",
-    text: "“Planilhas nunca funcionaram pra mim, era complicado atualizar e entender os dados. Com o BuddyB, tudo ficou automático e simples. O app me ajudou a criar metas e controlar meus gastos sem dor de cabeça. Recomendo demais!”"
+    text: "“Planilhas nunca funcionaram pra mim, era complicado atualizar e entender os dados. Com o Buddy B, tudo ficou automático e simples. O app me ajudou a criar metas e controlar meus gastos sem dor de cabeça. Recomendo demais!”"
   },
   {
     name: "Rebeca Alves.",
-    text: "“Eu sonhava em fazer minha primeira viagem internacional, mas nunca sobrava dinheiro. Com o BuddyB, consegui organizar meu fluxo de caixa de forma impecável e juntar o valor necessário sem aperto. Foi a ferramenta que faltava para realizar esse sonho!”"
+    text: "“Eu sonhava em fazer minha primeira viagem internacional, mas nunca sobrava dinheiro. Com o Buddy B, consegui organizar meu fluxo de caixa de forma impecável e juntar o valor necessário sem aperto. Foi a ferramenta que faltava para realizar esse sonho!”"
   }
 ];
 
