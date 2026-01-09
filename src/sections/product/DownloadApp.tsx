@@ -66,7 +66,7 @@ export function DownloadApp() {
                       />
                     </a>
                   </div>
-                  <span className="text-[10px] text-[#424242] italic pr-1">*Em breve na App Store</span>
+                  <span className="text-[10px] text-[#424242] italic pr-1">*Em breve</span>
                </div>
              </div>
 
