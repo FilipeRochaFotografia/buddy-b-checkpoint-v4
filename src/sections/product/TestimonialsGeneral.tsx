@@ -8,7 +8,7 @@ const testimonials = [
     text: "“Sempre tentei controlar minhas finanças em planilhas, mas acabava me perdendo e desistindo no meio do caminho. O Buddy B facilitou tudo! Agora acompanho meu fluxo de caixa em tempo real e tenho uma visão muito mais clara do meu dinheiro. Salvou minha organização financeira!”"
   },
   {
-    name: "Felipe Rodriges",
+    name: "Felipe Rodriges.",
     text: "“Planilhas nunca funcionaram pra mim, era complicado atualizar e entender os dados. Com o Buddy B, tudo ficou automático e simples. O app me ajudou a criar metas e controlar meus gastos sem dor de cabeça. Recomendo demais!”"
   },
   {
