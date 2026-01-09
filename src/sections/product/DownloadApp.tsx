@@ -83,7 +83,7 @@ export function DownloadApp() {
                     />
                   </a>
                 </div>
-                <span className="text-[10px] text-[#424242] italic w-full text-right mt-1 pr-2">*Em breve</span>
+                <span className="text-[10px] text-[#424242] italic w-full text-right mt-1 pr-2">*Em breve na loja</span>
              </div>
 
           </motion.div>
