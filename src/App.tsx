@@ -8,11 +8,13 @@ import ScrollToTop from './components/ScrollToTop';
 // Páginas Principais
 import ProductPage from './pages/ProductPage';
 import CapturePage from './pages/CapturePage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage'; // Nova Página de Post Individual
 
 // Páginas Institucionais
 import TermosDeUsoPage from './pages/TermosDeUso';
 import PoliticaPrivacidadePage from './pages/PoliticaPrivacidade';
-import PoliticaCookiesPage from './pages/PoliticaCookies'; // Nova Página
+import PoliticaCookiesPage from './pages/PoliticaCookies';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +27,10 @@ const App: React.FC = () => {
 
           {/* --- ROTA DE OFERTA (LANDING PAGE) --- */}
           <Route path="/oferta" element={<CapturePage />} />
+
+          {/* --- BLOG --- */}
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} /> {/* Rota Dinâmica */}
 
           {/* --- INSTITUCIONAIS --- */}
           <Route path="/termos-de-uso" element={<TermosDeUsoPage />} />
