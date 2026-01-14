@@ -7,7 +7,7 @@ import { BlogFooter } from '../sections/blog/BlogFooter';
 import { blogPosts } from '../data/posts'; 
 
 const categories = [
-  "Todos", "Dicas Financeiras", "Mercado", "Economia", "Onde investir", "Tecnologia", "Sustentabilidade"
+  "Todos", "Dicas financeiras", "Mercado", "Economia", "Onde investir", "Tecnologia", "Sustentabilidade"
 ];
 
 const POSTS_PER_PAGE = 3;
@@ -22,10 +22,9 @@ const BlogPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [currentPage, setCurrentPage] = useState(0);
   
-
   const [mobileIndex, setMobileIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const filteredPosts = activeCategory === "Todos" 
     ? blogPosts 
@@ -33,7 +32,6 @@ const BlogPage: React.FC = () => {
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   
-
   useEffect(() => {
     if (!isPaused && window.innerWidth < 1024 && filteredPosts.length > 0) {
       const interval = setInterval(() => {
@@ -78,7 +76,7 @@ const BlogPage: React.FC = () => {
 
       <div className="bg-white min-h-screen">
         
-        <header className="bg-[#9B80FF] pt-[140px] pb-16 lg:pt-[251px] lg:pb-[140px] relative">
+        <header className="bg-[#9B80FF] pt-[117px] pb-16 lg:pt-[251px] lg:pb-[140px] relative">
           <div className="container mx-auto px-5 lg:px-0 lg:w-[1104px]">
             <h1 className="font-heading font-semibold text-white text-[24px] leading-[36px] lg:text-[52px] lg:leading-[77px] mb-4 lg:mb-4">
               As Melhores Dicas para Quem Quer Mudar a Maneira de Pensar Sobre Finanças e Recursos Pessoais
@@ -112,9 +110,8 @@ const BlogPage: React.FC = () => {
             </div>
           </div>
 
-          {/* FILTROS (DROPDOWN NO MOBILE / LISTA NO DESKTOP) */}
           <div className="mb-8 relative z-20">
-  
+            {/* Mobile Dropdown */}
             <div className="lg:hidden relative">
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -153,8 +150,8 @@ const BlogPage: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            {/* Desktop List */}
-            <div className="hidden lg:flex gap-6 overflow-x-auto pb-8 no-scrollbar">
+            {/* Desktop List (Adicionado pr-6) */}
+            <div className="hidden lg:flex gap-6 overflow-x-auto pb-8 no-scrollbar pr-6">
               {categories.map((cat) => (
                 <button 
                   key={cat}
@@ -194,7 +191,9 @@ const BlogPage: React.FC = () => {
                       <div className="px-4 pt-[22px] pb-4 flex flex-col h-[217px] justify-between">
                         <div>
                             <h3 className="font-heading font-semibold text-[#424242] text-[20px] leading-[28px] mb-2 line-clamp-2">{post.title}</h3>
-                            <p className="font-body font-normal text-[#424242] text-[14px] leading-[22px] line-clamp-3">{typeof post.content[0].value === 'string' ? post.content[0].value : 'Leia mais...'}</p>
+                            <p className="font-body font-normal text-[#424242] text-[14px] leading-[22px] line-clamp-3">
+                              {typeof post.content[0].value === 'string' ? post.content[0].value : 'Leia mais...'}
+                            </p>
                         </div>
                         <div className="flex items-center justify-between border-t border-[#E8E9EA] pt-3">
                             <div className="flex items-center gap-2">
@@ -274,7 +273,6 @@ const BlogPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Desktop Pagination */}
           <div className="hidden lg:flex justify-center gap-2 mt-12">
             {Array.from({ length: totalPages }).map((_, idx) => (
               <button key={idx} onClick={() => setCurrentPage(idx)} className={`h-2 rounded-full transition-all duration-300 ${currentPage === idx ? 'w-8 bg-[#9B80FF]' : 'w-2 bg-[#E8E9EA] hover:bg-[#D1D5DB]'}`} />
