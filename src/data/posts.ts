@@ -20,10 +20,10 @@ export interface Post {
 }
 
 const AUTHOR_LUCAS = {
-  name: 'Lucas Almeida',
+  name: 'Samuel Ferreira',
   role: 'Analista Financeiro e educador em finanças pessoais',
   avatar: '/assets/images/lucas.png',
-  bio: 'Lucas é analista financeiro e educador em finanças pessoais, com mais de 8 anos de experiência em ajudar pessoas e empresas a alcançarem estabilidade e crescimento financeiro. Especialista em planejamento financeiro e investimentos, ele compartilha estratégias e insights para descomplicar o mundo das finanças e maximizar resultados.'
+  bio: 'Samuel é analista financeiro e educador em finanças pessoais, com mais de 8 anos de experiência em ajudar pessoas e empresas a alcançarem estabilidade e crescimento financeiro. Especialista em planejamento financeiro e investimentos, ele compartilha estratégias e insights para descomplicar o mundo das finanças e maximizar resultados.'
 };
 
 export const blogPosts: Post[] = [
@@ -35,7 +35,7 @@ export const blogPosts: Post[] = [
     title: 'Ferramentas de Gestão Financeira Pessoal: Por Que Você Precisa de Uma e Como Escolher a Melhor?',
     date: '13 de novembro',
     readTime: '5 min. de leitura',
-    image: '/assets/images/post1blog.png',
+    image: '/assets/images/blogpost1.png',
     author: AUTHOR_LUCAS,
     content: [
       { type: 'paragraph', value: 'Cuidar das finanças pessoais pode parecer complicado, mas com as ferramentas certas, você pode simplificar esse processo e transformar sua relação com o dinheiro. Em tempos em que o controle financeiro é essencial para alcançar metas e viver com mais tranquilidade, ferramentas como o Buddy B surgem como aliadas indispensáveis. Neste post, vamos explorar os benefícios dessas ferramentas, o que você deve buscar em uma boa opção e como começar a usá-las para maximizar seus resultados.' },
@@ -48,7 +48,7 @@ export const blogPosts: Post[] = [
       { type: 'heading', value: 'Por que escolher o Buddy B?' },
       { type: 'list', value: ['Interface simples e intuitiva: O design facilita o uso, permitindo que você se concentre no que realmente importa: sua saúde financeira.', 'Relatórios completos: O Buddy B fornece análises detalhadas e visuais que mostram exatamente onde está seu dinheiro.', 'Acesso a consultorias financeiras: Obtenha suporte especializado diretamente pela plataforma.', 'Flexibilidade e abrangência: Atende a diversas necessidades financeiras com facilidade.'] },
       { type: 'paragraph', value: 'Essas funcionalidades fazem do Buddy B uma das melhores ferramentas para gerenciar suas finanças de forma prática e eficiente.' },
-      { type: 'image', value: '/assets/images/post1corpo.png' },
+      { type: 'image', value: '/assets/images/blogpost11.png' },
       { type: 'heading', value: 'Recursos indispensáveis em uma ferramenta de gestão financeira' },
       { type: 'paragraph', value: 'Ao escolher a ferramenta ideal, procure por recursos que facilitem sua rotina e ofereçam soluções completas. Algumas das funcionalidades indispensáveis incluem:' },
       { type: 'list', value: ['Relatórios visuais e personalizados: Gráficos e tabelas ajudam a interpretar dados financeiros com mais facilidade.', 'Segurança robusta: Certifique-se de que seus dados estão protegidos por criptografia e outros protocolos de segurança.', 'Alertas financeiros: Ferramentas que enviam notificações sobre vencimentos ou limites ajudam a evitar problemas.', 'Compatibilidade com metas financeiras: A melhor ferramenta é aquela que ajuda você a planejar e alcançar seus objetivos únicos.'] },
@@ -70,11 +70,11 @@ export const blogPosts: Post[] = [
   {
     id: 2,
     slug: 'orcamento-pessoal-eficiente',
-    category: 'Planejamento',
+    category: 'Dicas Financeiras',
     title: 'Como Criar um Orçamento Pessoal Eficiente Usando Ferramentas de Gestão Financeira',
     date: '10 de novembro',
     readTime: '4 min. de leitura',
-    image: '/assets/images/blog2.png', // Placeholder (ajuste se tiver imagem específica)
+    image: '/assets/images/blogpost2.png', 
     author: AUTHOR_LUCAS,
     content: [
       { type: 'paragraph', value: 'Cuidar das finanças pessoais começa com um bom orçamento. Ele é a base para uma vida financeira equilibrada e pode ser o segredo para alcançar metas como viajar, comprar uma casa ou simplesmente viver com mais tranquilidade. Mas criar e manter um orçamento eficiente não precisa ser complicado; especialmente quando você tem ferramentas como o Buddy B para ajudar. Neste post, explicamos o que é um orçamento pessoal, por que ele é essencial, como criá-lo passo a passo e como evitar erros comuns.' },
@@ -86,6 +86,7 @@ export const blogPosts: Post[] = [
       { type: 'paragraph', value: 'Criar um orçamento não é complicado. Aqui está um passo a passo simples:' },
       { type: 'list', value: ['Calcule sua renda mensal: Inclua salários, rendimentos extras ou qualquer outra fonte de dinheiro.', 'Liste suas despesas fixas e variáveis: Fixas (Aluguel, contas), Variáveis (Alimentação, lazer).', 'Defina categorias de gastos: Agrupe despesas em categorias, como transporte, saúde e entretenimento.', 'Estabeleça limites para cada categoria: Use os valores anteriores como base para definir o quanto você pode gastar em cada área.', 'Inclua suas metas financeiras: Reserve uma parte da renda para economizar ou investir.', 'Acompanhe e ajuste: Verifique regularmente se está dentro do orçamento e faça ajustes conforme necessário.'] },
       { type: 'heading', value: 'Erros comuns ao montar um orçamento e como evitá-los' },
+      { type: 'image', value: '/assets/images/blogpost22.png' },
       { type: 'paragraph', value: 'Mesmo com um bom planejamento, é fácil cometer alguns deslizes. Aqui estão os erros mais comuns e como evitá-los:' },
       { type: 'list', value: ['Esquecer de incluir todas as despesas: Não deixe gastos esporádicos de fora. Inclua aniversários, manutenções ou despesas sazonais.', 'Não acompanhar o orçamento regularmente: Revise seus gastos toda semana para garantir que está dentro dos limites.', 'Subestimar despesas variáveis: Gastos como alimentação ou lazer podem variar bastante. Seja realista ao definir os valores.', 'Não reservar para imprevistos: Crie um fundo para emergências, evitando usar cartões de crédito ou contrair dívidas.', 'Ignorar metas financeiras: Não foque apenas nas despesas; lembre-se de direcionar parte da sua renda para poupança ou investimentos.'] },
       { type: 'paragraph', value: 'Com atenção a esses pontos e o suporte do Buddy B, seu orçamento se torna uma ferramenta poderosa para transformar suas finanças.' },
@@ -100,11 +101,11 @@ export const blogPosts: Post[] = [
   {
     id: 3,
     slug: 'economizar-sem-sacrificios',
-    category: 'Economia',
+    category: 'Dicas Financeiras',
     title: 'Economizar Sem Sacrifícios: Repense Suas Finanças com o Buddy B ao Seu Lado',
     date: '08 de novembro',
     readTime: '4 min. de leitura',
-    image: '/assets/images/blog3.png',
+    image: '/assets/images/blogpost3.png',
     author: AUTHOR_LUCAS,
     content: [
       { type: 'paragraph', value: 'Economizar não significa seguir regras rígidas ou fazer sacrifícios. Trata-se de repensar como você enxerga e utiliza seu dinheiro, alinhando suas escolhas financeiras ao que realmente importa para você. Cada pessoa tem uma realidade, e a jornada para uma vida financeira equilibrada é única. Neste post, vamos convidá-lo a refletir sobre como economizar pode ser algo natural, ajustado ao seu estilo de vida, com o Buddy B como seu parceiro nessa caminhada.' },
@@ -115,6 +116,7 @@ export const blogPosts: Post[] = [
       { type: 'list', value: ['Há maneiras de fazer o que eu gosto gastando menos?', 'Existem alternativas que me permitam aproveitar o mesmo benefício sem prejudicar meu orçamento?', 'Como posso ser mais criativo ao lidar com minhas despesas?'] },
       { type: 'paragraph', value: 'Por exemplo, se você adora viajar, pode buscar promoções ou explorar destinos próximos. Se gosta de comer fora, que tal procurar restaurantes com descontos ou experimentar receitas novas em casa? A ideia é encontrar o equilíbrio que funcione para você. Com o Buddy B, você tem uma visão clara do impacto dessas escolhas no seu orçamento.' },
       { type: 'heading', value: 'Pequenas mudanças, grandes resultados' },
+      { type: 'image', value: '/assets/images/blogpost33.png' },
       { type: 'paragraph', value: 'Não subestime o poder das pequenas mudanças. Ajustar hábitos cotidianos pode trazer economia significativa sem que você precise abrir mão de nada essencial. Talvez seja trocar o transporte diário por uma opção mais econômica algumas vezes por semana ou organizar suas compras para evitar desperdícios. O papel do Buddy B aqui é fundamental: ele não impõe restrições, mas oferece informações e insights valiosos para que você tome decisões mais conscientes. Ao acompanhar suas finanças em tempo real, você ganha clareza para enxergar onde pode fazer ajustes e como isso impacta seus objetivos.' },
       { type: 'heading', value: 'Faça da economia uma aliada, não um fardo' },
       { type: 'paragraph', value: 'Economizar não deve ser um peso, mas sim uma escolha estratégica que te aproxima dos seus sonhos. Pode ser um curso que você deseja fazer, uma viagem dos sonhos ou simplesmente a tranquilidade de saber que tem uma reserva para emergências. Ao ajustar seu orçamento, pense no longo prazo. O Buddy B está aqui para ajudar você a visualizar como pequenas economias hoje podem se transformar em grandes conquistas amanhã. Use-o como seu companheiro, ajustando metas e celebrando cada progresso.' },
@@ -129,11 +131,11 @@ export const blogPosts: Post[] = [
   {
     id: 4,
     slug: 'psicologia-financeira',
-    category: 'Comportamento',
+    category: 'Dicas Financeiras',
     title: 'Psicologia Financeira: Como Nossos Comportamentos e Emoções Influenciam a Gestão do Dinheiro',
     date: '05 de novembro',
     readTime: '6 min. de leitura',
-    image: '/assets/images/blog1.png', 
+    image: '/assets/images/blogpost4.png', 
     author: AUTHOR_LUCAS,
     content: [
       { type: 'paragraph', value: 'Quando pensamos em finanças, é comum focarmos em números, planilhas e ferramentas. Mas a verdade é que nossa relação com o dinheiro vai muito além da lógica. Nossas emoções, crenças e comportamentos são peças fundamentais no quebra-cabeça da gestão financeira. E entender como esses fatores influenciam nossas decisões pode ser o passo mais importante para alcançar equilíbrio e prosperidade financeira.' },
@@ -142,6 +144,7 @@ export const blogPosts: Post[] = [
       { type: 'heading', value: 'Como Nossas Emoções Afetam Nossos Gastos' },
       { type: 'paragraph', value: 'Você já usou o cartão de crédito para "se sentir melhor" após um dia difícil? Esse é um exemplo clássico de como emoções, como estresse, ansiedade ou até tédio, podem nos levar a decisões financeiras impulsivas. Estudos mostram que muitos de nós gastamos mais quando estamos emocionalmente sobrecarregados. Em contrapartida, o medo ou a insegurança podem fazer com que evitemos investimentos ou adiemos decisões financeiras importantes. A chave está em criar um espaço de reflexão antes de agir: pergunte-se “eu realmente preciso disso?” ou “essa decisão está alinhada com meus objetivos?”.' },
       { type: 'heading', value: 'O Papel do Buddy B na Psicologia Financeira' },
+      { type: 'image', value: '/assets/images/blogpost44.png' },
       { type: 'paragraph', value: 'Ferramentas de gestão financeira, como o Buddy B, podem ser verdadeiros aliados nesse processo. Elas ajudam a transformar sentimentos difusos em dados claros. Com o Buddy B, você consegue identificar padrões de gastos que antes passavam despercebidos e associá-los às suas emoções e hábitos diários. Por exemplo, ao perceber que há picos de gastos em semanas mais estressantes, você pode planejar ações para lidar com esses momentos, como reservar um valor específico para lazer ou investir em formas de autocuidado que não envolvam consumo desnecessário. Visualizar suas finanças de forma clara é um grande alívio emocional, permitindo decisões mais conscientes e alinhadas aos seus valores.' },
       { type: 'heading', value: 'Cultivando uma Relação Saudável com o Dinheiro' },
       { type: 'paragraph', value: 'Equilibrar emoções e finanças exige prática e intenção. Aqui estão algumas reflexões que podem ajudar:' },
@@ -157,11 +160,11 @@ export const blogPosts: Post[] = [
   {
     id: 5,
     slug: 'metas-financeiras-ano-novo',
-    category: 'Planejamento',
+    category: 'Dicas Financeiras',
     title: 'Metas Financeiras: Ano Novo, Novos Hábitos',
     date: '01 de novembro',
     readTime: '5 min. de leitura',
-    image: '/assets/images/blog2.png',
+    image: '/assets/images/blogpost5.png',
     author: AUTHOR_LUCAS,
     content: [
       { type: 'paragraph', value: 'O início de um novo ano é o momento perfeito para reavaliar nossa vida financeira e traçar metas que nos aproximem da estabilidade e prosperidade. A promessa de “ano novo, novos hábitos” é especialmente relevante diante de um cenário onde planejamento, disciplina e visão de longo prazo são imprescindíveis. Este artigo apresenta um guia prático para você estabelecer metas financeiras realistas e efetivas para o ano.' },
@@ -173,6 +176,7 @@ export const blogPosts: Post[] = [
       { type: 'list', value: ['Construir uma reserva de emergência: Por exemplo, guardar o equivalente a três meses de despesas básicas para imprevistos.', 'Quitar dívidas prioritárias: Direcione seus esforços para eliminar dívidas com juros altos, como cartão de crédito ou financiamentos caros.', 'Investir em objetivos maiores: Planeje-se para conquistas futuras, como a aposentadoria, a compra de um imóvel ou até realizar uma viagem dos sonhos.'] },
       { type: 'paragraph', value: 'Divida suas metas em pequenos passos, ajuste conforme necessário e celebre cada progresso. O importante é avançar de forma consistente!' },
       { type: 'heading', value: 'Crie hábitos que sustentem suas metas' },
+      { type: 'image', value: '/assets/images/blogpost55.png' },
       { type: 'paragraph', value: 'Mudanças financeiras começam com novos hábitos. Algumas práticas essenciais incluem:' },
       { type: 'list', value: ['Controle de gastos: Evite compras por impulso e adote o planejamento financeiro semanal.', 'Investimento regular: Automatize aportes em poupança e/ou investimentos para construir patrimônio.', 'Educação financeira: Leia livros, ouça podcasts, participe de cursos, ou procure orientação financeira especializada.', 'Exemplo prático: Destine um valor mensal para poupança ou investimentos antes de gastar o restante.'] },
       { type: 'heading', value: 'Supere desafios e ajuste o rumo' },
@@ -191,7 +195,7 @@ export const blogPosts: Post[] = [
     title: 'Transforme Sua Relação com o Dinheiro: Conheça o Buddy B',
     date: '28 de outubro',
     readTime: '4 min. de leitura',
-    image: '/assets/images/blog3.png',
+    image: '/assets/images/blogpost6.png',
     author: AUTHOR_LUCAS,
     content: [
       { type: 'paragraph', value: 'Cuidar das finanças pode parecer um desafio para muitos. Afinal, organizar receitas e despesas, planejar o futuro e ainda garantir um equilíbrio entre qualidade de vida e estabilidade financeira não é tarefa fácil. Mas e se existisse uma forma mais simples e eficiente de administrar seu dinheiro? O Buddy B App é essa solução! Mais do que um aplicativo de controle financeiro, ele é um verdadeiro parceiro estratégico para quem quer tomar as rédeas da própria vida financeira de forma inteligente e descomplicada.' },
@@ -199,6 +203,7 @@ export const blogPosts: Post[] = [
       { type: 'paragraph', value: 'Ter controle sobre o seu dinheiro vai muito além de apenas anotar gastos. Quando você compreende suas finanças, pode tomar decisões mais conscientes e planejar um futuro mais seguro. A falta de planejamento financeiro pode gerar estresse, endividamento e a sensação de que você nunca consegue fazer seu dinheiro render. Com o Buddy B, você não apenas registra gastos, mas também visualiza seu fluxo de caixa de forma clara, recebe relatórios estratégicos e tem acesso a consultorias financeiras personalizadas. Assim, você passa a entender melhor sua relação com o dinheiro e pode construir um planejamento financeiro eficaz para atingir seus objetivos.' },
       { type: 'heading', value: 'O que torna o Buddy B diferente?' },
       { type: 'paragraph', value: 'Diferente de outras plataformas, o Buddy B combina tecnologia intuitiva com consultoria especializada. Veja alguns diferenciais:' },
+      { type: 'image', value: '/assets/images/blogpost66.png' },
       { type: 'list', value: ['Interface Simples e Inteligente: Gráficos intuitivos que tornam a análise financeira descomplicada.', 'Consultoria Financeira Integrada: Conte com especialistas para te ajudar a tomar decisões mais assertivas.', 'Planejamento Estratégico: Muito mais do que controle de gastos, você tem suporte para planejar um futuro próspero.', 'Visão Holística: Finanças saudáveis estão conectadas ao seu bem-estar emocional e à sua qualidade de vida.'] },
       { type: 'heading', value: 'Mais do que dinheiro: Equilíbrio e Prosperidade' },
       { type: 'paragraph', value: 'Nós acreditamos que prosperidade vai muito além de acumular riquezas. Ter uma vida financeira equilibrada significa estar alinhado com seus valores, suas prioridades e seus sonhos. Por isso, aqui no Buddy B também abordamos temas como: Gestão do tempo: Como organizar sua rotina para otimizar seus resultados financeiros. Saúde mental e emocional: Como suas emoções afetam suas decisões financeiras. Planejamento de vida: Como alinhar suas metas financeiras aos seus sonhos de longo prazo.' },
@@ -208,19 +213,5 @@ export const blogPosts: Post[] = [
     relatedPosts: [1, 4, 5]
   },
 
-  // --- POST 7 (Placeholder) ---
-  {
-    id: 7,
-    slug: 'post-7',
-    category: 'Sustentabilidade',
-    title: 'Finanças verdes: investindo no futuro do planeta',
-    date: '25 de outubro',
-    readTime: '3 min. de leitura',
-    image: '/assets/images/blog1.png',
-    author: AUTHOR_LUCAS,
-    content: [
-      { type: 'paragraph', value: 'Conteúdo em breve...' }
-    ],
-    relatedPosts: [1, 2, 3]
-  }
+
 ];

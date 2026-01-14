@@ -11,6 +11,7 @@ const categories = [
 ];
 
 const POSTS_PER_PAGE = 3;
+const AUTOPLAY_DELAY = 3000;
 
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => {
@@ -21,9 +22,10 @@ const BlogPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [currentPage, setCurrentPage] = useState(0);
   
-  // Mobile Carousel State
+
   const [mobileIndex, setMobileIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
 
   const filteredPosts = activeCategory === "Todos" 
     ? blogPosts 
@@ -31,15 +33,24 @@ const BlogPage: React.FC = () => {
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   
-  // Autoplay Mobile
+
   useEffect(() => {
     if (!isPaused && window.innerWidth < 1024 && filteredPosts.length > 0) {
       const interval = setInterval(() => {
         setMobileIndex((prev) => (prev === filteredPosts.length - 1 ? 0 : prev + 1));
-      }, 3000);
+      }, AUTOPLAY_DELAY);
       return () => clearInterval(interval);
     }
   }, [isPaused, filteredPosts.length]);
+
+  useEffect(() => {
+    if (!isPaused && window.innerWidth >= 1024 && totalPages > 1) {
+      const interval = setInterval(() => {
+        setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
+      }, AUTOPLAY_DELAY);
+      return () => clearInterval(interval);
+    }
+  }, [isPaused, totalPages]);
 
   const paginateMobile = (newDirection: number) => {
     let nextIndex = mobileIndex + newDirection;
@@ -67,7 +78,7 @@ const BlogPage: React.FC = () => {
 
       <div className="bg-white min-h-screen">
         
-        <header className="bg-[#9B80FF] pt-[117px] pb-16 lg:pt-[251px] lg:pb-[140px] relative">
+        <header className="bg-[#9B80FF] pt-[140px] pb-16 lg:pt-[251px] lg:pb-[140px] relative">
           <div className="container mx-auto px-5 lg:px-0 lg:w-[1104px]">
             <h1 className="font-heading font-semibold text-white text-[24px] leading-[36px] lg:text-[52px] lg:leading-[77px] mb-4 lg:mb-4">
               As Melhores Dicas para Quem Quer Mudar a Maneira de Pensar Sobre Finanças e Recursos Pessoais
@@ -86,7 +97,12 @@ const BlogPage: React.FC = () => {
           </div>
         </header>
 
-        <div className="container mx-auto px-5 lg:px-0 lg:w-[1104px] py-16">
+        <div className="container mx-auto px-5 lg:px-0 lg:w-[1104px] py-16"
+             onMouseEnter={() => setIsPaused(true)}
+             onMouseLeave={() => setIsPaused(false)}
+             onTouchStart={() => setIsPaused(true)}
+             onTouchEnd={() => setIsPaused(false)}
+        >
           
           <div className="flex flex-col lg:items-start mb-8 lg:mb-12">
             <img src="/assets/images/logoblog.png" alt="Blog Buddy B" className="w-[100px] lg:w-[126px] h-auto mb-6" />
@@ -96,16 +112,59 @@ const BlogPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex gap-2 lg:gap-6 overflow-x-auto pb-4 lg:pb-8 mb-8 no-scrollbar">
-            {categories.map((cat) => (
+          {/* FILTROS (DROPDOWN NO MOBILE / LISTA NO DESKTOP) */}
+          <div className="mb-8 relative z-20">
+  
+            <div className="lg:hidden relative">
               <button 
-                key={cat}
-                onClick={() => { setActiveCategory(cat); setCurrentPage(0); setMobileIndex(0); }}
-                className={`whitespace-nowrap px-6 py-2 rounded-[10px] font-body font-normal text-[16px] leading-[26px] transition-colors flex-shrink-0 ${activeCategory === cat ? 'bg-[#9B80FF] text-white' : 'bg-white border border-[#9B80FF] text-[#9B80FF] hover:bg-gray-50'}`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="w-full h-[44px] bg-[#9B80FF] text-white rounded-[10px] flex items-center justify-between px-4 font-bold text-sm"
               >
-                {cat}
+                <span>{activeCategory}</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
               </button>
-            ))}
+              
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full left-0 w-full bg-white border border-[#9B80FF] rounded-[10px] mt-2 shadow-xl overflow-hidden"
+                  >
+                    {categories.map((cat) => (
+                      <div 
+                        key={cat}
+                        onClick={() => {
+                          setActiveCategory(cat);
+                          setIsDropdownOpen(false);
+                          setCurrentPage(0);
+                          setMobileIndex(0);
+                        }}
+                        className={`p-3 border-b border-gray-100 last:border-0 cursor-pointer hover:bg-gray-50 text-sm ${activeCategory === cat ? 'text-[#9B80FF] font-bold' : 'text-[#424242]'}`}
+                      >
+                        {cat}
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Desktop List */}
+            <div className="hidden lg:flex gap-6 overflow-x-auto pb-8 no-scrollbar">
+              {categories.map((cat) => (
+                <button 
+                  key={cat}
+                  onClick={() => { setActiveCategory(cat); setCurrentPage(0); setMobileIndex(0); }}
+                  className={`whitespace-nowrap px-6 py-2 rounded-[10px] font-body font-normal text-[16px] leading-[26px] transition-colors flex-shrink-0 min-w-fit ${activeCategory === cat ? 'bg-[#9B80FF] text-white' : 'bg-white border border-[#9B80FF] text-[#9B80FF] hover:bg-gray-50'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           <p className="font-body font-normal text-[#424242] text-[14px] lg:text-[16px] leading-[26px] mb-12">
@@ -114,40 +173,46 @@ const BlogPage: React.FC = () => {
 
           {/* DESKTOP GRID */}
           <div className="hidden lg:grid lg:grid-cols-3 gap-8">
-            {displayedPosts.length > 0 ? displayedPosts.map((post) => (
-              <Link to={`/blog/${post.slug}`} key={post.id}>
-                <div className="flex-shrink-0 relative bg-white border border-[#E8E9EA] rounded-[10px] overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-[350px]">
-                  <div className="relative h-[133px] w-full bg-gray-200">
-                     <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
-                  </div>
-                  <div className="absolute top-[109px] left-0 h-[34px] bg-[#9B80FF] flex items-center justify-center px-4 rounded-r-[5px] z-10">
-                     <span className="text-white font-body font-bold text-xs">{post.category}</span>
-                  </div>
-                  <div className="px-4 pt-[22px] pb-4 flex flex-col h-[217px] justify-between">
-                     <div>
-                        <h3 className="font-heading font-semibold text-[#424242] text-[20px] leading-[28px] mb-2 line-clamp-2">{post.title}</h3>
-                        <p className="font-body font-normal text-[#424242] text-[14px] leading-[22px] line-clamp-3">{typeof post.content[0].value === 'string' ? post.content[0].value : 'Leia mais...'}</p>
-                     </div>
-                     <div className="flex items-center justify-between border-t border-[#E8E9EA] pt-3">
-                        <div className="flex items-center gap-2">
-                          <div className="w-[30px] h-[30px] rounded-full bg-gray-300 overflow-hidden"><img src={post.author.avatar} alt="Avatar" className="w-full h-full object-cover"/></div>
-                          <span className="font-body font-semibold text-[#424242] text-[12px]">{post.author.name}</span>
+            <AnimatePresence mode="wait">
+              {displayedPosts.length > 0 ? displayedPosts.map((post) => (
+                <motion.div
+                  key={`${post.id}-${currentPage}`} 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Link to={`/blog/${post.slug}`}>
+                    <div className="flex-shrink-0 relative bg-white border border-[#E8E9EA] rounded-[10px] overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-[350px]">
+                      <div className="relative h-[133px] w-full bg-gray-200">
+                        <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                      </div>
+                      <div className="absolute top-[109px] left-0 h-[34px] bg-[#9B80FF] flex items-center justify-center px-4 rounded-r-[5px] z-10">
+                        <span className="text-white font-body font-bold text-xs">{post.category}</span>
+                      </div>
+                      <div className="px-4 pt-[22px] pb-4 flex flex-col h-[217px] justify-between">
+                        <div>
+                            <h3 className="font-heading font-semibold text-[#424242] text-[20px] leading-[28px] mb-2 line-clamp-2">{post.title}</h3>
+                            <p className="font-body font-normal text-[#424242] text-[14px] leading-[22px] line-clamp-3">{typeof post.content[0].value === 'string' ? post.content[0].value : 'Leia mais...'}</p>
                         </div>
-                        <span className="font-body font-normal text-[#424242] text-[12px]">{post.readTime}</span>
-                     </div>
-                  </div>
-                </div>
-              </Link>
-            )) : <p className="col-span-3 text-center text-gray-500 py-12">Nenhum post encontrado nesta categoria.</p>}
+                        <div className="flex items-center justify-between border-t border-[#E8E9EA] pt-3">
+                            <div className="flex items-center gap-2">
+                              <div className="w-[30px] h-[30px] rounded-full bg-gray-300 overflow-hidden"><img src={post.author.avatar} alt="Avatar" className="w-full h-full object-cover"/></div>
+                              <span className="font-body font-semibold text-[#424242] text-[12px]">{post.author.name}</span>
+                            </div>
+                            <span className="font-body font-normal text-[#424242] text-[12px]">{post.readTime}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              )) : <p className="col-span-3 text-center text-gray-500 py-12">Nenhum post encontrado nesta categoria.</p>}
+            </AnimatePresence>
           </div>
 
           {/* MOBILE CAROUSEL */}
-          <div 
-            className="lg:hidden flex flex-col items-center"
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
-          >
+          <div className="lg:hidden flex flex-col items-center">
             <div className="relative w-[350px] h-[350px]">
               <AnimatePresence mode="wait">
                 {filteredPosts.length > 0 && (
@@ -198,7 +263,6 @@ const BlogPage: React.FC = () => {
               </AnimatePresence>
             </div>
             
-            {/* Mobile Pagination Dots */}
             <div className="flex justify-center gap-2 mt-6">
                {filteredPosts.map((_, idx) => (
                  <div 

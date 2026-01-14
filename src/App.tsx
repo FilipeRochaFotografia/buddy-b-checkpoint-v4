@@ -9,7 +9,8 @@ import ScrollToTop from './components/ScrollToTop';
 import ProductPage from './pages/ProductPage';
 import CapturePage from './pages/CapturePage';
 import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage'; // Nova Página de Post Individual
+import BlogPostPage from './pages/BlogPostPage';
+import FAQPage from './pages/FAQPage'; // Importação da FAQ
 
 // Páginas Institucionais
 import TermosDeUsoPage from './pages/TermosDeUso';
@@ -30,7 +31,10 @@ const App: React.FC = () => {
 
           {/* --- BLOG --- */}
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} /> {/* Rota Dinâmica */}
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+
+          {/* --- FAQ --- */}
+          <Route path="/faq" element={<FAQPage />} />
 
           {/* --- INSTITUCIONAIS --- */}
           <Route path="/termos-de-uso" element={<TermosDeUsoPage />} />

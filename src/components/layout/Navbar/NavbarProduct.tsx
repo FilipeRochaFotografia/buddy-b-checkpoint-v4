@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export function NavbarProduct() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
-    { label: 'Diferenciais', href: '#funcionalidades' },
-    { label: 'Planos', href: '#planos' }, 
-    { label: 'Blog', href: '#blog' },     
-    { label: 'FAQ', href: '#' },
+    { label: 'Diferenciais', href: '/#funcionalidades', isHash: true },
+    { label: 'Planos', href: '/#planos', isHash: true }, 
+    { label: 'Depoimentos', href: '/#depoimentos', isHash: true },
+    { label: 'Blog', href: '/blog', isHash: false },     
+    { label: 'FAQ', href: '/faq', isHash: false }, 
   ];
 
-  
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault(); 
-    
-    if (href === '#') return;
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { href: string; isHash: boolean }) => {
 
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
+    if (item.isHash && location.pathname === '/') {
+      const targetId = item.href.replace('/#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsOpen(false);
+      }
+    } else {
 
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false); 
+        setIsOpen(false);
     }
   };
 
@@ -46,16 +49,26 @@ export function NavbarProduct() {
           
           <div className="flex gap-8">
             {navLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleScroll(e, item.href)}
-                className={`font-heading font-bold text-[#424242] text-[18px] transition-colors ${
-                  item.label === 'FAQ' ? 'cursor-default opacity-70' : 'hover:text-[#9B80FF] cursor-pointer'
-                }`}
-              >
-                {item.label}
-              </a>
+              item.isHash && location.pathname === '/' ? (
+
+                <a
+                  key={item.label}
+                  href={item.href.replace('/', '')} 
+                  onClick={(e) => handleLinkClick(e, item)}
+                  className="font-heading font-bold text-[#424242] text-[18px] transition-colors hover:text-[#9B80FF] cursor-pointer"
+                >
+                  {item.label}
+                </a>
+              ) : (
+
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="font-heading font-bold text-[#424242] text-[18px] transition-colors hover:text-[#9B80FF] cursor-pointer"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </div>
 
@@ -91,14 +104,25 @@ export function NavbarProduct() {
       {isOpen && (
         <div className="absolute top-full left-0 w-full bg-[#F3F4F6] shadow-lg border-t border-gray-200 p-6 flex flex-col gap-6 lg:hidden z-50">
           {navLinks.map((item) => (
-            <a 
-              key={item.label}
-              href={item.href} 
-              className={`text-lg font-heading font-bold text-[#424242] ${item.label === 'FAQ' ? 'opacity-70' : ''}`}
-              onClick={(e) => handleScroll(e, item.href)}
-            >
-              {item.label}
-            </a>
+             item.isHash && location.pathname === '/' ? (
+                <a
+                  key={item.label}
+                  href={item.href.replace('/', '')}
+                  onClick={(e) => handleLinkClick(e, item)}
+                  className="text-lg font-heading font-bold text-[#424242]"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-heading font-bold text-[#424242]"
+                >
+                  {item.label}
+                </Link>
+              )
           ))}
           <div className="flex flex-col gap-3 mt-2">
              <a href="http://buddybapp.com/app" target="_blank" rel="noopener noreferrer">
