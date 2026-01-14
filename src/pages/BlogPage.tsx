@@ -151,7 +151,7 @@ const BlogPage: React.FC = () => {
             </div>
 
             {/* Desktop List (Adicionado pr-6) */}
-            <div className="hidden lg:flex gap-6 overflow-x-auto pb-8 no-scrollbar pr-6">
+            <div className="hidden lg:flex gap-4 overflow-x-auto pb-8 no-scrollbar pr-4">
               {categories.map((cat) => (
                 <button 
                   key={cat}
