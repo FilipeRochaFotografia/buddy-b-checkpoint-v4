@@ -82,7 +82,7 @@ const BlogPage: React.FC = () => {
               As Melhores Dicas para Quem Quer Mudar a Maneira de Pensar Sobre Finanças e Recursos Pessoais
             </h1>
             <p className="font-body font-normal text-white text-[14px] leading-[26px] lg:text-[16px] mb-4 lg:mb-8">
-              Buddy B • 13 de Janeiro de 2025
+              Buddy B • 13 de Janeiro de 2026
             </p>
             <p className="font-body font-normal text-white text-[14px] leading-[26px] lg:text-[18px] lg:leading-[26px] mb-8 lg:mb-12">
               Mudar a forma como pensamos e lidamos com nossas finanças pode parecer um desafio, mas é uma decisão poderosa que impacta todas as áreas da vida. Ter um planejamento financeiro claro, aliado ao controle dos recursos pessoais, ajuda a criar uma vida financeira mais tranquila e sustentável. Se você deseja transformar sua relação com o dinheiro, confira as melhores dicas que reunimos para ajudar nessa jornada!
