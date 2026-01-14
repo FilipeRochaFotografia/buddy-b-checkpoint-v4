@@ -7,8 +7,8 @@ const blogPosts = [
   {
     id: 1,
     slug: 'ferramentas-gestao-financeira',
-    image: "/assets/images/post1blog.png", 
-    category: "Dicas financeiras",
+    image: "/assets/images/blogpost1.png", 
+    category: "Dicas Financeiras",
     title: "Ferramentas de Gestão Financeira Pessoal: Por Que Você Precisa de Uma e Como Escolher a Melhor?",
     excerpt: "Cuidar das finanças pessoais pode parecer complicado, mas com as ferramentas certas, você pode simplificar esse processo e transformar sua relação com o dinheiro. Em tempos em que o controle financeiro é essencial para alcançar metas e viver com mais tranquilidade, ferramentas como o Buddy B surgem como aliadas indispensáveis. Neste post, vamos explorar os benefícios dessas ferramentas, o que você deve buscar em uma boa opção e como começar a usá-las para maximizar seus resultados.",
     author: "Samuel Ferreira",
@@ -18,7 +18,7 @@ const blogPosts = [
   {
     id: 2,
     slug: 'orcamento-pessoal-eficiente',
-    image: "/assets/images/blog2.png", 
+    image: "/assets/images/blogpost2.png", 
     category: "Dicas Financeiras",
     title: "Como Criar um Orçamento Pessoal Eficiente Usando Ferramentas de Gestão Financeira",
     excerpt: "Cuidar das finanças pessoais começa com um bom orçamento. Ele é a base para uma vida financeira equilibrada e pode ser o segredo para alcançar metas como viajar, comprar uma casa ou simplesmente viver com mais tranquilidade. Mas criar e manter um orçamento eficiente não precisa ser complicado; especialmente quando você tem ferramentas como o Buddy B para ajudar. Neste post, explicamos o que é um orçamento pessoal, por que ele é essencial, como criá-lo passo a passo e como evitar erros comuns.",
