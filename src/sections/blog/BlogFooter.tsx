@@ -21,7 +21,7 @@ export function BlogFooter() {
 
   return (
     <>
-      {/* SEÇÃO CTA (NEWSLETTER) - FUNDO ROXO SOLIDO (#9B80FF) */}
+        {/* NEWSLETTER SECTION */}
       <section className="py-20" style={{ backgroundColor: '#9B80FF' }}>
         <div className="container mx-auto px-4 flex flex-col items-center">
           

@@ -15,7 +15,7 @@ export function useRDStation() {
 
   const TOKEN_PUBLICO = "04f1b1df1938c6cf980f4d329682e3e3"; 
 
-  // Agora aceita o identificador como segundo parâmetro (default mantido para compatibilidade)
+
   const sendLead = async (data: LeadData, identifier: string = 'landing-page-oferta-v4') => {
     setIsLoading(true);
     setError(null);
@@ -50,7 +50,7 @@ export function useRDStation() {
       };
 
       addField('token_rdstation', TOKEN_PUBLICO);
-      addField('identificador', identifier); // Usa o identificador dinâmico
+      addField('identificador', identifier); 
       addField('email', data.email);
       addField('nome', data.name);
       addField('mobile_phone', data.phone);

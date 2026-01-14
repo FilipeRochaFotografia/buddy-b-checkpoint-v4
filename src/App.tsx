@@ -10,7 +10,7 @@ import ProductPage from './pages/ProductPage';
 import CapturePage from './pages/CapturePage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
-import FAQPage from './pages/FAQPage'; // Importação da FAQ
+import FAQPage from './pages/FAQPage'; 
 
 // Páginas Institucionais
 import TermosDeUsoPage from './pages/TermosDeUso';
