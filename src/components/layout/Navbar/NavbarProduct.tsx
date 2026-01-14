@@ -25,7 +25,7 @@ export function NavbarProduct() {
       }
     } else {
 
-        setIsOpen(false);
+
     }
   };
 
@@ -50,7 +50,7 @@ export function NavbarProduct() {
           <div className="flex gap-8">
             {navLinks.map((item) => (
               item.isHash && location.pathname === '/' ? (
-
+                // Link Âncora Desktop
                 <a
                   key={item.label}
                   href={item.href.replace('/', '')} 
@@ -60,7 +60,7 @@ export function NavbarProduct() {
                   {item.label}
                 </a>
               ) : (
-
+                // Link Rota Desktop
                 <Link
                   key={item.label}
                   to={item.href}
@@ -105,7 +105,8 @@ export function NavbarProduct() {
         <div className="absolute top-full left-0 w-full bg-[#F3F4F6] shadow-lg border-t border-gray-200 p-6 flex flex-col gap-6 lg:hidden z-50">
           {navLinks.map((item) => (
              item.isHash && location.pathname === '/' ? (
-                <a
+
+              <a
                   key={item.label}
                   href={item.href.replace('/', '')}
                   onClick={(e) => handleLinkClick(e, item)}
@@ -114,10 +115,10 @@ export function NavbarProduct() {
                   {item.label}
                 </a>
               ) : (
+
                 <Link
                   key={item.label}
                   to={item.href}
-                  onClick={() => setIsOpen(false)}
                   className="text-lg font-heading font-bold text-[#424242]"
                 >
                   {item.label}
