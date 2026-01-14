@@ -7,7 +7,7 @@ import { BlogFooter } from '../sections/blog/BlogFooter';
 import { blogPosts } from '../data/posts'; 
 
 const categories = [
-  "Todos", "Dicas financeiras", "Mercado", "Economia", "Onde investir", "Tecnologia", "Sustentabilidade"
+  "Todos", "Dicas Financeiras", "Mercado", "Economia", "Onde investir", "Tecnologia", "Sustentabilidade"
 ];
 
 const POSTS_PER_PAGE = 3;
