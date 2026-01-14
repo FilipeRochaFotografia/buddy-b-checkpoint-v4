@@ -96,7 +96,7 @@ const BlogPostPage: React.FC = () => {
                 }
               })}
 
-              {/* 5. CARD DO AUTOR (CONSULTOR) */}
+              {/* 5. CARD DO AUTOR (CONSULTOR) - SEM O BOTÃO */}
               <div className="mt-16 w-full lg:w-[560px] bg-white rounded-[10px] border border-[#E8E9EA] p-8 relative shadow-sm">
                 <div className="flex gap-6">
                   {/* Foto */}
@@ -116,20 +116,9 @@ const BlogPostPage: React.FC = () => {
                 </div>
 
                 {/* Bio */}
-                <p className="font-body font-normal text-[18px] leading-[26px] text-[#424242] mt-4 mb-8 w-full lg:w-[495px]">
+                <p className="font-body font-normal text-[18px] leading-[26px] text-[#424242] mt-4 w-full lg:w-[495px]">
                   {post.author.bio}
                 </p>
-
-                {/* Botão Falar com Consultor */}
-                <button className="w-[235px] h-[47px] bg-[#583CE3] rounded-[10px] flex items-center justify-center gap-2 text-white font-body font-semibold text-[16px] hover:bg-[#462db8] transition-colors">
-                  Falar com consultor
-                  <svg width="27" height="15" viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.2041 8.06836C1.59565 8.06836 1.90893 8.38313 1.90918 8.76562C1.90918 9.14833 1.59581 9.46387 1.2041 9.46387C0.812563 9.46368 0.5 9.14822 0.5 8.76562C0.500252 8.38324 0.812721 8.06855 1.2041 8.06836Z" fill="white" stroke="white"/>
-                    <path d="M6.52417 8.76611H26.0042" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M19.6479 16.1122L26.955 8.76611" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M19.6479 1.5L26.955 8.7662" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
               </div>
             </article>
 
